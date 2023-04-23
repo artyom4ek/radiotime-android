@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Radiotime"
-include ':app'
+include(":app")
