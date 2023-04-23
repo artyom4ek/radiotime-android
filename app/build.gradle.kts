@@ -67,6 +67,9 @@ android {
         debugImplementation(Deps.composeUiTestManifest)
         debugImplementation(Deps.composeUiTestJUnit4)
 
+        // Timber
+        implementation(Deps.timber)
+
         // Testing
         testImplementation(Deps.jUnit)
         androidTestImplementation(Deps.jUnitExt)

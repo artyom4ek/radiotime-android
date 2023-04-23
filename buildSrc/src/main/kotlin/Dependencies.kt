@@ -22,6 +22,10 @@ object Deps {
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest"
     const val composeUiTestJUnit4 = "androidx.compose.ui:ui-test-junit4"
 
+    // Timber
+    private const val timberVersion = "5.0.1"
+    const val timber = "com.jakewharton.timber:timber:$timberVersion"
+
     // Testing
     private const val jUnitVersion = "4.13.2"
     const val jUnit = "junit:junit:$jUnitVersion"
