@@ -5,13 +5,13 @@ plugins {
 
 android {
     namespace = "com.tunein.radiotime"
-    compileSdk = 33
-    buildToolsVersion = "33.0.0 rc2"
+    compileSdk = Config.compileSdk
+    buildToolsVersion = Config.buildTools
 
     defaultConfig {
         applicationId = "com.tunein.radiotime"
-        minSdk = 26
-        targetSdk = 33
+        minSdk = Config.minSdk
+        targetSdk = Config.targetSdk
         versionCode = 1
         versionName = "1.0"
 
@@ -39,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.6"
+        kotlinCompilerExtensionVersion = Config.kotlinCompilerExtension
     }
     packaging {
         resources {
@@ -54,27 +54,27 @@ dependencies {
     implementation(project("path" to ":common"))
 
     // Core
-    implementation(Deps.coreKtx)
-    implementation(Deps.lifecycleRuntimeKtx)
+    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.lifecycleRuntimeKtx)
 
     // Compose
-    implementation(Deps.activityCompose)
-    implementation(platform(Deps.composeBom))
-    implementation(Deps.composeUi)
-    implementation(Deps.composeUiGraphics)
-    implementation(Deps.composeUiToolingPreview)
-    implementation(Deps.composeMaterial3)
+    implementation(Dependencies.activityCompose)
+    implementation(platform(Dependencies.composeBom))
+    implementation(Dependencies.composeUi)
+    implementation(Dependencies.composeUiGraphics)
+    implementation(Dependencies.composeUiToolingPreview)
+    implementation(Dependencies.composeMaterial3)
 
-    androidTestImplementation(platform(Deps.composeBom))
-    debugImplementation(Deps.composeUiTooling)
-    debugImplementation(Deps.composeUiTestManifest)
-    debugImplementation(Deps.composeUiTestJUnit4)
+    androidTestImplementation(platform(Dependencies.composeBom))
+    debugImplementation(Dependencies.composeUiTooling)
+    debugImplementation(Dependencies.composeUiTestManifest)
+    debugImplementation(Dependencies.composeUiTestJUnit4)
 
     // Timber
-    implementation(Deps.timber)
+    implementation(Dependencies.timber)
 
     // Testing
-    testImplementation(Deps.jUnit)
-    androidTestImplementation(Deps.jUnitExt)
-    androidTestImplementation(Deps.espressoCore)
+    testImplementation(Dependencies.jUnit)
+    androidTestImplementation(Dependencies.jUnitExt)
+    androidTestImplementation(Dependencies.espressoCore)
 }

@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.tunein.common"
-    compileSdk = 33
+    compileSdk = Config.compileSdk
 
     defaultConfig {
-        minSdk = 26
+        minSdk = Config.minSdk
     }
 
     buildTypes {
@@ -31,7 +31,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.6"
+        kotlinCompilerExtensionVersion = Config.kotlinCompilerExtension
     }
     packaging {
         resources {
@@ -43,10 +43,10 @@ android {
 dependencies {
 
     // Compose
-    implementation(Deps.activityCompose)
-    implementation(platform(Deps.composeBom))
-    implementation(Deps.composeUi)
-    implementation(Deps.composeUiGraphics)
-    implementation(Deps.composeUiToolingPreview)
-    implementation(Deps.composeMaterial3)
+    implementation(Dependencies.activityCompose)
+    implementation(platform(Dependencies.composeBom))
+    implementation(Dependencies.composeUi)
+    implementation(Dependencies.composeUiGraphics)
+    implementation(Dependencies.composeUiToolingPreview)
+    implementation(Dependencies.composeMaterial3)
 }
