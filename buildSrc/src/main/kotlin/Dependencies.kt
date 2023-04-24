@@ -8,10 +8,10 @@ object Deps {
     const val lifecycleRuntimeKtx =
         "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeKtxVersion"
 
+    // Compose
     private const val activityComposeVersion = "1.7.1"
     const val activityCompose = "androidx.activity:activity-compose:$activityComposeVersion"
 
-    // Compose
     private const val composeBomVersion = "2023.04.01"
     const val composeBom = "androidx.compose:compose-bom:$composeBomVersion"
     const val composeUi = "androidx.compose.ui:ui"

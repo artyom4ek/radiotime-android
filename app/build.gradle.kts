@@ -3,7 +3,6 @@ plugins {
     kotlin("android")
 }
 
-@Suppress("UnstableApiUsage")
 android {
     namespace = "com.tunein.radiotime"
     compileSdk = 33
@@ -47,32 +46,35 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+}
 
-    dependencies {
+dependencies {
 
-        // Core
-        implementation(Deps.coreKtx)
-        implementation(Deps.lifecycleRuntimeKtx)
-        implementation(Deps.activityCompose)
+    // Modules
+    implementation(project("path" to ":common"))
 
-        // Compose
-        implementation(platform(Deps.composeBom))
-        implementation(Deps.composeUi)
-        implementation(Deps.composeUiGraphics)
-        implementation(Deps.composeUiToolingPreview)
-        implementation(Deps.composeMaterial3)
+    // Core
+    implementation(Deps.coreKtx)
+    implementation(Deps.lifecycleRuntimeKtx)
 
-        androidTestImplementation(platform(Deps.composeBom))
-        debugImplementation(Deps.composeUiTooling)
-        debugImplementation(Deps.composeUiTestManifest)
-        debugImplementation(Deps.composeUiTestJUnit4)
+    // Compose
+    implementation(Deps.activityCompose)
+    implementation(platform(Deps.composeBom))
+    implementation(Deps.composeUi)
+    implementation(Deps.composeUiGraphics)
+    implementation(Deps.composeUiToolingPreview)
+    implementation(Deps.composeMaterial3)
 
-        // Timber
-        implementation(Deps.timber)
+    androidTestImplementation(platform(Deps.composeBom))
+    debugImplementation(Deps.composeUiTooling)
+    debugImplementation(Deps.composeUiTestManifest)
+    debugImplementation(Deps.composeUiTestJUnit4)
 
-        // Testing
-        testImplementation(Deps.jUnit)
-        androidTestImplementation(Deps.jUnitExt)
-        androidTestImplementation(Deps.espressoCore)
-    }
+    // Timber
+    implementation(Deps.timber)
+
+    // Testing
+    testImplementation(Deps.jUnit)
+    androidTestImplementation(Deps.jUnitExt)
+    androidTestImplementation(Deps.espressoCore)
 }

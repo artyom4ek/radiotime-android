@@ -1,4 +1,4 @@
-package com.tunein.radiotime.ui.theme
+package com.tunein.common.theme
 
 import androidx.compose.ui.graphics.Color
 
