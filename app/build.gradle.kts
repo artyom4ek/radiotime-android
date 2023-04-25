@@ -56,14 +56,17 @@ dependencies {
     // Core
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.lifecycleRuntimeKtx)
+    implementation(Dependencies.navigationCommonKtx)
 
     // Compose
+    implementation(Dependencies.navigationCompose)
     implementation(Dependencies.activityCompose)
+
     implementation(platform(Dependencies.composeBom))
+    implementation(Dependencies.composeMaterial3)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeUiGraphics)
     implementation(Dependencies.composeUiToolingPreview)
-    implementation(Dependencies.composeMaterial3)
 
     androidTestImplementation(platform(Dependencies.composeBom))
     debugImplementation(Dependencies.composeUiTooling)
@@ -76,5 +79,4 @@ dependencies {
     // Testing
     testImplementation(Dependencies.jUnit)
     androidTestImplementation(Dependencies.jUnitExt)
-    androidTestImplementation(Dependencies.espressoCore)
 }
