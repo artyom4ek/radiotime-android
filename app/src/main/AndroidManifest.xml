@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Radiotime"
         tools:targetApi="33">
         <activity
-            android:name="com.tunein.radiotime.MainActivity"
+            android:name="com.tunein.radiotime.ui.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Radiotime">
             <intent-filter>
