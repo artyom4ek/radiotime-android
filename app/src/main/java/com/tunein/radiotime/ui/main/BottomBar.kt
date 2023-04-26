@@ -30,7 +30,7 @@ fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
         containerColor = MaterialTheme.colorScheme.background,
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route ?: BottomBarTab.Home
+        val currentRoute = navBackStackEntry?.destination?.route ?: BottomBarTab.Radio
         tabs.forEach { tab ->
             NavigationBarItem(icon = {
                 Icon(
@@ -65,7 +65,7 @@ fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
 @Composable
 fun BottomBarPreview() {
     val tabs = listOf(
-        BottomBarTab.Home,
+        BottomBarTab.Radio,
         BottomBarTab.Podcast,
     )
     BottomBar(navController = rememberNavController(), tabs = tabs)
