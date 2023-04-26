@@ -13,13 +13,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
 import com.tunein.common.theme.RadiotimeTheme
+import com.tunein.radiotime.radio.RadioScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
     val items = listOf(
-        BottomBarTab.Home,
+        BottomBarTab.Radio,
         BottomBarTab.Podcast,
     )
     Scaffold(
@@ -44,23 +45,15 @@ fun NavGraph(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = BottomBarTab.Home.route
+        startDestination = BottomBarTab.Radio.route
     ) {
-        composable(BottomBarTab.Home.route) {
-            HomeScreen(modifier = modifier)
+        composable(BottomBarTab.Radio.route) {
+            RadioScreen()
         }
         composable(BottomBarTab.Podcast.route) {
             PodcastScreen(modifier = modifier)
         }
     }
-}
-
-@Composable
-fun HomeScreen(modifier: Modifier) {
-    Text(
-        text = "Home screen",
-        modifier = modifier
-    )
 }
 
 @Composable
@@ -70,7 +63,6 @@ fun PodcastScreen(modifier: Modifier) {
         modifier = modifier
     )
 }
-
 
 @Preview(showBackground = true)
 @Composable
