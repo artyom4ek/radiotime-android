@@ -16,11 +16,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+import com.tunein.radiotime.podcasts.tabs.PodcastTab
+
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PodcastsSection(tabs: List<Tab>) {
+fun PodcastsSection(podcastTabs: List<PodcastTab>) {
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
 
@@ -28,7 +30,7 @@ fun PodcastsSection(tabs: List<Tab>) {
         TabRow(
             selectedTabIndex = pagerState.currentPage,
         ) {
-            tabs.forEachIndexed { index, tab ->
+            podcastTabs.forEachIndexed { index, tab ->
                 Tab(
                     selected = index == pagerState.currentPage,
                     text = { Text(text = tab.title) },
@@ -44,10 +46,10 @@ fun PodcastsSection(tabs: List<Tab>) {
             }
         }
         HorizontalPager(
-            pageCount = tabs.size,
+            pageCount = podcastTabs.size,
             state = pagerState
         ) {
-            tabs[pagerState.currentPage].screen()
+            podcastTabs[pagerState.currentPage].screen()
         }
     }
 }
@@ -55,5 +57,5 @@ fun PodcastsSection(tabs: List<Tab>) {
 @Preview
 @Composable
 fun PodcastsSectionPreview() {
-    PodcastsSection(tabs = providePodcastTabs())
+    PodcastsSection(podcastTabs = providePodcastTabs())
 }

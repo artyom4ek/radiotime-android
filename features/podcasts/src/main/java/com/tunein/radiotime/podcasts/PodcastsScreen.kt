@@ -4,5 +4,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun PodcastsScreen() {
-    PodcastsSection(tabs = providePodcastTabs())
+    PodcastsSection(podcastTabs = providePodcastTabs())
 }
