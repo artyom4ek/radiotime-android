@@ -1,30 +1,21 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     kotlin("android")
 }
 
 android {
     namespace = "com.tunein.radiotime"
     compileSdk = Config.compileSdk
-    buildToolsVersion = Config.buildTools
 
     defaultConfig {
-        applicationId = "com.tunein.radiotime"
         minSdk = Config.minSdk
-        targetSdk = Config.targetSdk
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -50,21 +41,12 @@ android {
 
 dependencies {
 
-    // Modules
-    implementation(project("path" to ":common"))
-    implementation(project("path" to ":features:podcasts"))
-    implementation(project("path" to ":features:radio"))
-
-    // Core
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.lifecycleRuntimeKtx)
-    implementation(Dependencies.navigationCommonKtx)
-
     // Compose
     implementation(Dependencies.navigationCompose)
     implementation(Dependencies.activityCompose)
 
     implementation(platform(Dependencies.composeBom))
+    implementation(Dependencies.composeFoundation)
     implementation(Dependencies.composeMaterial3)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeUiGraphics)
@@ -74,11 +56,4 @@ dependencies {
     debugImplementation(Dependencies.composeUiTooling)
     debugImplementation(Dependencies.composeUiTestManifest)
     debugImplementation(Dependencies.composeUiTestJUnit4)
-
-    // Timber
-    implementation(Dependencies.timber)
-
-    // Testing
-    testImplementation(Dependencies.jUnit)
-    androidTestImplementation(Dependencies.jUnitExt)
 }
