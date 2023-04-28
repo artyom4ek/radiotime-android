@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 
-import com.tunein.common.theme.RadiotimeTheme
+import com.tunein.radiotime.common.theme.RadiotimeTheme
 
 class MainActivity : ComponentActivity() {
 

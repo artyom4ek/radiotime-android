@@ -65,6 +65,7 @@ fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
 @Composable
 fun BottomBarPreview() {
     val tabs = listOf(
+        BottomBarTab.Home,
         BottomBarTab.Radio,
         BottomBarTab.Podcast,
     )

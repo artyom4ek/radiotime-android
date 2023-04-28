@@ -52,6 +52,7 @@ dependencies {
 
     // Modules
     implementation(project("path" to ":common"))
+    implementation(project("path" to ":features:home"))
     implementation(project("path" to ":features:podcasts"))
     implementation(project("path" to ":features:radio"))
 

@@ -16,5 +16,6 @@ rootProject.name = "Radiotime"
 include(":app")
 include(":common")
 include(":features")
+include(":features:home")
 include(":features:radio")
 include(":features:podcasts")

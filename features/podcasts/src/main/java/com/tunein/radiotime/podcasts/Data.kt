@@ -1,6 +1,6 @@
 package com.tunein.radiotime.podcasts
 
-import com.tunein.radiotime.R
+import com.tunein.radiotime.common.R
 import com.tunein.radiotime.podcasts.model.CategoryItem
 import com.tunein.radiotime.podcasts.tabs.PodcastTab
 import com.tunein.radiotime.podcasts.tabs.PodcastTabScreen
