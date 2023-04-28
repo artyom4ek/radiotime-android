@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Common</string>
+    <string name="discover">Discover</string>
+    <string name="find_your_mood">Find your mood</string>
 </resources>

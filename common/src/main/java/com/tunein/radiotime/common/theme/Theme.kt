@@ -1,4 +1,4 @@
-package com.tunein.common.theme
+package com.tunein.radiotime.common.theme
 
 import android.app.Activity
 import android.os.Build

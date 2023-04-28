@@ -11,7 +11,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
-import com.tunein.common.theme.RadiotimeTheme
+import com.tunein.radiotime.common.theme.RadiotimeTheme
+import com.tunein.radiotime.home.HomeScreen
 import com.tunein.radiotime.podcasts.PodcastsScreen
 import com.tunein.radiotime.radio.RadioScreen
 
@@ -19,13 +20,14 @@ import com.tunein.radiotime.radio.RadioScreen
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    val items = listOf(
+    val bottomBarTabs = listOf(
+        BottomBarTab.Home,
         BottomBarTab.Radio,
         BottomBarTab.Podcast,
     )
     Scaffold(
         bottomBar = {
-            BottomBar(navController = navController, items)
+            BottomBar(navController = navController, bottomBarTabs)
         }
     ) { paddingValues ->
         NavGraph(
@@ -45,8 +47,11 @@ fun NavGraph(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = BottomBarTab.Radio.route
+        startDestination = BottomBarTab.Home.route
     ) {
+        composable(BottomBarTab.Home.route) {
+            HomeScreen()
+        }
         composable(BottomBarTab.Radio.route) {
             RadioScreen()
         }

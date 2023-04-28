@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    // Modules
+    implementation(project("path" to ":common"))
+    
     // Compose
     implementation(Dependencies.navigationCompose)
     implementation(Dependencies.activityCompose)

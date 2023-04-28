@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tunein.radiotime.common"
+    namespace = "com.tunein.radiotime"
     compileSdk = Config.compileSdk
 
     defaultConfig {
@@ -26,7 +26,6 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
     buildFeatures {
         compose = true
     }
@@ -42,11 +41,22 @@ android {
 
 dependencies {
 
+    // Modules
+    implementation(project("path" to ":common"))
+
     // Compose
+    implementation(Dependencies.navigationCompose)
     implementation(Dependencies.activityCompose)
+
     implementation(platform(Dependencies.composeBom))
+    implementation(Dependencies.composeFoundation)
+    implementation(Dependencies.composeMaterial3)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeUiGraphics)
     implementation(Dependencies.composeUiToolingPreview)
-    implementation(Dependencies.composeMaterial3)
+
+    androidTestImplementation(platform(Dependencies.composeBom))
+    debugImplementation(Dependencies.composeUiTooling)
+    debugImplementation(Dependencies.composeUiTestManifest)
+    debugImplementation(Dependencies.composeUiTestJUnit4)
 }

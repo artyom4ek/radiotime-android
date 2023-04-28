@@ -1,4 +1,4 @@
-package com.tunein.common.theme
+package com.tunein.radiotime.common.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
