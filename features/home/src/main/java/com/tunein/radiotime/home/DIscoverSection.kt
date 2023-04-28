@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -76,7 +77,10 @@ fun DiscoverGridItem(category: Category, onClick: (String) -> Unit) {
             Image(
                 painterResource(id = category.icon),
                 modifier = Modifier.size(36.dp),
-                contentDescription = null
+                colorFilter = ColorFilter.tint(
+                    color = MaterialTheme.colorScheme.primary
+                ),
+                contentDescription = category.title,
             )
             Spacer(modifier = Modifier.size(5.dp))
             Text(text = category.title, fontSize = 16.sp)
