@@ -3,6 +3,9 @@ package com.tunein.radiotime
 import android.app.Application
 import timber.log.Timber
 
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
 class RadiotimeApp : Application() {
 
     override fun onCreate() {
