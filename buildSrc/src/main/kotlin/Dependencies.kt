@@ -7,6 +7,7 @@ object Dependencies {
         const val navigation = "2.5.3"
         const val composeBom = "2023.04.01"
         const val timber = "5.0.1"
+        const val hilt = "2.46"
         const val jUnit = "4.13.2"
         const val jUnitExt = "1.1.5"
     }
@@ -35,6 +36,10 @@ object Dependencies {
 
     // Timber
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
+    // Hilt
+    const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
 
     // Testing
     const val jUnit = "junit:junit:${Versions.jUnit}"

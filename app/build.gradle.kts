@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
+    id("com.google.dagger.hilt.android")
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -46,6 +48,9 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -75,6 +80,10 @@ dependencies {
     debugImplementation(Dependencies.composeUiTooling)
     debugImplementation(Dependencies.composeUiTestManifest)
     debugImplementation(Dependencies.composeUiTestJUnit4)
+
+    // Hilt
+    implementation(Dependencies.hiltAndroid)
+    kapt(Dependencies.hiltAndroidCompiler)
 
     // Timber
     implementation(Dependencies.timber)
