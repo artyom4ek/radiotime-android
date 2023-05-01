@@ -57,6 +57,8 @@ dependencies {
 
     // Modules
     implementation(project("path" to ":common"))
+    implementation(project("path" to ":domain"))
+    implementation(project("path" to ":data"))
     implementation(project("path" to ":features:home"))
     implementation(project("path" to ":features:podcasts"))
     implementation(project("path" to ":features:radio"))
@@ -82,6 +84,7 @@ dependencies {
     debugImplementation(Dependencies.composeUiTestJUnit4)
 
     // Hilt
+    implementation(Dependencies.hiltNavigationCompose)
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltAndroidCompiler)
 
