@@ -36,4 +36,13 @@ dependencies {
     // Hilt
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltAndroidCompiler)
+
+    // Retrofit 2
+    implementation(Dependencies.retrofit2)
+    implementation(Dependencies.okHttp3)
+    implementation(Dependencies.loggingInterceptor)
+
+    // KotlinX Serialization
+    implementation(Dependencies.kotlinxSerialization)
+    implementation(Dependencies.kotlinxSerializationConverter)
 }
