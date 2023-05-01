@@ -43,6 +43,7 @@ dependencies {
 
     // Modules
     implementation(project("path" to ":common"))
+    implementation(project("path" to ":domain"))
 
     // Compose
     implementation(Dependencies.navigationCompose)

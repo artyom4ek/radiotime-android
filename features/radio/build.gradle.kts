@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    implementation(project("path" to ":common"))
+    implementation(project("path" to ":domain"))
+
     // Compose
     implementation(Dependencies.navigationCompose)
     implementation(Dependencies.activityCompose)

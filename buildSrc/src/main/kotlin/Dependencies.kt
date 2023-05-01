@@ -8,6 +8,7 @@ object Dependencies {
         const val composeBom = "2023.04.01"
         const val timber = "5.0.1"
         const val hilt = "2.46"
+        const val hiltNavigationCompose = "1.0.0"
         const val jUnit = "4.13.2"
         const val jUnitExt = "1.1.5"
     }
@@ -39,6 +40,8 @@ object Dependencies {
 
     // Hilt
     const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltNavigationCompose =
+        "androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigationCompose}"
     const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
 
     // Testing
