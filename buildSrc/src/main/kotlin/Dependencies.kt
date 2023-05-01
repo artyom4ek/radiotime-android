@@ -8,6 +8,8 @@ object Dependencies {
         const val composeBom = "2023.04.01"
         const val hilt = "2.46"
         const val hiltNavigationCompose = "1.0.0"
+        const val kotlinxSerialization = "1.5.0"
+        const val kotlinxSerializationConverter = "1.0.0"
         const val retrofit2 = "2.9.0"
         const val okHttp3 = "4.11.0"
         const val timber = "5.0.1"
@@ -50,6 +52,12 @@ object Dependencies {
     const val retrofit2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit2}"
     const val okHttp3 = "com.squareup.okhttp3:okhttp:${Versions.okHttp3}"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp3}"
+
+    // KotlinX Serialization
+    const val kotlinxSerialization =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinxSerialization}"
+    const val kotlinxSerializationConverter =
+        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.kotlinxSerializationConverter}"
 
     // Testing
     const val jUnit = "junit:junit:${Versions.jUnit}"
