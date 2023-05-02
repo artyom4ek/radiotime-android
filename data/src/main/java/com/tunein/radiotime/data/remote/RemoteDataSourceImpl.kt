@@ -6,13 +6,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 import com.tunein.radiotime.data.api.ApiService
+import com.tunein.radiotime.data.entity.ResponseDto
 
 class RemoteDataSourceImpl @Inject constructor(
     private val apiService: ApiService
 ) : RemoteDataSource {
 
-    override suspend fun fetchInitialData(): List<Any> = withContext(Dispatchers.IO) {
-        apiService.fetchInitialData()
-        return@withContext emptyList()
+    override suspend fun fetchInitialData(): ResponseDto = withContext(Dispatchers.IO) {
+        return@withContext apiService.fetchInitialData()
     }
 }

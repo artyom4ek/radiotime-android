@@ -23,6 +23,6 @@ class MainViewModel @Inject constructor(
     }
 
     private suspend fun prepareInitialData() {
-        mainUseCase.getInitialData()
+        val initialData = mainUseCase.getInitialData()
     }
 }
