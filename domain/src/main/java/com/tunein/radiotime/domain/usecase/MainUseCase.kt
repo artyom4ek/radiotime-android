@@ -8,7 +8,7 @@ class MainUseCase @Inject constructor(
     private val mainRepository: MainRepository
 ) {
 
-    fun prepareAndGetInitData() {
-        mainRepository.prepareAndGetInitData()
+    suspend fun getInitialData() {
+        mainRepository.getInitialData()
     }
 }

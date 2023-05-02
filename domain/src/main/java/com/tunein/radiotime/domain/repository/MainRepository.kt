@@ -2,5 +2,8 @@ package com.tunein.radiotime.domain.repository
 
 interface MainRepository {
 
-    fun prepareAndGetInitData(): Map<String, Any>
+    /**
+     * Get initial data to initialize screens
+     */
+    suspend fun getInitialData(): Map<String, Any>
 }

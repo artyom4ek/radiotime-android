@@ -15,9 +15,9 @@ dependencyResolutionManagement {
 rootProject.name = "Radiotime"
 include(":app")
 include(":common")
+include(":data")
+include(":domain")
 include(":features")
 include(":features:home")
 include(":features:radio")
 include(":features:podcasts")
-include(":domain")
-include(":data")
