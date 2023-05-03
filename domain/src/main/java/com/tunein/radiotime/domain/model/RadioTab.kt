@@ -6,5 +6,5 @@ package com.tunein.radiotime.domain.model
 data class RadioTab(
     val title: String?,
     val url: String?,
-    val radioStations: List<RadioStation> = emptyList()
+    val radioStations: MutableList<RadioStation> = mutableListOf()
 )

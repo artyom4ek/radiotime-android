@@ -56,7 +56,7 @@ object NetworkModule {
      * Provides [Retrofit] instance
      */
     @Provides
-    fun provideRetrofitTest(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
         val json = Json {
             ignoreUnknownKeys = true
