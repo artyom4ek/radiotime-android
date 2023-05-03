@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -31,6 +32,7 @@ android {
 
 dependencies {
 
+    implementation(project("path" to ":common"))
     implementation(project("path" to ":domain"))
 
     // Hilt
@@ -45,4 +47,7 @@ dependencies {
     // KotlinX Serialization
     implementation(Dependencies.kotlinxSerialization)
     implementation(Dependencies.kotlinxSerializationConverter)
+
+    // Timber
+    implementation(Dependencies.timber)
 }
