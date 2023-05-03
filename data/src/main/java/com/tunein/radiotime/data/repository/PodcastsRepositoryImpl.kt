@@ -12,16 +12,16 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.Constants
 import com.tunein.radiotime.data.api.ApiService
-import com.tunein.radiotime.data.entity.radio.RadioItemDto
-import com.tunein.radiotime.domain.model.RadioStation
-import com.tunein.radiotime.domain.repository.RadioRepository
+import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
+import com.tunein.radiotime.domain.model.Category
+import com.tunein.radiotime.domain.repository.PodcastsRepository
 
-class RadioRepositoryImpl @Inject constructor(
+class PodcastsRepositoryImpl @Inject constructor(
     private val retrofit: Retrofit,
-    private val mapper: Mapper<RadioStation, RadioItemDto>
-) : RadioRepository {
+    private val mapper: Mapper<Category, PodcastBodyDto>
+) : PodcastsRepository {
 
-    override suspend fun getRadioStations(url: String): List<RadioStation> {
+    override suspend fun getPodcastCategories(url: String): List<Category> {
         val contentType = "application/json".toMediaType()
         val json = Json {
             ignoreUnknownKeys = true
@@ -33,9 +33,8 @@ class RadioRepositoryImpl @Inject constructor(
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
             .create(ApiService::class.java)
-            .fetchRadioStations(url)
+            .fetchPodcastCategories(url)
 
-        // The JSON struct returns a list that contains one element
-        return mapper.toList(response.body?.get(0)?.items ?: emptyList())
+        return mapper.toList(response.body)
     }
 }

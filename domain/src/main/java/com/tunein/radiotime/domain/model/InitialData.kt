@@ -6,5 +6,5 @@ package com.tunein.radiotime.domain.model
 data class InitialData(
     val homeTab: HomeTab,
     val radioTab: RadioTab,
-    val podcastTab: PodcastTab
+    val podcastsTab: PodcastsTab
 )

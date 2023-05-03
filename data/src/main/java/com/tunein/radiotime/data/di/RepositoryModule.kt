@@ -11,14 +11,17 @@ import retrofit2.Retrofit
 
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.ResponseDto
-import com.tunein.radiotime.data.entity.radio.RadioBodyDto
+import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
 import com.tunein.radiotime.data.entity.radio.RadioItemDto
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.repository.MainRepositoryImpl
+import com.tunein.radiotime.data.repository.PodcastsRepositoryImpl
 import com.tunein.radiotime.data.repository.RadioRepositoryImpl
+import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.domain.model.RadioStation
 import com.tunein.radiotime.domain.repository.MainRepository
+import com.tunein.radiotime.domain.repository.PodcastsRepository
 import com.tunein.radiotime.domain.repository.RadioRepository
 
 @Module
@@ -36,6 +39,9 @@ object RepositoryModule {
     ): MainRepository =
         MainRepositoryImpl(remoteDataSource, initialDataMapper)
 
+    /**
+     * Provides [RadioRepository] instance
+     */
     @Provides
     @Singleton
     fun provideRadioRepository(
@@ -43,4 +49,15 @@ object RepositoryModule {
         radioStationsMapper: Mapper<RadioStation, RadioItemDto>
     ): RadioRepository =
         RadioRepositoryImpl(retrofit, radioStationsMapper)
+
+    /**
+     * Provides [PodcastsRepository] instance
+     */
+    @Provides
+    @Singleton
+    fun providePodcastsRepository(
+        retrofit: Retrofit,
+        podcastsDomainMapper: Mapper<Category, PodcastBodyDto>
+    ): PodcastsRepository =
+        PodcastsRepositoryImpl(retrofit, podcastsDomainMapper)
 }

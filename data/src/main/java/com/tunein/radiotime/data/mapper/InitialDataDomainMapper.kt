@@ -6,9 +6,10 @@ import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.ResponseKeys
 import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.domain.model.Category
+import com.tunein.radiotime.domain.model.CategoryItem
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.domain.model.InitialData
-import com.tunein.radiotime.domain.model.PodcastTab
+import com.tunein.radiotime.domain.model.PodcastsTab
 import com.tunein.radiotime.domain.model.RadioTab
 
 /**
@@ -24,12 +25,12 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<ResponseDto, Initia
                 it.key == ResponseKeys.MUSIC.key
                         || it.key == ResponseKeys.TALK.key
                         || it.key == ResponseKeys.SPORTS.key
-            }?.map { Category(text = it.text, url = it.url) } ?: listOf()
+            }?.map { CategoryItem(text = it.text, url = it.url) } ?: listOf()
 
         val homeFilter =
             i?.body?.filter {
                 it.key == ResponseKeys.LOCATION.key || it.key == ResponseKeys.LANGUAGE.key
-            }?.map { Category(text = it.text, url = it.url) } ?: listOf()
+            }?.map { CategoryItem(text = it.text, url = it.url) } ?: listOf()
 
         val homeTab = HomeTab(
             discover = homeDiscover,
@@ -46,12 +47,12 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<ResponseDto, Initia
         val podcast = i?.body?.find { it.key == ResponseKeys.PODCAST.key }
         val podcastTitle = podcast?.text
         val podcastUrl = podcast?.url
-        val podcastTab = PodcastTab(podcastTitle, podcastUrl)
+        val podcastsTab = PodcastsTab(podcastTitle, podcastUrl)
 
         return InitialData(
             homeTab = homeTab,
             radioTab = radioTab,
-            podcastTab = podcastTab
+            podcastsTab = podcastsTab
         )
     }
 
