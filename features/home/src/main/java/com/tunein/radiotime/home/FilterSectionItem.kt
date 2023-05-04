@@ -21,24 +21,26 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-import com.tunein.radiotime.home.model.FilterItem
+import com.tunein.radiotime.domain.model.CategoryItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FilterSectionItem(item: FilterItem, onClick: (String) -> Unit) {
+fun FilterSectionItem(item: CategoryItem, onClick: (String) -> Unit) {
     Card(
         shape = RoundedCornerShape(0),
         modifier = Modifier.height(50.dp),
         onClick = { onClick(item.url) }) {
         Row(modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                modifier = Modifier.padding(10.dp),
-                colorFilter = ColorFilter.tint(
-                    color = MaterialTheme.colorScheme.primary
-                ),
-                painter = painterResource(id = item.icon),
-                contentDescription = item.title
-            )
+            item.icon?.let {
+                Image(
+                    modifier = Modifier.padding(10.dp),
+                    colorFilter = ColorFilter.tint(
+                        color = MaterialTheme.colorScheme.primary
+                    ),
+                    painter = painterResource(id = it),
+                    contentDescription = item.title
+                )
+            }
             Text(
                 modifier = Modifier.weight(1f),
                 text = item.title,

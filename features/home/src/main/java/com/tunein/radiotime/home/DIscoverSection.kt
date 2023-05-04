@@ -28,9 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
+import com.tunein.radiotime.domain.model.CategoryItem
 
 @Composable
-fun DiscoverSection(categories: List<Category>, onClick: (String) -> Unit) {
+fun DiscoverSection(categories: List<CategoryItem>?, onClick: (String) -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             text = stringResource(id = R.string.discover),
@@ -50,40 +51,44 @@ fun DiscoverSection(categories: List<Category>, onClick: (String) -> Unit) {
 }
 
 @Composable
-fun DiscoverGrid(categories: List<Category>, onClick: (String) -> Unit) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ) {
-        items(categories) { category ->
-            DiscoverGridItem(category, onClick)
+fun DiscoverGrid(categories: List<CategoryItem>?, onClick: (String) -> Unit) {
+    categories?.let {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(3),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            items(it) { categoryItem ->
+                DiscoverGridItem(categoryItem, onClick)
+            }
         }
-    }
+    } ?: "" // TODO: Add Empty screen
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DiscoverGridItem(category: Category, onClick: (String) -> Unit) {
+fun DiscoverGridItem(categoryItem: CategoryItem, onClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .size(120.dp),
-        onClick = { onClick("URL") }
+        onClick = { onClick(categoryItem.url) }
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Image(
-                painterResource(id = category.icon),
-                modifier = Modifier.size(36.dp),
-                colorFilter = ColorFilter.tint(
-                    color = MaterialTheme.colorScheme.primary
-                ),
-                contentDescription = category.title,
-            )
+            categoryItem.icon?.let {
+                Image(
+                    painterResource(id = it),
+                    modifier = Modifier.size(36.dp),
+                    colorFilter = ColorFilter.tint(
+                        color = MaterialTheme.colorScheme.primary
+                    ),
+                    contentDescription = categoryItem.title,
+                )
+            }
             Spacer(modifier = Modifier.size(5.dp))
-            Text(text = category.title, fontSize = 16.sp)
+            Text(text = categoryItem.title, fontSize = 16.sp)
             Text(text = "10 items", fontSize = 12.sp, color = MaterialTheme.colorScheme.secondary)
         }
     }

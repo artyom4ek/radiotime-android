@@ -63,7 +63,7 @@ fun NavGraph(
         startDestination = BottomBarTab.Home.route
     ) {
         composable(BottomBarTab.Home.route) {
-            HomeScreen()
+            HomeScreen(data?.homeTab)
         }
         composable(BottomBarTab.Radio.route) {
             RadioScreen()

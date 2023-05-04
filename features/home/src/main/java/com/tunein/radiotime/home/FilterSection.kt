@@ -18,31 +18,33 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
-import com.tunein.radiotime.home.model.FilterItem
+import com.tunein.radiotime.domain.model.CategoryItem
 
 @Composable
-fun FilterSection(items: List<FilterItem>, onClick: (String) -> Unit) {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = stringResource(id = R.string.filter),
-            fontSize = 22.sp,
-            fontWeight = FontWeight.Medium
-        )
-        Text(
-            text = stringResource(id = R.string.feel_the_world),
-            fontSize = 16.sp,
-            color = Color.DarkGray
-        )
-        Spacer(modifier = Modifier.size(10.dp))
-        LazyColumn(modifier = Modifier.fillMaxWidth()) {
-            itemsIndexed(items) { index, item ->
-                FilterSectionItem(item, onClick)
+fun FilterSection(items: List<CategoryItem>?, onClick: (String) -> Unit) {
+    items?.let { filterCategories ->
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = stringResource(id = R.string.filter),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Text(
+                text = stringResource(id = R.string.feel_the_world),
+                fontSize = 16.sp,
+                color = Color.DarkGray
+            )
+            Spacer(modifier = Modifier.size(10.dp))
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                itemsIndexed(filterCategories) { index, item ->
+                    FilterSectionItem(item, onClick)
 
-                if (items.size > 1 && index < items.size - 1) {
-                    Divider(
-                        color = Color.LightGray,
-                        thickness = 1.dp
-                    )
+                    if (filterCategories.size > 1 && index < filterCategories.size - 1) {
+                        Divider(
+                            color = Color.LightGray,
+                            thickness = 1.dp
+                        )
+                    }
                 }
             }
         }

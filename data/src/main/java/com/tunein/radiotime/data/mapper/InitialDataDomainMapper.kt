@@ -5,7 +5,6 @@ import javax.inject.Inject
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.ResponseKeys
 import com.tunein.radiotime.data.entity.ResponseDto
-import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.domain.model.CategoryItem
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.domain.model.InitialData
@@ -25,12 +24,12 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<ResponseDto, Initia
                 it.key == ResponseKeys.MUSIC.key
                         || it.key == ResponseKeys.TALK.key
                         || it.key == ResponseKeys.SPORTS.key
-            }?.map { CategoryItem(text = it.text, url = it.url) } ?: listOf()
+            }?.map { CategoryItem(title = it.text, url = it.url) } ?: listOf()
 
         val homeFilter =
             i?.body?.filter {
                 it.key == ResponseKeys.LOCATION.key || it.key == ResponseKeys.LANGUAGE.key
-            }?.map { CategoryItem(text = it.text, url = it.url) } ?: listOf()
+            }?.map { CategoryItem(title = it.text, url = it.url) } ?: listOf()
 
         val homeTab = HomeTab(
             discover = homeDiscover,
