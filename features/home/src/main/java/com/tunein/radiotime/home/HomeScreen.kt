@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.domain.model.HomeTab
+import com.tunein.radiotime.home.discover.DiscoverSection
 
 @Composable
 fun HomeScreen(homeTab: HomeTab?) {
