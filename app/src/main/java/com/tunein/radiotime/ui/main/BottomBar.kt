@@ -67,7 +67,7 @@ fun BottomBarPreview() {
     val tabs = listOf(
         BottomBarTab.Home,
         BottomBarTab.Radio,
-        BottomBarTab.Podcast,
+        BottomBarTab.Podcasts,
     )
     BottomBar(navController = rememberNavController(), tabs = tabs)
 }
