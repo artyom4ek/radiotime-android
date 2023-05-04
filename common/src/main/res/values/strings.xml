@@ -1,6 +1,7 @@
 <resources>
     <string name="discover">Discover</string>
     <string name="find_your_mood">Find your mood</string>
-    <string name="filter">Filter</string>
+    <string name="filters">Filters</string>
     <string name="feel_the_world">Feel the world</string>
+    <string name="right_arrow">Right arrow</string>
 </resources>

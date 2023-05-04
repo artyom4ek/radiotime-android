@@ -10,12 +10,13 @@ import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.home.discover.DiscoverSection
+import com.tunein.radiotime.home.filters.FiltersSection
 
 @Composable
 fun HomeScreen(homeTab: HomeTab?) {
     Column(modifier = Modifier.padding(vertical = 10.dp, horizontal = 15.dp)) {
         DiscoverSection(categories = homeTab?.discover, onClick = {})
         Spacer(modifier = Modifier.size(20.dp))
-        FilterSection(items = homeTab?.filter, onClick = {})
+        FiltersSection(filters = homeTab?.filter, onClick = {})
     }
 }

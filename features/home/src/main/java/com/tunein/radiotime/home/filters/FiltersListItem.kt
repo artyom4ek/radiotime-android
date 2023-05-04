@@ -1,4 +1,4 @@
-package com.tunein.radiotime.home
+package com.tunein.radiotime.home.filters
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
@@ -17,15 +17,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.home.provideFilterItems
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FilterSectionItem(item: CategoryItem, onClick: (String) -> Unit) {
+fun FiltersListItem(item: CategoryItem, onClick: (String) -> Unit) {
     Card(
         shape = RoundedCornerShape(0),
         modifier = Modifier.height(50.dp),
@@ -52,7 +55,7 @@ fun FilterSectionItem(item: CategoryItem, onClick: (String) -> Unit) {
                     color = MaterialTheme.colorScheme.primary
                 ),
                 imageVector = Icons.Filled.KeyboardArrowRight,
-                contentDescription = "Arrow"
+                contentDescription = stringResource(id = R.string.right_arrow)
             )
         }
     }
@@ -61,5 +64,5 @@ fun FilterSectionItem(item: CategoryItem, onClick: (String) -> Unit) {
 @Preview
 @Composable
 fun FilterSectionItemPreview() {
-    FilterSectionItem(item = provideFilterItems()[0], onClick = {})
+    FiltersListItem(item = provideFilterItems()[0], onClick = {})
 }
