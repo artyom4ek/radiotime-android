@@ -6,23 +6,22 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
-import com.tunein.radiotime.MainViewModel
+import com.tunein.radiotime.common.component.ContentWithProgress
 import com.tunein.radiotime.common.theme.RadiotimeTheme
+import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.home.HomeScreen
 import com.tunein.radiotime.podcasts.PodcastsScreen
 import com.tunein.radiotime.radio.RadioScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(
-    viewModel: MainViewModel = hiltViewModel()
-) {
+fun MainScreen(state: MainContract.MainState) {
+
     val navController = rememberNavController()
     val bottomBarTabs = listOf(
         BottomBarTab.Home,
@@ -34,19 +33,29 @@ fun MainScreen(
             BottomBar(navController = navController, bottomBarTabs)
         }
     ) { paddingValues ->
-        NavGraph(
-            modifier = Modifier.padding(
-                bottom = paddingValues.calculateBottomPadding()
-            ),
-            navController = navController
-        )
+        when (state) {
+            MainContract.MainState.Loading -> {
+                ContentWithProgress()
+            }
+
+            is MainContract.MainState.Success -> {
+                NavGraph(
+                    modifier = Modifier.padding(
+                        bottom = paddingValues.calculateBottomPadding()
+                    ),
+                    navController = navController,
+                    data = state.initialData
+                )
+            }
+        }
     }
 }
 
 @Composable
 fun NavGraph(
-    modifier: Modifier = Modifier,
-    navController: NavHostController
+    modifier: Modifier,
+    navController: NavHostController,
+    data: InitialData?
 ) {
     NavHost(
         modifier = modifier,
@@ -69,6 +78,6 @@ fun NavGraph(
 @Composable
 fun MainPreview() {
     RadiotimeTheme {
-        MainScreen()
+        MainScreen(MainContract.MainState.Success(null))
     }
 }
