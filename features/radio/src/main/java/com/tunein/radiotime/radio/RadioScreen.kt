@@ -11,6 +11,6 @@ import com.tunein.radiotime.domain.model.RadioTab
 @Composable
 fun RadioScreen(radioTab: RadioTab?) {
     Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 20.dp)) {
-        StationsSection(stations = radioTab?.radioStations?.toList(), onPlayClick = {})
+        StationsSection(stations = radioTab?.radioStations ?: emptyList(), onPlayClick = {})
     }
 }

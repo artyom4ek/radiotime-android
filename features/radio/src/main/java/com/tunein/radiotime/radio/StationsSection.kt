@@ -14,11 +14,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.R
+import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.RadioStation
 
 @Composable
-fun StationsSection(stations: List<RadioStation>?, onPlayClick: (String?) -> Unit) {
-    if (stations == null) {
+fun StationsSection(stations: List<RadioStation>, onPlayClick: (String?) -> Unit) {
+
+    // Display an Empty Screen if the list is empty
+    if (stations.isEmpty()) {
+        EmptyScreen()
         return
     }
 
