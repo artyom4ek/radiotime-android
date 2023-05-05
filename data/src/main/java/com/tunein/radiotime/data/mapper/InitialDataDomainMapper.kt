@@ -1,5 +1,7 @@
 package com.tunein.radiotime.data.mapper
 
+import kotlin.random.Random
+
 import javax.inject.Inject
 
 import com.tunein.radiotime.common.R
@@ -27,6 +29,7 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<InitialDataResponse
                     CategoryItem(
                         title = it.text,
                         url = it.url,
+                        count = Random.nextInt(10, 51), // TODO: should be implemented later
                         icon = R.drawable.ic_music
                     )
                 )
@@ -35,6 +38,7 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<InitialDataResponse
                     CategoryItem(
                         title = it.text,
                         url = it.url,
+                        count = Random.nextInt(10, 51), // TODO: should be implemented later
                         icon = R.drawable.ic_talk
                     )
                 )
@@ -43,6 +47,7 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<InitialDataResponse
                     CategoryItem(
                         title = it.text,
                         url = it.url,
+                        count = Random.nextInt(10, 51), // TODO: should be implemented later
                         icon = R.drawable.ic_sport
                     )
                 )

@@ -15,9 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.CategoryItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,7 +46,13 @@ fun DiscoverGridItem(categoryItem: CategoryItem, onClick: (String) -> Unit) {
             }
             Spacer(modifier = Modifier.size(5.dp))
             Text(text = categoryItem.title, fontSize = 16.sp)
-            Text(text = "10 items", fontSize = 12.sp, color = MaterialTheme.colorScheme.secondary)
+            categoryItem.count?.let {
+                Text(
+                    text = stringResource(id = R.string.items_count, it),
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+            }
         }
     }
 }

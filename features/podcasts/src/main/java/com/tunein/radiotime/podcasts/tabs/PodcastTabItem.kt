@@ -12,19 +12,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-import com.tunein.radiotime.podcasts.model.CategoryItem
-import com.tunein.radiotime.podcasts.provideMusicCategories
+import com.tunein.radiotime.common.R
+import com.tunein.radiotime.domain.model.CategoryItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PodcastGridItem(item: CategoryItem, onClick: (Int) -> Unit) {
-    Card(modifier = Modifier.size(120.dp), onClick = { onClick(item.id) }) {
+fun PodcastGridItem(item: CategoryItem, onClick: (String) -> Unit) {
+    Card(modifier = Modifier.size(120.dp), onClick = { onClick(item.url) }) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -39,17 +39,13 @@ fun PodcastGridItem(item: CategoryItem, onClick: (Int) -> Unit) {
                 overflow = TextOverflow.Clip,
                 textAlign = TextAlign.Center
             )
-            Text(
-                text = "${item.itemsCount} items",
-                fontSize = 12.sp,
-                color = MaterialTheme.colorScheme.secondary
-            )
+            item.count?.let {
+                Text(
+                    text = stringResource(id = R.string.items_count, it),
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+            }
         }
     }
-}
-
-@Preview
-@Composable
-fun CategoryItemPreview() {
-    PodcastGridItem(item = provideMusicCategories()[0], onClick = {})
 }

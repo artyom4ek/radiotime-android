@@ -8,5 +8,6 @@ import androidx.annotation.DrawableRes
 data class CategoryItem(
     val title: String,
     val url: String,
+    val count: Int? = null,
     @DrawableRes val icon: Int? = null
 )
