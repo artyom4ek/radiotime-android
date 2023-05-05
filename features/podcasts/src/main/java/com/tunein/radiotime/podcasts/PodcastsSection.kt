@@ -17,12 +17,18 @@ import androidx.compose.ui.unit.dp
 
 import kotlinx.coroutines.launch
 
+import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.podcasts.tabs.PodcastTabScreen
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PodcastsSection(podcastTabs: List<Category>, onClick: (String) -> Unit) {
+    if (podcastTabs.isEmpty()) {
+        EmptyScreen()
+        return
+    }
+
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
 
