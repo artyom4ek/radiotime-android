@@ -13,6 +13,7 @@ object Dependencies {
         const val retrofit2 = "2.9.0"
         const val okHttp3 = "4.11.0"
         const val timber = "5.0.1"
+        const val coil = "2.3.0"
         const val jUnit = "4.13.2"
         const val jUnitExt = "1.1.5"
     }
@@ -58,6 +59,9 @@ object Dependencies {
         "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinxSerialization}"
     const val kotlinxSerializationConverter =
         "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.kotlinxSerializationConverter}"
+
+    // Coil
+    const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
 
     // Testing
     const val jUnit = "junit:junit:${Versions.jUnit}"

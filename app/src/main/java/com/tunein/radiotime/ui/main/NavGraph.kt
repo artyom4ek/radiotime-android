@@ -26,7 +26,7 @@ fun NavGraph(
             HomeScreen(data?.homeTab)
         }
         composable(BottomBarTab.Radio.route) {
-            RadioScreen()
+            RadioScreen(data?.radioTab)
         }
         composable(BottomBarTab.Podcasts.route) {
             PodcastsScreen()

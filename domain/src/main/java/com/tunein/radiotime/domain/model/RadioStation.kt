@@ -6,7 +6,7 @@ package com.tunein.radiotime.domain.model
 data class RadioStation(
     val type: String?,
     val url: String?,
-    val text: String?,
-    val subtext: String?,
-    val image: String?
+    val title: String,
+    val subTitle: String,
+    val cover: String?
 )

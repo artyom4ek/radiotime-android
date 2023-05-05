@@ -54,6 +54,9 @@ dependencies {
     implementation(Dependencies.composeUiGraphics)
     implementation(Dependencies.composeUiToolingPreview)
 
+    // Coil
+    implementation(Dependencies.coil)
+
     androidTestImplementation(platform(Dependencies.composeBom))
     debugImplementation(Dependencies.composeUiTooling)
     debugImplementation(Dependencies.composeUiTestManifest)

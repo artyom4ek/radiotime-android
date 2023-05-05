@@ -14,7 +14,7 @@ import com.tunein.radiotime.home.filters.FiltersSection
 
 @Composable
 fun HomeScreen(homeTab: HomeTab?) {
-    Column(modifier = Modifier.padding(vertical = 10.dp, horizontal = 15.dp)) {
+    Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 20.dp)) {
         DiscoverSection(categories = homeTab?.discover, onClick = {})
         Spacer(modifier = Modifier.size(20.dp))
         FiltersSection(filters = homeTab?.filter, onClick = {})

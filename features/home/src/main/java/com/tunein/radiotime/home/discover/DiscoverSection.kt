@@ -34,7 +34,7 @@ fun DiscoverSection(categories: List<CategoryItem>?, onClick: (String) -> Unit) 
             fontSize = 16.sp,
             color = Color.DarkGray
         )
-        Spacer(modifier = Modifier.size(10.dp))
+        Spacer(modifier = Modifier.size(15.dp))
         DiscoverGrid(categories, onClick)
     }
 }
