@@ -2,9 +2,10 @@ package com.tunein.radiotime.data.mapper
 
 import javax.inject.Inject
 
+import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.ResponseKeys
-import com.tunein.radiotime.data.entity.ResponseDto
+import com.tunein.radiotime.data.entity.InitialDataResponseDto
 import com.tunein.radiotime.domain.model.CategoryItem
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.domain.model.InitialData
@@ -12,28 +13,66 @@ import com.tunein.radiotime.domain.model.PodcastsTab
 import com.tunein.radiotime.domain.model.RadioTab
 
 /**
- * Mapper class for convert [ResponseDto] to [InitialData] and vice versa
+ * Mapper class for convert [InitialDataResponseDto] to [InitialData] and vice versa
  */
-class InitialDataDomainMapper @Inject constructor() : Mapper<ResponseDto, InitialData> {
+class InitialDataDomainMapper @Inject constructor() : Mapper<InitialDataResponseDto, InitialData> {
 
-    override fun from(i: ResponseDto?): InitialData {
+    override fun from(i: InitialDataResponseDto?): InitialData {
 
         // Prepare initial data for Home tab
-        val homeDiscover =
-            i?.body?.filter {
-                it.key == ResponseKeys.MUSIC.key
-                        || it.key == ResponseKeys.TALK.key
-                        || it.key == ResponseKeys.SPORTS.key
-            }?.map { CategoryItem(title = it.text, url = it.url) } ?: listOf()
+        val homeDiscover = mutableListOf<CategoryItem>()
+        i?.body?.forEach {
+            when (it.key) {
+                ResponseKeys.MUSIC.key -> homeDiscover.add(
+                    CategoryItem(
+                        title = it.text,
+                        url = it.url,
+                        icon = R.drawable.ic_music
+                    )
+                )
 
-        val homeFilter =
-            i?.body?.filter {
-                it.key == ResponseKeys.LOCATION.key || it.key == ResponseKeys.LANGUAGE.key
-            }?.map { CategoryItem(title = it.text, url = it.url) } ?: listOf()
+                ResponseKeys.TALK.key -> homeDiscover.add(
+                    CategoryItem(
+                        title = it.text,
+                        url = it.url,
+                        icon = R.drawable.ic_talk
+                    )
+                )
+
+                ResponseKeys.SPORTS.key -> homeDiscover.add(
+                    CategoryItem(
+                        title = it.text,
+                        url = it.url,
+                        icon = R.drawable.ic_sport
+                    )
+                )
+            }
+        }
+
+        val homeFilters = mutableListOf<CategoryItem>()
+        i?.body?.forEach {
+            when (it.key) {
+                ResponseKeys.LOCATION.key -> homeFilters.add(
+                    CategoryItem(
+                        title = it.text,
+                        url = it.url,
+                        icon = R.drawable.ic_location
+                    )
+                )
+
+                ResponseKeys.LANGUAGE.key -> homeFilters.add(
+                    CategoryItem(
+                        title = it.text,
+                        url = it.url,
+                        icon = R.drawable.ic_language
+                    )
+                )
+            }
+        }
 
         val homeTab = HomeTab(
             discover = homeDiscover,
-            filter = homeFilter
+            filter = homeFilters
         )
 
         // Prepare initial data for Radio tab
@@ -55,7 +94,7 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<ResponseDto, Initia
         )
     }
 
-    override fun to(o: InitialData?): ResponseDto {
-        return ResponseDto(emptyList())
+    override fun to(o: InitialData?): InitialDataResponseDto {
+        return InitialDataResponseDto(emptyList())
     }
 }
