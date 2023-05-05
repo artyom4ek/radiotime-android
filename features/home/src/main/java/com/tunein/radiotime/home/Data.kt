@@ -1,15 +1,15 @@
 package com.tunein.radiotime.home
 
 import com.tunein.radiotime.common.R
-import com.tunein.radiotime.home.model.FilterItem
+import com.tunein.radiotime.domain.model.CategoryItem
 
 fun provideDiscoverCategories() = listOf(
-    Category("Music", R.drawable.ic_music),
-    Category("Talk", R.drawable.ic_talk),
-    Category("Sports", R.drawable.ic_sport)
+    CategoryItem("Music", "", R.drawable.ic_music),
+    CategoryItem("Talk", "", R.drawable.ic_talk),
+    CategoryItem("Sports", "", R.drawable.ic_sport)
 )
 
 fun provideFilterItems() = listOf(
-    FilterItem(R.drawable.ic_location, "By Locations", "url1"),
-    FilterItem(R.drawable.ic_language, "By Language", "url2"),
+    CategoryItem("By Locations", "url1", R.drawable.ic_location),
+    CategoryItem("By Language", "url2", R.drawable.ic_language)
 )

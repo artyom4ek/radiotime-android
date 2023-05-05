@@ -18,7 +18,7 @@ class PodcastsDomainMapper @Inject constructor() : Mapper<Category, PodcastBodyD
             title = o?.text ?: "",
             items = o?.items?.map {
                 CategoryItem(
-                    text = it.text,
+                    title = it.text,
                     url = it.url ?: ""
                 )
             } ?: emptyList()

@@ -1,4 +1,4 @@
-package com.tunein.radiotime.home
+package com.tunein.radiotime.home.filters
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
@@ -17,28 +17,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-import com.tunein.radiotime.home.model.FilterItem
+import com.tunein.radiotime.common.R
+import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.home.provideFilterItems
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FilterSectionItem(item: FilterItem, onClick: (String) -> Unit) {
+fun FiltersListItem(item: CategoryItem, onClick: (String) -> Unit) {
     Card(
         shape = RoundedCornerShape(0),
         modifier = Modifier.height(50.dp),
         onClick = { onClick(item.url) }) {
         Row(modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                modifier = Modifier.padding(10.dp),
-                colorFilter = ColorFilter.tint(
-                    color = MaterialTheme.colorScheme.primary
-                ),
-                painter = painterResource(id = item.icon),
-                contentDescription = item.title
-            )
+            item.icon?.let {
+                Image(
+                    modifier = Modifier.padding(10.dp),
+                    colorFilter = ColorFilter.tint(
+                        color = MaterialTheme.colorScheme.primary
+                    ),
+                    painter = painterResource(id = it),
+                    contentDescription = item.title
+                )
+            }
             Text(
                 modifier = Modifier.weight(1f),
                 text = item.title,
@@ -50,7 +55,7 @@ fun FilterSectionItem(item: FilterItem, onClick: (String) -> Unit) {
                     color = MaterialTheme.colorScheme.primary
                 ),
                 imageVector = Icons.Filled.KeyboardArrowRight,
-                contentDescription = "Arrow"
+                contentDescription = stringResource(id = R.string.right_arrow)
             )
         }
     }
@@ -59,5 +64,5 @@ fun FilterSectionItem(item: FilterItem, onClick: (String) -> Unit) {
 @Preview
 @Composable
 fun FilterSectionItemPreview() {
-    FilterSectionItem(item = provideFilterItems()[0], onClick = {})
+    FiltersListItem(item = provideFilterItems()[0], onClick = {})
 }
