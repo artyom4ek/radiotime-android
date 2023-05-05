@@ -34,7 +34,7 @@ fun FiltersSection(filters: List<CategoryItem>?, onClick: (String) -> Unit) {
             fontSize = 16.sp,
             color = Color.DarkGray
         )
-        Spacer(modifier = Modifier.size(10.dp))
+        Spacer(modifier = Modifier.size(15.dp))
         FiltersList(items = filters, onClick = onClick)
     }
 }

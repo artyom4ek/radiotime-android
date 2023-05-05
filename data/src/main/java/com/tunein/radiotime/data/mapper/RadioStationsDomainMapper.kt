@@ -14,9 +14,9 @@ class RadioStationsDomainMapper @Inject constructor() : Mapper<RadioStation, Rad
     override fun from(i: RadioStation?): RadioItemDto {
         return RadioItemDto(
             i?.url,
-            i?.text,
-            i?.subtext,
-            i?.image,
+            i?.title,
+            i?.subTitle,
+            i?.cover,
             i?.type
         )
     }
@@ -25,9 +25,9 @@ class RadioStationsDomainMapper @Inject constructor() : Mapper<RadioStation, Rad
         return RadioStation(
             type = o?.type,
             url = o?.url,
-            text = o?.text,
-            subtext = o?.subtext,
-            image = o?.image,
+            title = o?.text ?: "",
+            subTitle = o?.subtext ?: "",
+            cover = o?.image,
         )
     }
 }

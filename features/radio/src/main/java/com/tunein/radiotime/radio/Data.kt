@@ -1,54 +1,20 @@
 package com.tunein.radiotime.radio
 
-import com.tunein.radiotime.R
+import com.tunein.radiotime.domain.model.RadioStation
 
 fun prepareStationList() = listOf(
-    Station(
-        1,
-        R.drawable.radio001,
-        "Fresh FM Ukraine (Dance & Electronic)",
-        "Твій ковток свіжості!"
+    RadioStation(
+        type = "audio",
+        url = "http://opml.radiotime.com/Tune.ashx?id=s219332",
+        title = "Fresh FM Ukraine (Dance & Electronic)",
+        subTitle = "Твій ковток свіжості!",
+        cover = "http://cdn-radiotime-logos.tunein.com/s219332q.png)"
     ),
-    Station(
-        2,
-        R.drawable.radio002,
-        "Melodia FM Ukraine 100.9 (Standards)",
-        "Радіо для гарного настрою!"
-    ),
-    Station(
-        3,
-        R.drawable.radio003,
-        "Radio Bayraktar Ukraine 101.3 (Rock)",
-        "Музика української перемоги!"
-    ),
-    Station(
-        4,
-        R.drawable.radio004,
-        "Західний полюс 104.3 (Top 40 & Pop Music)",
-        "Найтепліший полюс планети"
-    ),
-    Station(
-        5,
-        R.drawable.radio005,
-        "Радио Комета Чехов 92.6 (World Music)",
-        "Первое чеховское радио"
-    ),
-    Station(
-        6,
-        R.drawable.radio006,
-        "Радіо РОКС 100.8 (Classic Rock)",
-        "Тільки рок!"
-    ),
-    Station(
-        7,
-        R.drawable.radio007,
-        "Радіо Сяйво 106.8 (World Music)",
-        "Ви на хвилі 106.8 FM"
-    ),
-    Station(
-        8,
-        R.drawable.radio008,
-        "Хіт FM 102.6 (Top 40 & Pop Music)",
-        "Тільки хіти!"
+    RadioStation(
+        type = "audio",
+        url = "http://opml.radiotime.com/Tune.ashx?id=s218179",
+        title = "Melodia FM Ukraine 100.9 (Standards)",
+        subTitle = "Радіо для гарного настрою!",
+        cover = "http://cdn-profiles.tunein.com/s112679/images/logoq.png?t=158327"
     )
 )
