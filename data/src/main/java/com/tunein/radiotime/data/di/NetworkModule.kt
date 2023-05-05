@@ -18,10 +18,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 
+import com.tunein.radiotime.BuildConfig
+import com.tunein.radiotime.common.network.Constants
 import com.tunein.radiotime.data.api.ApiService
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.remote.RemoteDataSourceImpl
-import com.tunein.radiotime.common.network.Constants
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -33,7 +34,11 @@ object NetworkModule {
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
+        if (BuildConfig.DEBUG) {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        } else {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
+        }
 
         return httpLoggingInterceptor
     }
