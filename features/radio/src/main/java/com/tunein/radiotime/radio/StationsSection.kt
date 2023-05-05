@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-import com.tunein.radiotime.R
+import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.RadioStation
 

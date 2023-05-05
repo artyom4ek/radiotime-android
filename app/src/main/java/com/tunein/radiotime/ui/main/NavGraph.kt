@@ -29,7 +29,7 @@ fun NavGraph(
             RadioScreen(data?.radioTab)
         }
         composable(BottomBarTab.Podcasts.route) {
-            PodcastsScreen()
+            PodcastsScreen(data?.podcastsTab)
         }
     }
 }

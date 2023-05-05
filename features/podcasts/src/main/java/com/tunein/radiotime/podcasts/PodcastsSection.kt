@@ -13,16 +13,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 import kotlinx.coroutines.launch
 
-import com.tunein.radiotime.podcasts.tabs.PodcastTab
+import com.tunein.radiotime.common.component.EmptyScreen
+import com.tunein.radiotime.domain.model.Category
+import com.tunein.radiotime.podcasts.tabs.PodcastTabScreen
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PodcastsSection(podcastTabs: List<PodcastTab>) {
+fun PodcastsSection(podcastTabs: List<Category>, onClick: (String) -> Unit) {
+    if (podcastTabs.isEmpty()) {
+        EmptyScreen()
+        return
+    }
+
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
 
@@ -35,11 +41,13 @@ fun PodcastsSection(podcastTabs: List<PodcastTab>) {
                     selected = index == pagerState.currentPage,
                     text = { Text(text = tab.title) },
                     icon = {
-                        Icon(
-                            modifier = Modifier.size(26.dp),
-                            painter = painterResource(id = tab.icon),
-                            contentDescription = tab.title
-                        )
+                        tab.icon?.let {
+                            Icon(
+                                modifier = Modifier.size(26.dp),
+                                painter = painterResource(id = it),
+                                contentDescription = tab.title
+                            )
+                        }
                     },
                     onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
                 )
@@ -49,13 +57,7 @@ fun PodcastsSection(podcastTabs: List<PodcastTab>) {
             pageCount = podcastTabs.size,
             state = pagerState
         ) {
-            podcastTabs[pagerState.currentPage].screen()
+            PodcastTabScreen(podcastTabs[pagerState.currentPage].items, onClick = onClick)
         }
     }
-}
-
-@Preview
-@Composable
-fun PodcastsSectionPreview() {
-    PodcastsSection(podcastTabs = providePodcastTabs())
 }
