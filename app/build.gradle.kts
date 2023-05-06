@@ -64,6 +64,7 @@ dependencies {
     implementation(project("path" to ":features:home"))
     implementation(project("path" to ":features:podcasts"))
     implementation(project("path" to ":features:radio"))
+    implementation(project("path" to ":navigation"))
 
     // Core
     implementation(Dependencies.coreKtx)

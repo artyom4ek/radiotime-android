@@ -4,23 +4,43 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 
 import com.tunein.radiotime.common.component.ContentWithProgress
-import com.tunein.radiotime.common.theme.RadiotimeTheme
+import com.tunein.radiotime.navigation.Navigator
+import com.tunein.radiotime.navigation.NavigatorEvent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(state: MainContract.MainState) {
-    
+fun MainScreen(state: MainContract.MainState, navigator: Navigator) {
+
     val navController = rememberNavController()
     val bottomBarTabs = listOf(
         BottomBarTab.Home,
         BottomBarTab.Radio,
         BottomBarTab.Podcasts,
     )
+
+    LaunchedEffect(navController) {
+        navigator.destinations.collect {
+            when (val event = it) {
+                is NavigatorEvent.NavigateUp -> {
+                    navController.navigateUp()
+                }
+
+                is NavigatorEvent.Directions -> navController.navigate(
+                    event.destination,
+                    event.builder
+                )
+
+                NavigatorEvent.PopBackStack -> {
+                    navController.popBackStack()
+                }
+            }
+        }
+    }
 
     Scaffold(
         bottomBar = {
@@ -42,13 +62,5 @@ fun MainScreen(state: MainContract.MainState) {
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MainPreview() {
-    RadiotimeTheme {
-        MainScreen(MainContract.MainState.Success(null))
     }
 }
