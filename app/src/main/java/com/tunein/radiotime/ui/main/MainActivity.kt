@@ -1,5 +1,7 @@
 package com.tunein.radiotime.ui.main
 
+import javax.inject.Inject
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,19 +17,23 @@ import dagger.hilt.android.AndroidEntryPoint
 
 import com.tunein.radiotime.MainViewModel
 import com.tunein.radiotime.common.theme.RadiotimeTheme
+import com.tunein.radiotime.navigation.Navigator
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    @Inject
+    lateinit var navigator: Navigator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainContent()
+            MainContent(navigator)
         }
     }
 
     @Composable
-    private fun MainContent() {
+    private fun MainContent(navigator: Navigator) {
         val viewModel: MainViewModel = hiltViewModel()
         val uiState = viewModel.uiState.collectAsState()
 
@@ -36,7 +42,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background
             ) {
-                MainScreen(uiState.value.mainState)
+                MainScreen(uiState.value.mainState, navigator)
             }
         }
     }
