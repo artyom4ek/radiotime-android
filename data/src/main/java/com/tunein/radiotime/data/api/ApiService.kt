@@ -5,6 +5,7 @@ import retrofit2.http.Url
 import retrofit2.http.Query
 
 import com.tunein.radiotime.data.entity.InitialDataResponseDto
+import com.tunein.radiotime.data.entity.main.CategoriesResponseDto
 import com.tunein.radiotime.data.entity.podcast.PodcastsResponseDto
 import com.tunein.radiotime.data.entity.radio.RadioResponseDto
 
@@ -27,4 +28,10 @@ interface ApiService {
         @Url url: String,
         @Query("render") render: String = "json"
     ): PodcastsResponseDto
+
+    @GET
+    suspend fun fetchCategories(
+        @Url url: String,
+        @Query("render") render: String = "json"
+    ): CategoriesResponseDto
 }
