@@ -1,4 +1,4 @@
-package com.tunein.radiotime
+package com.tunein.radiotime.ui.main
 
 import javax.inject.Inject
 
@@ -12,7 +12,6 @@ import com.tunein.radiotime.common.mvi.BaseViewModel
 import com.tunein.radiotime.domain.usecase.MainUseCase
 import com.tunein.radiotime.domain.usecase.PodcastsUseCase
 import com.tunein.radiotime.domain.usecase.RadioUseCase
-import com.tunein.radiotime.ui.main.MainContract
 
 @HiltViewModel
 class MainViewModel @Inject constructor(

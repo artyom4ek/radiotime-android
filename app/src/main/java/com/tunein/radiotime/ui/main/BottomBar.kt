@@ -30,7 +30,7 @@ fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
         containerColor = MaterialTheme.colorScheme.background,
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route ?: BottomBarTab.Radio
+        val currentRoute = navBackStackEntry?.destination?.route ?: BottomBarTab.Home
         tabs.forEach { tab ->
             NavigationBarItem(icon = {
                 Icon(
@@ -48,8 +48,8 @@ fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
                 selected = currentRoute == tab.route,
                 onClick = {
                     navController.navigate(tab.route) {
-                        navController.graph.startDestinationRoute?.let { screen_route ->
-                            popUpTo(screen_route) {
+                        navController.graph.startDestinationRoute?.let { screenRoute ->
+                            popUpTo(screenRoute) {
                                 saveState = true
                             }
                         }

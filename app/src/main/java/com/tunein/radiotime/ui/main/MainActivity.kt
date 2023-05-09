@@ -15,7 +15,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 import dagger.hilt.android.AndroidEntryPoint
 
-import com.tunein.radiotime.MainViewModel
 import com.tunein.radiotime.common.theme.RadiotimeTheme
 import com.tunein.radiotime.navigation.Navigator
 

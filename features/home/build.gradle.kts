@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -44,6 +45,7 @@ dependencies {
     // Modules
     implementation(project("path" to ":common"))
     implementation(project("path" to ":domain"))
+    implementation(project("path" to ":navigation"))
 
     // Compose
     implementation(Dependencies.navigationCompose)
@@ -60,4 +62,9 @@ dependencies {
     debugImplementation(Dependencies.composeUiTooling)
     debugImplementation(Dependencies.composeUiTestManifest)
     debugImplementation(Dependencies.composeUiTestJUnit4)
+
+    // Hilt
+    implementation(Dependencies.hiltNavigationCompose)
+    implementation(Dependencies.hiltAndroid)
+    kapt(Dependencies.hiltAndroidCompiler)
 }

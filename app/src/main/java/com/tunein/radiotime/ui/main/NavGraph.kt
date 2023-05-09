@@ -7,7 +7,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
 import com.tunein.radiotime.domain.model.InitialData
-import com.tunein.radiotime.home.HomeScreen
 import com.tunein.radiotime.podcasts.PodcastsScreen
 import com.tunein.radiotime.radio.RadioScreen
 
@@ -20,11 +19,9 @@ fun NavGraph(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = BottomBarTab.Home.route
+        startDestination = Graph.HOME
     ) {
-        composable(BottomBarTab.Home.route) {
-            HomeScreen(data?.homeTab)
-        }
+        homeNavGraph(data)
         composable(BottomBarTab.Radio.route) {
             RadioScreen(data?.radioTab)
         }
