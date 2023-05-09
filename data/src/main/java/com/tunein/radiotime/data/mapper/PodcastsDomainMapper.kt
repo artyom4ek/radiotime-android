@@ -30,6 +30,7 @@ class PodcastsDomainMapper @Inject constructor() : Mapper<Category, PodcastBodyD
         return Category(
             title = title,
             icon = icon,
+            key = null,
             items = o?.items?.map {
                 CategoryItem(
                     title = it.text,
