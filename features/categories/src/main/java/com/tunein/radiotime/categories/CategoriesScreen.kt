@@ -21,7 +21,8 @@ import com.tunein.radiotime.common.component.Toolbar
 @Composable
 fun CategoriesScreen(
     state: CategoriesContract.CategoriesState,
-    onBackPress: () -> Unit
+    onBackPress: () -> Unit,
+    onClickItem: (String) -> Unit
 ) {
 
     Column(modifier = Modifier.padding(vertical = 20.dp, horizontal = 15.dp)) {
@@ -44,7 +45,7 @@ fun CategoriesScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     items(categories) { title ->
-                        CategoryGridItem(title, onClick = {})
+                        CategoryGridItem(title, onClick = onClickItem)
                     }
                 }
             }

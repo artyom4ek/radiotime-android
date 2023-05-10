@@ -11,10 +11,10 @@ import retrofit2.Retrofit
 
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.InitialDataResponseDto
+import com.tunein.radiotime.data.entity.categoryDetails.BodyDto
 import com.tunein.radiotime.data.entity.main.CategoriesItemDto
 import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
 import com.tunein.radiotime.data.entity.radio.RadioItemDto
-import com.tunein.radiotime.data.mapper.CategoriesDomainMapper
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.repository.MainRepositoryImpl
 import com.tunein.radiotime.data.repository.PodcastsRepositoryImpl
@@ -40,8 +40,14 @@ object RepositoryModule {
         remoteDataSource: RemoteDataSource,
         initialDataMapper: Mapper<InitialDataResponseDto, InitialData>,
         categoriesDomainMapper: Mapper<CategoryItem, CategoriesItemDto>,
+        categoryDetailsDomainMapper: Mapper<Category, BodyDto>
     ): MainRepository =
-        MainRepositoryImpl(remoteDataSource, initialDataMapper, categoriesDomainMapper)
+        MainRepositoryImpl(
+            remoteDataSource,
+            initialDataMapper,
+            categoriesDomainMapper,
+            categoryDetailsDomainMapper
+        )
 
     /**
      * Provides [RadioRepository] instance

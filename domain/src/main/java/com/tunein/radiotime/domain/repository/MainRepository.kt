@@ -1,5 +1,6 @@
 package com.tunein.radiotime.domain.repository
 
+import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.domain.model.CategoryItem
 import com.tunein.radiotime.domain.model.InitialData
 
@@ -14,4 +15,9 @@ interface MainRepository {
      * Get Categories by URL
      */
     suspend fun getCategoriesByUrl(url: String): List<CategoryItem>
+
+    /**
+     * Get Category details for specific category
+     */
+    suspend fun getCategoryDetails(url: String): List<Category>
 }

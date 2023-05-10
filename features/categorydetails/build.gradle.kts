@@ -1,33 +1,22 @@
 plugins {
-    id("com.android.application")
-    id("com.google.dagger.hilt.android")
+    id("com.android.library")
     kotlin("android")
     kotlin("kapt")
-    kotlin("plugin.serialization")
 }
 
 android {
     namespace = "com.tunein.radiotime"
     compileSdk = Config.compileSdk
-    buildToolsVersion = Config.buildTools
 
     defaultConfig {
-        applicationId = "com.tunein.radiotime"
         minSdk = Config.minSdk
-        targetSdk = Config.targetSdk
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -39,7 +28,6 @@ android {
         jvmTarget = "17"
     }
     buildFeatures {
-        buildConfig = true
         compose = true
     }
     composeOptions {
@@ -50,28 +38,13 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
-    kapt {
-        correctErrorTypes = true
-    }
 }
 
 dependencies {
 
-    // Modules
     implementation(project("path" to ":common"))
-    implementation(project("path" to ":data"))
     implementation(project("path" to ":domain"))
-    implementation(project("path" to ":features:categories"))
-    implementation(project("path" to ":features:categorydetails"))
-    implementation(project("path" to ":features:home"))
-    implementation(project("path" to ":features:podcasts"))
-    implementation(project("path" to ":features:radio"))
     implementation(project("path" to ":navigation"))
-
-    // Core
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.lifecycleRuntimeKtx)
-    implementation(Dependencies.navigationCommonKtx)
 
     // Compose
     implementation(Dependencies.navigationCompose)
@@ -82,7 +55,7 @@ dependencies {
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeUiGraphics)
     implementation(Dependencies.composeUiToolingPreview)
-
+    
     androidTestImplementation(platform(Dependencies.composeBom))
     debugImplementation(Dependencies.composeUiTooling)
     debugImplementation(Dependencies.composeUiTestManifest)
@@ -93,10 +66,6 @@ dependencies {
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltAndroidCompiler)
 
-    // Timber
-    implementation(Dependencies.timber)
-
-    // Testing
-    testImplementation(Dependencies.jUnit)
-    androidTestImplementation(Dependencies.jUnitExt)
+    // Coil
+    implementation(Dependencies.coil)
 }

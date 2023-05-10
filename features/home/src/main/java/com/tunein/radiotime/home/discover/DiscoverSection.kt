@@ -9,13 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.CategoryItem
-import com.tunein.radiotime.home.provideDiscoverCategories
 
 @Composable
 fun DiscoverSection(categories: List<CategoryItem>?, onClick: (String) -> Unit) {
@@ -37,10 +35,4 @@ fun DiscoverSection(categories: List<CategoryItem>?, onClick: (String) -> Unit) 
         Spacer(modifier = Modifier.size(15.dp))
         DiscoverGrid(categories, onClick)
     }
-}
-
-@Preview
-@Composable
-fun DiscoverSectionPreview() {
-    DiscoverSection(categories = provideDiscoverCategories(), onClick = {})
 }

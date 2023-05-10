@@ -10,5 +10,8 @@ enum class ResponseKeys(val key: String) {
     LOCATION("location"),
     LANGUAGE("language"),
     LOCAL("local"),
-    PODCAST("podcast")
+    PODCAST("podcast"),
+    STATIONS("stations"),
+    SHOWS("shows"),
+    RELATED("related")
 }
