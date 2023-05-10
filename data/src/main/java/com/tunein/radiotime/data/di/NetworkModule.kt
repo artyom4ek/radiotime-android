@@ -18,6 +18,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 
+import kotlinx.serialization.ExperimentalSerializationApi
+
 import com.tunein.radiotime.BuildConfig
 import com.tunein.radiotime.common.network.Constants
 import com.tunein.radiotime.data.api.ApiService
@@ -60,11 +62,13 @@ object NetworkModule {
     /**
      * Provides [Retrofit] instance
      */
+    @OptIn(ExperimentalSerializationApi::class)
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
         val json = Json {
             ignoreUnknownKeys = true
+            explicitNulls = false
         }
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)

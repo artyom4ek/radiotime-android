@@ -3,6 +3,7 @@ package com.tunein.radiotime.categorydetails
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,7 +32,10 @@ import com.tunein.radiotime.domain.model.CategoryItem
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryListItem(categoryItem: CategoryItem, onClick: (String) -> Unit) {
-    Card(onClick = { onClick(categoryItem.url) }) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { onClick(categoryItem.url) }
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -57,13 +61,15 @@ fun CategoryListItem(categoryItem: CategoryItem, onClick: (String) -> Unit) {
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Text(
-                    text = categoryItem.subTitle!!,
-                    color = Color.DarkGray,
-                    fontSize = 11.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+                categoryItem.subTitle?.let {
+                    Text(
+                        text = it,
+                        color = Color.DarkGray,
+                        fontSize = 11.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
                 categoryItem.currentTrack?.let {
                     Spacer(Modifier.size(2.dp))
                     Text(

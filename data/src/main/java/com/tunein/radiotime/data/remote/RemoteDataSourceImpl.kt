@@ -7,6 +7,7 @@ import kotlinx.coroutines.withContext
 
 import com.tunein.radiotime.data.api.ApiService
 import com.tunein.radiotime.data.entity.InitialDataResponseDto
+import com.tunein.radiotime.data.entity.categoryDetails.ResponseWithChildrenDto
 import com.tunein.radiotime.data.entity.main.CategoriesResponseDto
 
 class RemoteDataSourceImpl @Inject constructor(
@@ -20,5 +21,10 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun fetchCategoriesByUrl(url: String): CategoriesResponseDto =
         withContext(Dispatchers.IO) {
             return@withContext apiService.fetchCategories(url)
+        }
+
+    override suspend fun fetchDataWithChildren(url: String): ResponseWithChildrenDto =
+        withContext(Dispatchers.IO) {
+            return@withContext apiService.fetchDataWithChildren(url)
         }
 }
