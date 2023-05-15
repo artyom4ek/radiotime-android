@@ -61,7 +61,6 @@ dependencies {
     implementation(project("path" to ":common"))
     implementation(project("path" to ":data"))
     implementation(project("path" to ":domain"))
-    implementation(project("path" to ":features:categorydetails"))
     implementation(project("path" to ":features:details"))
     implementation(project("path" to ":features:home"))
     implementation(project("path" to ":features:podcasts"))
