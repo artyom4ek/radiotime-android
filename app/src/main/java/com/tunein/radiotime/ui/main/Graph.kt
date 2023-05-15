@@ -6,17 +6,12 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 
-import com.tunein.radiotime.categories.CategoriesScreen
-import com.tunein.radiotime.categories.CategoriesViewModel
-import com.tunein.radiotime.categorydetails.CategoryDetailsScreen
-import com.tunein.radiotime.categorydetails.CategoryDetailsViewModel
 import com.tunein.radiotime.common.extentions.encodeUrl
 import com.tunein.radiotime.content.DetailsScreen
 import com.tunein.radiotime.content.DetailsViewModel
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.home.HomeScreen
-import com.tunein.radiotime.navigation.destinations.CategoriesDestination
-import com.tunein.radiotime.navigation.destinations.CategoryDetailsDestination
+import com.tunein.radiotime.home.HomeViewModel
 import com.tunein.radiotime.navigation.destinations.DetailsDestination
 import com.tunein.radiotime.podcasts.PodcastsScreen
 import com.tunein.radiotime.podcasts.PodcastsViewModel
@@ -32,28 +27,31 @@ fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
         startDestination = BottomBarTab.Home.route
     ) {
         composable(BottomBarTab.Home.route) {
-            HomeScreen(data?.homeTab)
-        }
-        composable(CategoriesDestination.route()) {
-            val viewModel: CategoriesViewModel = hiltViewModel()
-            val uiState = viewModel.uiState.collectAsState()
-            CategoriesScreen(
-                uiState.value.categoriesState,
-                onBackPress = { viewModel.navigateUp() },
-                onClickItem = {
+            val viewModel: HomeViewModel = hiltViewModel()
+            HomeScreen(
+                homeTab = data?.homeTab,
+                onClick = {
                     viewModel.navigate(
-                        CategoryDetailsDestination.createCategoryDetailsRoute(it.encodeUrl())
+                        DetailsDestination.createDetailsRoute(it.encodeUrl())
                     )
                 }
             )
         }
-        composable(CategoryDetailsDestination.route()) {
-            val viewModel: CategoryDetailsViewModel = hiltViewModel()
+        composable(DetailsDestination.route()) {
+            val viewModel: DetailsViewModel = hiltViewModel()
             val uiState = viewModel.uiState.collectAsState()
-            CategoryDetailsScreen(
-                uiState.value.categoryDetailsState,
+            DetailsScreen(
+                uiState.value.detailsState,
                 onBackPress = { viewModel.navigateUp() },
-                onClickItem = { }
+                onClickItem = { url, isAudio ->
+                    if (isAudio) {
+                        // Audio
+                    } else {
+                        viewModel.navigate(
+                            DetailsDestination.createDetailsRoute(url.encodeUrl())
+                        )
+                    }
+                }
             )
         }
     }
