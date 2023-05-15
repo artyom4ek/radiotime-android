@@ -2,20 +2,16 @@ package com.tunein.radiotime.data.repository
 
 import javax.inject.Inject
 
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.JsonElement
 
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.utils.ContentType
 import com.tunein.radiotime.data.parser.Parser
 import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
-import com.tunein.radiotime.data.entity.categoryDetails.BodyDto
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.AudioItem
-import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.domain.model.GridItem
-import com.tunein.radiotime.domain.model.CategoryItem
 import com.tunein.radiotime.domain.model.ListItem
 import com.tunein.radiotime.domain.model.CategoryType
 import com.tunein.radiotime.domain.model.InitialData
@@ -27,7 +23,6 @@ class MainRepositoryImpl @Inject constructor(
     private val parser: Parser,
     private val remoteDataSource: RemoteDataSource,
     private val initialDataMapper: Mapper<InitialDataResponseDto, InitialData>,
-    private val categoryDetailsDomainMapper: Mapper<Category, BodyDto>,
     private val gridTabDomainMapper: Mapper<GridTab, JsonElement>,
     private val gridItemDomainMapper: Mapper<GridItem, JsonElement>,
     private val listTabDomainMapper: Mapper<ListTab, JsonElement>,
@@ -39,11 +34,6 @@ class MainRepositoryImpl @Inject constructor(
     override suspend fun getInitialData(): InitialData {
         val initialDataResponse = remoteDataSource.fetchInitialData()
         return initialDataMapper.from(initialDataResponse)
-    }
-
-    @OptIn(ExperimentalSerializationApi::class)
-    override suspend fun getCategoryDetails(url: String): List<Category> {
-        return emptyList()
     }
 
     override suspend fun getParsedData(url: String): List<CategoryType> {
