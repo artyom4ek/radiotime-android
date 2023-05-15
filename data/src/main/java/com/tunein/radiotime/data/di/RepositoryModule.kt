@@ -12,10 +12,10 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.parser.Parser
 import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
 import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
 import com.tunein.radiotime.data.entity.radio.RadioItemDto
+import com.tunein.radiotime.data.parser.Parser
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.repository.MainRepositoryImpl
 import com.tunein.radiotime.data.repository.PodcastsRepositoryImpl
@@ -24,7 +24,6 @@ import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.domain.model.GridItem
-import com.tunein.radiotime.domain.model.CategoryItem
 import com.tunein.radiotime.domain.model.ListItem
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.domain.model.RadioStation

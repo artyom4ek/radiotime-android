@@ -6,11 +6,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 import com.tunein.radiotime.data.parser.Parser
+import com.tunein.radiotime.data.parser.ParserImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
 object ParserModule {
 
     @Provides
-    fun provideParser(): Parser = Parser() // TODO: add interface
+    fun provideParser(): Parser = ParserImpl()
 }
