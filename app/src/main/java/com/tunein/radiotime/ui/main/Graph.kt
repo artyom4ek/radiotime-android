@@ -11,13 +11,19 @@ import com.tunein.radiotime.categories.CategoriesViewModel
 import com.tunein.radiotime.categorydetails.CategoryDetailsScreen
 import com.tunein.radiotime.categorydetails.CategoryDetailsViewModel
 import com.tunein.radiotime.common.extentions.encodeUrl
+import com.tunein.radiotime.content.DetailsScreen
+import com.tunein.radiotime.content.DetailsViewModel
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.home.HomeScreen
 import com.tunein.radiotime.navigation.destinations.CategoriesDestination
 import com.tunein.radiotime.navigation.destinations.CategoryDetailsDestination
+import com.tunein.radiotime.navigation.destinations.DetailsDestination
+import com.tunein.radiotime.podcasts.PodcastsScreen
+import com.tunein.radiotime.podcasts.PodcastsViewModel
 
 object Graph {
     const val HOME = "home_graph"
+    const val PODCASTS = "podcasts_graph"
 }
 
 fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
@@ -47,7 +53,38 @@ fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
             CategoryDetailsScreen(
                 uiState.value.categoryDetailsState,
                 onBackPress = { viewModel.navigateUp() },
-                onClickItem = {}
+                onClickItem = { }
+            )
+        }
+    }
+}
+
+fun NavGraphBuilder.podcastNavGraph(data: InitialData?) {
+    navigation(
+        route = Graph.PODCASTS,
+        startDestination = BottomBarTab.Podcasts.route
+    ) {
+        composable(BottomBarTab.Podcasts.route) {
+            val viewModel: PodcastsViewModel = hiltViewModel()
+            PodcastsScreen(data?.podcastsTab, onClick = {
+                viewModel.navigate(DetailsDestination.createDetailsRoute(it.encodeUrl()))
+            })
+        }
+        composable(DetailsDestination.route()) {
+            val viewModel: DetailsViewModel = hiltViewModel()
+            val uiState = viewModel.uiState.collectAsState()
+            DetailsScreen(
+                uiState.value.detailsState,
+                onBackPress = { viewModel.navigateUp() },
+                onClickItem = { url, isAudio ->
+                    if (isAudio) {
+                        // Audio
+                    } else {
+                        viewModel.navigate(
+                            DetailsDestination.createDetailsRoute(url.encodeUrl())
+                        )
+                    }
+                }
             )
         }
     }

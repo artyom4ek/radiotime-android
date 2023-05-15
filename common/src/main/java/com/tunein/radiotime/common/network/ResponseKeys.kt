@@ -13,5 +13,6 @@ enum class ResponseKeys(val key: String) {
     PODCAST("podcast"),
     STATIONS("stations"),
     SHOWS("shows"),
+    TOPICS("topics"),
     RELATED("related")
 }

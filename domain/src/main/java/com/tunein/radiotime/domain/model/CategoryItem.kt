@@ -3,7 +3,7 @@ package com.tunein.radiotime.domain.model
 import androidx.annotation.DrawableRes
 
 /**
- * [CategoryItem] model describes a category that is universal
+ * [CategoryItem] describes a category item model
  */
 data class CategoryItem(
     val title: String,
@@ -13,4 +13,4 @@ data class CategoryItem(
     val cover: String? = null,
     val count: Int? = null,
     @DrawableRes val icon: Int? = null
-)
+) : CategoryType

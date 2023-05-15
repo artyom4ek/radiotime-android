@@ -9,6 +9,7 @@ import com.tunein.radiotime.data.entity.categoryDetails.ResponseWithChildrenDto
 import com.tunein.radiotime.data.entity.main.CategoriesResponseDto
 import com.tunein.radiotime.data.entity.podcast.PodcastsResponseDto
 import com.tunein.radiotime.data.entity.radio.RadioResponseDto
+import com.tunein.radiotime.data.entity.response.ResponseDto
 
 /**
  * The main services that handles all endpoint processes
@@ -41,4 +42,10 @@ interface ApiService {
         @Url url: String,
         @Query("render") render: String = "json"
     ): ResponseWithChildrenDto
+
+    @GET
+    suspend fun fetchRawDataByUrl(
+        @Url url: String,
+        @Query("render") render: String = "json"
+    ): ResponseDto
 }

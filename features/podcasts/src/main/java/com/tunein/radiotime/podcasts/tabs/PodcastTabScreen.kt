@@ -20,7 +20,7 @@ fun PodcastTabScreen(items: List<CategoryItem>, onClick: (String) -> Unit) {
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(items) { title ->
-            PodcastGridItem(title, onClick = onClick)
+            PodcastTabItem(title, onClick = onClick)
         }
     }
 }
