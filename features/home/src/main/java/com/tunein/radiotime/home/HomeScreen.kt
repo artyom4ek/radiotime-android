@@ -7,29 +7,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 
-import com.tunein.radiotime.common.extentions.encodeUrl
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.home.discover.DiscoverSection
 import com.tunein.radiotime.home.filters.FiltersSection
-import com.tunein.radiotime.navigation.destinations.CategoriesDestination
 
 @Composable
-fun HomeScreen(homeTab: HomeTab?) {
-    val viewModel: HomeViewModel = hiltViewModel()
-
+fun HomeScreen(homeTab: HomeTab?, onClick: (String) -> Unit) {
     Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 20.dp)) {
-        DiscoverSection(categories = homeTab?.discover, onClick = {
-            viewModel.navigate(
-                CategoriesDestination.createCategoriesRoute(it.encodeUrl())
-            )
-        })
+        DiscoverSection(categories = homeTab?.discover, onClick = onClick)
         Spacer(modifier = Modifier.size(20.dp))
-        FiltersSection(filters = homeTab?.filter, onClick = {
-            viewModel.navigate(
-                CategoriesDestination.createCategoriesRoute(it.encodeUrl())
-            )
-        })
+        FiltersSection(filters = homeTab?.filter, onClick = onClick)
     }
 }
