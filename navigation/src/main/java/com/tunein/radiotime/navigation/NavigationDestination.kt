@@ -4,7 +4,8 @@ import androidx.navigation.NamedNavArgument
 
 fun interface NavigationDestination {
 
-    fun route(): String
+    fun route(route: String): String
+
     val arguments: List<NamedNavArgument>
         get() = emptyList()
 }

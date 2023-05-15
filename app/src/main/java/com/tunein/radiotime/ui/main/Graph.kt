@@ -32,12 +32,12 @@ fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
                 homeTab = data?.homeTab,
                 onClick = {
                     viewModel.navigate(
-                        DetailsDestination.createDetailsRoute(it.encodeUrl())
+                        DetailsDestination.createDetailsRoute(Graph.HOME, it.encodeUrl())
                     )
                 }
             )
         }
-        composable(DetailsDestination.route()) {
+        composable(DetailsDestination.route(Graph.HOME)) {
             val viewModel: DetailsViewModel = hiltViewModel()
             val uiState = viewModel.uiState.collectAsState()
             DetailsScreen(
@@ -48,7 +48,7 @@ fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
                         // Audio
                     } else {
                         viewModel.navigate(
-                            DetailsDestination.createDetailsRoute(url.encodeUrl())
+                            DetailsDestination.createDetailsRoute(Graph.HOME, url.encodeUrl())
                         )
                     }
                 }
@@ -65,10 +65,15 @@ fun NavGraphBuilder.podcastNavGraph(data: InitialData?) {
         composable(BottomBarTab.Podcasts.route) {
             val viewModel: PodcastsViewModel = hiltViewModel()
             PodcastsScreen(data?.podcastsTab, onClick = {
-                viewModel.navigate(DetailsDestination.createDetailsRoute(it.encodeUrl()))
+                viewModel.navigate(
+                    DetailsDestination.createDetailsRoute(
+                        Graph.PODCASTS,
+                        it.encodeUrl()
+                    )
+                )
             })
         }
-        composable(DetailsDestination.route()) {
+        composable(DetailsDestination.route(Graph.PODCASTS)) {
             val viewModel: DetailsViewModel = hiltViewModel()
             val uiState = viewModel.uiState.collectAsState()
             DetailsScreen(
@@ -79,7 +84,7 @@ fun NavGraphBuilder.podcastNavGraph(data: InitialData?) {
                         // Audio
                     } else {
                         viewModel.navigate(
-                            DetailsDestination.createDetailsRoute(url.encodeUrl())
+                            DetailsDestination.createDetailsRoute(Graph.PODCASTS, url.encodeUrl())
                         )
                     }
                 }
