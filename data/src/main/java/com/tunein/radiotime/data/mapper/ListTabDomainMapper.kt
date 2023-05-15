@@ -35,7 +35,7 @@ class ListTabDomainMapper @Inject constructor() : Mapper<ListTab, JsonElement> {
                 ListItem(
                     title = it.text ?: "",
                     subTitle = it.subtext ?: "",
-                    url = it.URL,
+                    url = it.URL ?: "",
                     currentTrack = it.current_track ?: it.playing ?: "",
                     cover = it.image
                 )

@@ -34,7 +34,7 @@ class GridTabDomainMapper @Inject constructor() : Mapper<GridTab, JsonElement> {
             items = bodyDto.children?.map {
                 GridItem(
                     title = it.text ?: "",
-                    url = it.URL,
+                    url = it.URL ?: "",
                 )
             } ?: emptyList()
         )

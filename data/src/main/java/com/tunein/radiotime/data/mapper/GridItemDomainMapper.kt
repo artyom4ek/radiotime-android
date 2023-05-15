@@ -31,7 +31,7 @@ class GridItemDomainMapper @Inject constructor() : Mapper<GridItem, JsonElement>
         val itemDto = json.decodeFromJsonElement<ItemDto>(o)
         return GridItem(
             title = itemDto.text ?: "",
-            url = itemDto.URL,
+            url = itemDto.URL ?: "",
             count = Random.nextInt(10, 51) // TODO: should be implemented later
         )
     }

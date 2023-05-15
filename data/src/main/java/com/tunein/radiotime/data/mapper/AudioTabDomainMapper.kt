@@ -35,7 +35,7 @@ class AudioTabDomainMapper @Inject constructor() : Mapper<AudioTab, JsonElement>
                 AudioItem(
                     title = it.text ?: "",
                     subTitle = it.subtext ?: "",
-                    url = it.URL,
+                    url = it.URL ?: "",
                     track = it.current_track ?: it.playing ?: "",
                     cover = it.image
                 )

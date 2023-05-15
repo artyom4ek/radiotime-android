@@ -34,6 +34,7 @@ enum class BodyFieldTypes(val typeName: String) {
     STATION("station"),
     RELATED("related"),
     LOCAL("local"),
+    TEXT("text"),
     NEXT_SHOWS("nextShows"),
     NEXT_STATIONS("nextStations")
 }
@@ -81,6 +82,10 @@ class Parser @Inject constructor() {
         } else {
             val itemDto = json.decodeFromJsonElement<ItemDto>(rootItem)
             if (
+                itemDto.type == BodyFieldTypes.TEXT.typeName
+            ) {
+                return Pair(ContentType.Empty, false)
+            } else if (
                 itemDto.type == BodyFieldTypes.AUDIO.typeName
             ) {
                 return Pair(ContentType.AudioList, false)

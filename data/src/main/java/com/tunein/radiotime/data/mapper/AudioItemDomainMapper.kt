@@ -30,7 +30,7 @@ class AudioItemDomainMapper @Inject constructor() : Mapper<AudioItem, JsonElemen
         return AudioItem(
             title = itemDto.text ?: "",
             subTitle = itemDto.subtext ?: "",
-            url = itemDto.URL,
+            url = itemDto.URL ?: "",
             track = itemDto.current_track ?: itemDto.playing ?: "",
             cover = itemDto.image
         )
