@@ -13,9 +13,8 @@ import retrofit2.Retrofit
 
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.parser.Parser
-import com.tunein.radiotime.data.entity.InitialDataResponseDto
+import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
 import com.tunein.radiotime.data.entity.categoryDetails.BodyDto
-import com.tunein.radiotime.data.entity.main.CategoriesItemDto
 import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
 import com.tunein.radiotime.data.entity.radio.RadioItemDto
 import com.tunein.radiotime.data.remote.RemoteDataSource
@@ -49,7 +48,6 @@ object RepositoryModule {
         parser: Parser,
         remoteDataSource: RemoteDataSource,
         initialDataMapper: Mapper<InitialDataResponseDto, InitialData>,
-        categoriesDomainMapper: Mapper<CategoryItem, CategoriesItemDto>,
         categoryDetailsDomainMapper: Mapper<Category, BodyDto>,
         gridTabDomainMapper: Mapper<GridTab, JsonElement>,
         gridItemDomainMapper: Mapper<GridItem, JsonElement>,
@@ -62,7 +60,6 @@ object RepositoryModule {
             parser,
             remoteDataSource,
             initialDataMapper,
-            categoriesDomainMapper,
             categoryDetailsDomainMapper,
             gridTabDomainMapper,
             gridItemDomainMapper,

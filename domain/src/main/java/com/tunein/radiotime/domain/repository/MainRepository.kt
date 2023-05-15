@@ -13,11 +13,6 @@ interface MainRepository {
     suspend fun getInitialData(): InitialData
 
     /**
-     * Get Categories by URL
-     */
-    suspend fun getCategoriesByUrl(url: String): List<CategoryItem>
-
-    /**
      * Get Category details for specific category
      */
     suspend fun getCategoryDetails(url: String): List<Category>

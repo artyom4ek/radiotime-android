@@ -8,14 +8,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.InitialDataResponseDto
+import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
 import com.tunein.radiotime.data.entity.categoryDetails.BodyDto
-import com.tunein.radiotime.data.entity.main.CategoriesItemDto
 import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
 import com.tunein.radiotime.data.entity.radio.RadioItemDto
 import com.tunein.radiotime.data.mapper.AudioTabDomainMapper
 import com.tunein.radiotime.data.mapper.AudioItemDomainMapper
-import com.tunein.radiotime.data.mapper.CategoriesDomainMapper
 import com.tunein.radiotime.data.mapper.CategoryDetailsDomainMapper
 import com.tunein.radiotime.data.mapper.GridItemDomainMapper
 import com.tunein.radiotime.data.mapper.ListItemDomainMapper
@@ -28,7 +26,6 @@ import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.domain.model.GridItem
-import com.tunein.radiotime.domain.model.CategoryItem
 import com.tunein.radiotime.domain.model.ListItem
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.domain.model.RadioStation
@@ -56,11 +53,6 @@ abstract class MapperModule {
     abstract fun bindsPodcastsMapper(
         mapper: PodcastsDomainMapper
     ): Mapper<Category, PodcastBodyDto>
-
-    @Binds
-    abstract fun bindsCategoriesMapper(
-        mapper: CategoriesDomainMapper
-    ): Mapper<CategoryItem, CategoriesItemDto>
 
     @Binds
     abstract fun bindsCategoryDetailsMapper(
