@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ItemDto(
-    val URL: String,
+    val URL: String?,
     val current_track: String?,
     val guide_id: String?,
     val image: String?,

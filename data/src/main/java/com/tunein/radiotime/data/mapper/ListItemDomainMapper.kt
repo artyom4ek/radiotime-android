@@ -31,7 +31,7 @@ class ListItemDomainMapper @Inject constructor() : Mapper<ListItem, JsonElement>
             title = itemDto.text ?: "",
             subTitle = itemDto.text ?: "",
             currentTrack = itemDto.current_track,
-            url = itemDto.URL,
+            url = itemDto.URL ?: "",
             cover = itemDto.image,
         )
     }
