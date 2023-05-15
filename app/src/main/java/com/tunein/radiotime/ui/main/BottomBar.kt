@@ -54,7 +54,7 @@ fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
                             }
                         }
                         launchSingleTop = true
-                        restoreState = true
+                        restoreState = false
                     }
                 })
         }

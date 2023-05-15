@@ -23,7 +23,7 @@ import com.tunein.radiotime.domain.model.CategoryItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PodcastGridItem(item: CategoryItem, onClick: (String) -> Unit) {
+fun PodcastTabItem(item: CategoryItem, onClick: (String) -> Unit) {
     Card(modifier = Modifier.size(120.dp), onClick = { onClick(item.url) }) {
         Column(
             modifier = Modifier

@@ -10,4 +10,4 @@ data class Category(
     val key: String?,
     val items: List<CategoryItem> = emptyList(),
     @DrawableRes val icon: Int? = null
-)
+) : CategoryType
