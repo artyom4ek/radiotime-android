@@ -31,6 +31,16 @@ import com.tunein.radiotime.data.remote.RemoteDataSourceImpl
 object NetworkModule {
 
     /**
+     * Provides [Json] instance
+     */
+    @OptIn(ExperimentalSerializationApi::class)
+    @Provides
+    fun provideJson(): Json = Json {
+        ignoreUnknownKeys = true
+        explicitNulls = false
+    }
+
+    /**
      * Provides [HttpLoggingInterceptor] instance
      */
     @Provides
@@ -62,14 +72,9 @@ object NetworkModule {
     /**
      * Provides [Retrofit] instance
      */
-    @OptIn(ExperimentalSerializationApi::class)
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
-        val json = Json {
-            ignoreUnknownKeys = true
-            explicitNulls = false
-        }
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)

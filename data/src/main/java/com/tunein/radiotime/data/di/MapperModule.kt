@@ -11,15 +11,8 @@ import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
 import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
 import com.tunein.radiotime.data.entity.radio.RadioItemDto
-import com.tunein.radiotime.data.mapper.AudioTabDomainMapper
-import com.tunein.radiotime.data.mapper.AudioItemDomainMapper
-import com.tunein.radiotime.data.mapper.GridItemDomainMapper
-import com.tunein.radiotime.data.mapper.ListItemDomainMapper
-import com.tunein.radiotime.data.mapper.InitialDataDomainMapper
-import com.tunein.radiotime.data.mapper.PodcastsDomainMapper
-import com.tunein.radiotime.data.mapper.RadioStationsDomainMapper
-import com.tunein.radiotime.data.mapper.GridTabDomainMapper
-import com.tunein.radiotime.data.mapper.ListTabDomainMapper
+import com.tunein.radiotime.data.entity.response.ItemDto
+import com.tunein.radiotime.data.mapper.*
 import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.Category
@@ -55,17 +48,17 @@ abstract class MapperModule {
     @Binds
     abstract fun bindsAudioItemMapper(
         mapper: AudioItemDomainMapper
-    ): Mapper<AudioItem, JsonElement>
+    ): Mapper<AudioItem?, ItemDto>
 
     @Binds
     abstract fun bindsGridItemMapper(
         mapper: GridItemDomainMapper
-    ): Mapper<GridItem, JsonElement>
+    ): Mapper<GridItem?, ItemDto>
 
     @Binds
     abstract fun bindsListItemMapper(
         mapper: ListItemDomainMapper
-    ): Mapper<ListItem, JsonElement>
+    ): Mapper<ListItem?, ItemDto>
 
     @Binds
     abstract fun bindsAudioTabMapper(
@@ -81,4 +74,9 @@ abstract class MapperModule {
     abstract fun bindsListTabMapper(
         mapper: ListTabDomainMapper
     ): Mapper<ListTab, JsonElement>
+
+    @Binds
+    abstract fun bindsRawDataMapper(
+        mapper: RawDataMapperImpl
+    ): RawDataMapper
 }
