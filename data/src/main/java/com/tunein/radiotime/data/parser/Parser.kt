@@ -1,9 +1,13 @@
 package com.tunein.radiotime.data.parser
 
-import com.tunein.radiotime.common.utils.ContentType
 import kotlinx.serialization.json.JsonElement
+
+import com.tunein.radiotime.common.utils.ContentType
+import com.tunein.radiotime.data.entity.response.ItemDto
 
 interface Parser {
 
-    fun responseAnalysis(body: List<JsonElement>?): Pair<ContentType, Boolean>
+    fun checkIfChildrenExists(bodyList: List<JsonElement>?): Boolean
+
+    fun itemAnalysis(itemDto: ItemDto): ContentType
 }
