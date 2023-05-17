@@ -21,7 +21,7 @@ class MainRepositoryImpl @Inject constructor(
         return initialDataMapper.from(initialDataResponse)
     }
 
-    override suspend fun getParsedData(url: String): List<CategoryType> {
+    override suspend fun getDetailsData(url: String): List<CategoryType> {
         val data = remoteDataSource.fetchRawDataByUrl(url).body
         return rawDataMapper.mapRawData(data)
     }

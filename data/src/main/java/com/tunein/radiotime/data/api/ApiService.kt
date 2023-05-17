@@ -5,7 +5,6 @@ import retrofit2.http.Url
 import retrofit2.http.Query
 
 import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
-import com.tunein.radiotime.data.entity.podcast.PodcastsResponseDto
 import com.tunein.radiotime.data.entity.response.ResponseDto
 
 /**
@@ -15,12 +14,6 @@ interface ApiService {
 
     @GET("Browse.ashx")
     suspend fun fetchInitialData(@Query("render") render: String = "json"): InitialDataResponseDto
-
-    @GET
-    suspend fun fetchPodcastCategories(
-        @Url url: String,
-        @Query("render") render: String = "json"
-    ): PodcastsResponseDto
 
     @GET
     suspend fun fetchRawDataByUrl(

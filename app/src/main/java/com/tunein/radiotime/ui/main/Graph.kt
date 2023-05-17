@@ -72,7 +72,7 @@ fun NavGraphBuilder.radioNavGraph(radioTab: RadioTab) {
     }
 }
 
-fun NavGraphBuilder.podcastNavGraph(podcastsTab: PodcastsTab) {
+fun NavGraphBuilder.podcastsNavGraph(podcastsTab: PodcastsTab) {
     navigation(
         route = Graph.PODCASTS,
         startDestination = BottomBarTab.Podcasts.route

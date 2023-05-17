@@ -8,6 +8,5 @@ import androidx.annotation.DrawableRes
 data class GridItem(
     val title: String,
     val url: String,
-    val count: Int? = null,
     @DrawableRes val icon: Int? = null
 ) : CategoryItems

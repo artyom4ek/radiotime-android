@@ -1,41 +1,44 @@
 package com.tunein.radiotime.data.mapper
 
-import kotlin.random.Random
-
 import javax.inject.Inject
+
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.jsonObject
 
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.ResponseKeys
-import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
-import com.tunein.radiotime.domain.model.Category
-import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.data.entity.response.BodyDto
+import com.tunein.radiotime.domain.model.GridItem
+import com.tunein.radiotime.domain.model.GridTab
 
-class PodcastsDomainMapper @Inject constructor() : Mapper<Category, PodcastBodyDto> {
+class PodcastsDomainMapper @Inject constructor(
+    private val json: Json
+) : Mapper<GridTab, JsonElement> {
 
-    override fun from(i: Category?): PodcastBodyDto {
-        return PodcastBodyDto("", emptyList())
+    override fun from(i: GridTab?): JsonElement {
+        TODO("Not yet implemented")
     }
 
-    override fun to(o: PodcastBodyDto?): Category {
-        val title = o?.text ?: ""
-        val icon = when (title.lowercase()) {
+    override fun to(o: JsonElement?): GridTab {
+        if (o == null) throw NullPointerException("JsonElement mustn't be null")
+
+        val body = json.decodeFromJsonElement<BodyDto>(o.jsonObject)
+        val icon = when (body.text?.lowercase()) {
             ResponseKeys.MUSIC.key -> R.drawable.ic_music
             ResponseKeys.TALK.key -> R.drawable.ic_talk
             ResponseKeys.SPORTS.key -> R.drawable.ic_sport
-            else -> {
-                R.drawable.ic_headphones
-            }
+            else -> null
         }
-        return Category(
-            title = title,
+        return GridTab(
+            title = body.text ?: "",
             icon = icon,
-            key = null,
-            items = o?.items?.map {
-                CategoryItem(
-                    title = it.text,
-                    url = it.url ?: "",
-                    count = Random.nextInt(10, 51) // TODO: should be implemented later
+            items = body.children?.map {
+                GridItem(
+                    title = it.text ?: "",
+                    url = it.URL ?: "",
                 )
             } ?: emptyList()
         )
