@@ -1,10 +1,10 @@
 package com.tunein.radiotime.domain.model
 
 /**
- * [RadioTab] describes sections of the Podcast screen
+ * [RadioTab] describes sections of the Radio tab screen
  */
 data class RadioTab(
     val title: String?,
     val url: String?,
-    val radioStations: MutableList<RadioStation> = mutableListOf()
+    val stations: MutableList<AudioItem> = mutableListOf()
 )

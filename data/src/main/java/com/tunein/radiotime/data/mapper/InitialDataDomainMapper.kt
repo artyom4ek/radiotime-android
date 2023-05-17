@@ -29,7 +29,6 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<InitialDataResponse
                     CategoryItem(
                         title = it.text,
                         url = it.url,
-                        count = Random.nextInt(10, 51), // TODO: should be implemented later
                         icon = R.drawable.ic_music
                     )
                 )

@@ -20,7 +20,7 @@ class MainContract {
 
     sealed class MainState {
         object Loading : MainState()
-        data class Success(val initialData: InitialData?) : MainState()
+        data class Success(val initialData: InitialData) : MainState()
     }
 
     sealed class Effect : UiEffect {
