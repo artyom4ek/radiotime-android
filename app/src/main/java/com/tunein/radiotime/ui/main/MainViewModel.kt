@@ -33,7 +33,7 @@ class MainViewModel @Inject constructor(
             // Populate the Radio tab with data
             val radioTab = initialData.radioTab
             radioTab.url?.let {
-                radioTab.radioStations.addAll(
+                radioTab.stations.addAll(
                     radioUseCase.getRadioStations(it)
                 )
             }

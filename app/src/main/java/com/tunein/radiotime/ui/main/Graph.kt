@@ -9,19 +9,23 @@ import androidx.navigation.navigation
 import com.tunein.radiotime.common.extentions.encodeUrl
 import com.tunein.radiotime.content.DetailsScreen
 import com.tunein.radiotime.content.DetailsViewModel
-import com.tunein.radiotime.domain.model.InitialData
+import com.tunein.radiotime.domain.model.HomeTab
+import com.tunein.radiotime.domain.model.PodcastsTab
+import com.tunein.radiotime.domain.model.RadioTab
 import com.tunein.radiotime.home.HomeScreen
 import com.tunein.radiotime.home.HomeViewModel
 import com.tunein.radiotime.navigation.destinations.DetailsDestination
 import com.tunein.radiotime.podcasts.PodcastsScreen
 import com.tunein.radiotime.podcasts.PodcastsViewModel
+import com.tunein.radiotime.radio.RadioScreen
 
 object Graph {
     const val HOME = "home_graph"
+    const val RADIO = "radio_graph"
     const val PODCASTS = "podcasts_graph"
 }
 
-fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
+fun NavGraphBuilder.homeNavGraph(homeTab: HomeTab) {
     navigation(
         route = Graph.HOME,
         startDestination = BottomBarTab.Home.route
@@ -29,7 +33,7 @@ fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
         composable(BottomBarTab.Home.route) {
             val viewModel: HomeViewModel = hiltViewModel()
             HomeScreen(
-                homeTab = data?.homeTab,
+                homeTab = homeTab,
                 onClick = {
                     viewModel.navigate(
                         DetailsDestination.createDetailsRoute(Graph.HOME, it.encodeUrl())
@@ -57,14 +61,25 @@ fun NavGraphBuilder.homeNavGraph(data: InitialData?) {
     }
 }
 
-fun NavGraphBuilder.podcastNavGraph(data: InitialData?) {
+fun NavGraphBuilder.radioNavGraph(radioTab: RadioTab) {
+    navigation(
+        route = Graph.RADIO,
+        startDestination = BottomBarTab.Radio.route
+    ) {
+        composable(BottomBarTab.Radio.route) {
+            RadioScreen(radioTab, onPlayClick = {})
+        }
+    }
+}
+
+fun NavGraphBuilder.podcastNavGraph(podcastsTab: PodcastsTab) {
     navigation(
         route = Graph.PODCASTS,
         startDestination = BottomBarTab.Podcasts.route
     ) {
         composable(BottomBarTab.Podcasts.route) {
             val viewModel: PodcastsViewModel = hiltViewModel()
-            PodcastsScreen(data?.podcastsTab, onClick = {
+            PodcastsScreen(podcastsTab, onClick = {
                 viewModel.navigate(
                     DetailsDestination.createDetailsRoute(
                         Graph.PODCASTS,

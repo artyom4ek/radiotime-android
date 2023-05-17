@@ -74,8 +74,7 @@ fun CategoryListItem(categoryItem: ListItem, onClick: (String, Boolean) -> Unit)
                     Spacer(Modifier.size(2.dp))
                     Text(
                         text = stringResource(
-                            id = R.string.current_track,
-                            categoryItem.currentTrack!!
+                            id = R.string.current_track, it
                         ),
                         color = Color.Gray,
                         fontStyle = FontStyle.Italic,

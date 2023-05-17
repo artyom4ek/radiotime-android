@@ -24,13 +24,13 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
-import com.tunein.radiotime.R
-import com.tunein.radiotime.domain.model.RadioStation
+import com.tunein.radiotime.common.R
+import com.tunein.radiotime.domain.model.AudioItem
 
 @Composable
 fun StationItem(
-    station: RadioStation,
-    onPlayClick: (String?) -> Unit
+    station: AudioItem,
+    onPlayClick: (String) -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically
@@ -43,7 +43,7 @@ fun StationItem(
                 .data(station.cover)
                 .crossfade(true)
                 .build(),
-            placeholder = painterResource(R.drawable.radio_station_placeholder),
+            placeholder = painterResource(R.drawable.audio_placeholder),
             contentDescription = station.title,
         )
         Column(
@@ -57,14 +57,16 @@ fun StationItem(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Spacer(Modifier.size(5.dp))
-            Text(
-                text = station.subTitle,
-                color = Color.DarkGray,
-                fontSize = 14.sp,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            station.subTitle?.let {
+                Spacer(Modifier.size(5.dp))
+                Text(
+                    text = it,
+                    color = Color.DarkGray,
+                    fontSize = 14.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
         }
         Icon(
             modifier = Modifier
