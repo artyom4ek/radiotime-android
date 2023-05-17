@@ -8,9 +8,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
-import com.tunein.radiotime.data.entity.response.BodyDto
 import com.tunein.radiotime.data.entity.response.ItemDto
+import com.tunein.radiotime.data.entity.response.ResponseDto
 import com.tunein.radiotime.data.mapper.*
 import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.AudioItem
@@ -30,7 +29,7 @@ abstract class MapperModule {
     @Binds
     abstract fun bindsInitialDataMapper(
         mapper: InitialDataDomainMapper
-    ): Mapper<InitialDataResponseDto, InitialData>
+    ): Mapper<InitialData, ResponseDto>
 
     @Binds
     abstract fun bindsPodcastsMapper(

@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.domain.model.GridItem
 
 @Composable
-fun FiltersList(items: List<CategoryItem>, onClick: (String) -> Unit) {
+fun FiltersList(items: List<GridItem>, onClick: (String) -> Unit) {
     LazyColumn {
         itemsIndexed(items) { index, item ->
             FiltersListItem(item, onClick)

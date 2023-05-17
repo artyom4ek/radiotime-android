@@ -8,10 +8,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
+import com.tunein.radiotime.data.entity.response.ResponseDto
 import com.tunein.radiotime.data.mapper.AudioTabDomainMapper
 import com.tunein.radiotime.data.mapper.PodcastsDomainMapper
-import com.tunein.radiotime.data.mapper.RawDataMapperImpl
+import com.tunein.radiotime.data.mapper.RawDataMapper
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.repository.MainRepositoryImpl
 import com.tunein.radiotime.data.repository.PodcastsRepositoryImpl
@@ -31,14 +31,14 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideMainRepository(
-        rawDataMapperImpl: RawDataMapperImpl,
         remoteDataSource: RemoteDataSource,
-        initialDataMapper: Mapper<InitialDataResponseDto, InitialData>,
+        initialDataMapper: Mapper<InitialData, ResponseDto>,
+        rawDataMapper: RawDataMapper,
     ): MainRepository =
         MainRepositoryImpl(
-            rawDataMapperImpl,
             remoteDataSource,
             initialDataMapper,
+            rawDataMapper
         )
 
     /**
