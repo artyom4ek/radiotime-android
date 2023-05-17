@@ -20,6 +20,6 @@ fun NavGraph(
     ) {
         homeNavGraph(data.homeTab)
         radioNavGraph(data.radioTab)
-        podcastNavGraph(data.podcastsTab)
+        podcastsNavGraph(data.podcastsTab)
     }
 }

@@ -2,26 +2,20 @@ package com.tunein.radiotime.data.di
 
 import javax.inject.Singleton
 
-import kotlinx.serialization.json.JsonElement
-
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-import retrofit2.Retrofit
-
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
-import com.tunein.radiotime.data.entity.podcast.PodcastBodyDto
 import com.tunein.radiotime.data.mapper.AudioTabDomainMapper
+import com.tunein.radiotime.data.mapper.PodcastsDomainMapper
 import com.tunein.radiotime.data.mapper.RawDataMapperImpl
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.repository.MainRepositoryImpl
 import com.tunein.radiotime.data.repository.PodcastsRepositoryImpl
 import com.tunein.radiotime.data.repository.RadioRepositoryImpl
-import com.tunein.radiotime.domain.model.AudioTab
-import com.tunein.radiotime.domain.model.Category
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.domain.repository.MainRepository
 import com.tunein.radiotime.domain.repository.PodcastsRepository
@@ -64,8 +58,8 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun providePodcastsRepository(
-        retrofit: Retrofit,
-        podcastsDomainMapper: Mapper<Category, PodcastBodyDto>
+        remoteDataSource: RemoteDataSource,
+        podcastsDomainMapper: PodcastsDomainMapper
     ): PodcastsRepository =
-        PodcastsRepositoryImpl(retrofit, podcastsDomainMapper)
+        PodcastsRepositoryImpl(remoteDataSource, podcastsDomainMapper)
 }

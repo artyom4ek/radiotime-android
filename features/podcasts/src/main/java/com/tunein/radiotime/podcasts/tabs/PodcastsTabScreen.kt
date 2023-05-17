@@ -9,18 +9,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.domain.model.GridItem
 
 @Composable
-fun PodcastTabScreen(items: List<CategoryItem>, onClick: (String) -> Unit) {
+fun PodcastsTabScreen(items: List<GridItem>, onClick: (String) -> Unit) {
     LazyVerticalGrid(
         modifier = Modifier.padding(vertical = 10.dp, horizontal = 15.dp),
         columns = GridCells.Fixed(3),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        items(items) { title ->
-            PodcastTabItem(title, onClick = onClick)
+        items(items) { item ->
+            PodcastsTabScreenItem(item, onClick = onClick)
         }
     }
 }

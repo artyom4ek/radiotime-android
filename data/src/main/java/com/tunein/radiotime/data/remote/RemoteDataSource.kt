@@ -10,5 +10,8 @@ interface RemoteDataSource {
      */
     suspend fun fetchInitialData(): InitialDataResponseDto
 
+    /**
+     * Fetch raw data for mapping into various types
+     */
     suspend fun fetchRawDataByUrl(url: String): ResponseDto
 }

@@ -11,7 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 
 import com.tunein.radiotime.common.mvi.BaseViewModel
 import com.tunein.radiotime.domain.model.BaseTab
-import com.tunein.radiotime.domain.usecase.PodcastsUseCase
+import com.tunein.radiotime.domain.usecase.MainUseCase
 import com.tunein.radiotime.navigation.Navigator
 import com.tunein.radiotime.navigation.destinations.DetailsDestination
 
@@ -19,7 +19,7 @@ import com.tunein.radiotime.navigation.destinations.DetailsDestination
 class DetailsViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val navigator: Navigator,
-    private val podcastsUseCase: PodcastsUseCase
+    private val mainUseCase: MainUseCase
 ) : BaseViewModel<DetailsContract.Event, DetailsContract.State, DetailsContract.Effect>(),
     Navigator by navigator {
 
@@ -51,7 +51,7 @@ class DetailsViewModel @Inject constructor(
             if (detailsUrl == null) {
                 setEffect { DetailsContract.Effect.ShowError(message = "Url must be defined") }
             } else {
-                val data = podcastsUseCase.getParsedData(detailsUrl)
+                val data = mainUseCase.getDetailsData(detailsUrl)
 
                 if (data.isEmpty()) {
                     setState { copy(detailsState = DetailsContract.DetailsState.Empty) }

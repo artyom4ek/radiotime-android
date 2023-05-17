@@ -41,7 +41,7 @@ class MainViewModel @Inject constructor(
             // Populate the Podcasts tab with data
             val podcastsTab = initialData.podcastsTab
             podcastsTab.url?.let {
-                podcastsTab.podcastCategories.addAll(
+                podcastsTab.categories.addAll(
                     podcastsUseCase.getPodcastCategories(it)
                 )
             }

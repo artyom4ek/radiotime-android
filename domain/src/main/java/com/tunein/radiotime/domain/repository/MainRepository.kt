@@ -11,7 +11,7 @@ interface MainRepository {
     suspend fun getInitialData(): InitialData
 
     /**
-     * Get parsed data to initialize Details screen
+     * Get details data to initialize Details screen
      */
-    suspend fun getParsedData(url: String): List<CategoryType>
+    suspend fun getDetailsData(url: String): List<CategoryType>
 }
