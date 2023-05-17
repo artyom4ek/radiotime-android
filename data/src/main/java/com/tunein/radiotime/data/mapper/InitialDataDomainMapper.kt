@@ -1,73 +1,82 @@
 package com.tunein.radiotime.data.mapper
 
-import kotlin.random.Random
-
 import javax.inject.Inject
+
+import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.Json
 
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.ResponseKeys
-import com.tunein.radiotime.data.entity.main.InitialDataResponseDto
-import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.data.entity.response.ItemDto
+import com.tunein.radiotime.data.entity.response.ResponseDto
+import com.tunein.radiotime.domain.model.GridItem
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.domain.model.PodcastsTab
 import com.tunein.radiotime.domain.model.RadioTab
 
 /**
- * Mapper class for convert [InitialDataResponseDto] to [InitialData] and vice versa
+ * Mapper class for convert [ResponseDto] to [InitialData]
  */
-class InitialDataDomainMapper @Inject constructor() : Mapper<InitialDataResponseDto, InitialData> {
+class InitialDataDomainMapper @Inject constructor(
+    private val json: Json
+) : Mapper<InitialData, ResponseDto> {
 
-    override fun from(i: InitialDataResponseDto?): InitialData {
+    override fun from(i: InitialData?): ResponseDto {
+        TODO("Not yet implemented")
+    }
+
+    override fun to(o: ResponseDto?): InitialData {
+        if (o == null) throw Exception("Invalid response")
+
+        val items = o.body?.map { json.decodeFromJsonElement<ItemDto>(it) } ?: emptyList()
 
         // Prepare initial data for Home tab
-        val homeDiscover = mutableListOf<CategoryItem>()
-        i?.body?.forEach {
+        val homeDiscover = mutableListOf<GridItem>()
+        items.forEach {
             when (it.key) {
                 ResponseKeys.MUSIC.key -> homeDiscover.add(
-                    CategoryItem(
-                        title = it.text,
-                        url = it.url,
+                    GridItem(
+                        title = it.text ?: "",
+                        url = it.URL ?: "",
                         icon = R.drawable.ic_music
                     )
                 )
 
                 ResponseKeys.TALK.key -> homeDiscover.add(
-                    CategoryItem(
-                        title = it.text,
-                        url = it.url,
-                        count = Random.nextInt(10, 51), // TODO: should be implemented later
+                    GridItem(
+                        title = it.text ?: "",
+                        url = it.URL ?: "",
                         icon = R.drawable.ic_talk
                     )
                 )
 
                 ResponseKeys.SPORTS.key -> homeDiscover.add(
-                    CategoryItem(
-                        title = it.text,
-                        url = it.url,
-                        count = Random.nextInt(10, 51), // TODO: should be implemented later
+                    GridItem(
+                        title = it.text ?: "",
+                        url = it.URL ?: "",
                         icon = R.drawable.ic_sport
                     )
                 )
             }
         }
 
-        val homeFilters = mutableListOf<CategoryItem>()
-        i?.body?.forEach {
+        val homeFilters = mutableListOf<GridItem>()
+        items.forEach {
             when (it.key) {
                 ResponseKeys.LOCATION.key -> homeFilters.add(
-                    CategoryItem(
-                        title = it.text,
-                        url = it.url,
+                    GridItem(
+                        title = it.text ?: "",
+                        url = it.URL ?: "",
                         icon = R.drawable.ic_location
                     )
                 )
 
                 ResponseKeys.LANGUAGE.key -> homeFilters.add(
-                    CategoryItem(
-                        title = it.text,
-                        url = it.url,
+                    GridItem(
+                        title = it.text ?: "",
+                        url = it.URL ?: "",
                         icon = R.drawable.ic_language
                     )
                 )
@@ -80,25 +89,21 @@ class InitialDataDomainMapper @Inject constructor() : Mapper<InitialDataResponse
         )
 
         // Prepare initial data for Radio tab
-        val radio = i?.body?.find { it.key == ResponseKeys.LOCAL.key }
+        val radio = items.find { it.key == ResponseKeys.LOCAL.key }
         val radioTitle = radio?.text
-        val radioUrl = radio?.url
+        val radioUrl = radio?.URL
         val radioTab = RadioTab(radioTitle, radioUrl)
 
-        // Prepare initial data for Podcast tab
-        val podcast = i?.body?.find { it.key == ResponseKeys.PODCAST.key }
-        val podcastTitle = podcast?.text
-        val podcastUrl = podcast?.url
-        val podcastsTab = PodcastsTab(podcastTitle, podcastUrl)
+        // Prepare initial data for Podcasts tab
+        val podcasts = items.find { it.key == ResponseKeys.PODCAST.key }
+        val podcastTitle = podcasts?.text
+        val podcastsUrl = podcasts?.URL
+        val podcastsTab = PodcastsTab(podcastTitle, podcastsUrl)
 
         return InitialData(
             homeTab = homeTab,
             radioTab = radioTab,
             podcastsTab = podcastsTab
         )
-    }
-
-    override fun to(o: InitialData?): InitialDataResponseDto {
-        return InitialDataResponseDto(emptyList())
     }
 }

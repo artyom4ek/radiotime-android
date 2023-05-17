@@ -13,10 +13,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
-import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.domain.model.GridItem
 
 @Composable
-fun FiltersSection(filters: List<CategoryItem>?, onClick: (String) -> Unit) {
+fun FiltersSection(filters: List<GridItem>?, onClick: (String) -> Unit) {
     if (filters == null) {
         return
     }

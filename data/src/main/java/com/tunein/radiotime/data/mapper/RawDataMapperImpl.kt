@@ -27,7 +27,7 @@ class RawDataMapperImpl @Inject constructor(
     private val listItemDomainMapper: ListItemDomainMapper
 ) : RawDataMapper {
 
-    override fun mapRawData(items: List<JsonElement>?): List<CategoryType> {
+    override fun mapRawDataToDetails(items: List<JsonElement>?): List<CategoryType> {
         return if (parser.checkIfChildrenExists(items)) {
             mapRawBody(items)
         } else {

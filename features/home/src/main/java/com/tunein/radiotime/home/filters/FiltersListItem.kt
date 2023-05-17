@@ -22,11 +22,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
-import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.domain.model.GridItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FiltersListItem(item: CategoryItem, onClick: (String) -> Unit) {
+fun FiltersListItem(item: GridItem, onClick: (String) -> Unit) {
     Card(
         shape = RoundedCornerShape(0),
         modifier = Modifier.height(50.dp),

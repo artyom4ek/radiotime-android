@@ -7,10 +7,10 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 
-import com.tunein.radiotime.domain.model.CategoryItem
+import com.tunein.radiotime.domain.model.GridItem
 
 @Composable
-fun DiscoverGrid(categories: List<CategoryItem>, onClick: (String) -> Unit) {
+fun DiscoverGrid(categories: List<GridItem>, onClick: (String) -> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
