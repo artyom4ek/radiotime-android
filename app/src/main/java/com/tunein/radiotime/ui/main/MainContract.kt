@@ -12,10 +12,14 @@ class MainContract {
 
     sealed class Event : UiEvent {
         object OnInitMainData : Event()
+        class PlayAudio(val url: String) : Event()
+        object StopAudio : Event()
     }
 
     data class State(
         val mainState: MainState,
+        val currentSong: String? = null,
+        val selectedSong: String? = null
     ) : UiState
 
     sealed class MainState {

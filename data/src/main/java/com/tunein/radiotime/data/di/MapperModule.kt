@@ -70,4 +70,9 @@ abstract class MapperModule {
     abstract fun bindsRawDataMapper(
         mapper: RawDataMapperImpl
     ): RawDataMapper
+
+    @Binds
+    abstract fun bindsAudioDataMapper(
+        mapper: AudioDataDomainMapper
+    ): Mapper<String, ResponseDto>
 }
