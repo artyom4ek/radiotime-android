@@ -14,7 +14,7 @@ import com.tunein.radiotime.navigation.NavigatorEvent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(state: MainContract.MainState, navigator: Navigator) {
+fun MainScreen(navigator: Navigator, state: MainContract.MainState, onPlayClick: (String) -> Unit) {
 
     val navController = rememberNavController()
     val bottomBarTabs = listOf(
@@ -58,7 +58,8 @@ fun MainScreen(state: MainContract.MainState, navigator: Navigator) {
                         bottom = paddingValues.calculateBottomPadding()
                     ),
                     navController = navController,
-                    data = state.initialData
+                    data = state.initialData,
+                    onPlayClick = onPlayClick,
                 )
             }
         }

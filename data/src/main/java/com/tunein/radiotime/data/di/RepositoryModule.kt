@@ -14,10 +14,12 @@ import com.tunein.radiotime.data.mapper.PodcastsDomainMapper
 import com.tunein.radiotime.data.mapper.RawDataMapper
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.repository.MainRepositoryImpl
+import com.tunein.radiotime.data.repository.MediaRepositoryImpl
 import com.tunein.radiotime.data.repository.PodcastsRepositoryImpl
 import com.tunein.radiotime.data.repository.RadioRepositoryImpl
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.domain.repository.MainRepository
+import com.tunein.radiotime.domain.repository.MediaRepository
 import com.tunein.radiotime.domain.repository.PodcastsRepository
 import com.tunein.radiotime.domain.repository.RadioRepository
 
@@ -62,4 +64,15 @@ object RepositoryModule {
         podcastsDomainMapper: PodcastsDomainMapper
     ): PodcastsRepository =
         PodcastsRepositoryImpl(remoteDataSource, podcastsDomainMapper)
+
+    /**
+     * Provides [MediaRepository] instance
+     */
+    @Provides
+    @Singleton
+    fun provideMediaRepository(
+        remoteDataSource: RemoteDataSource,
+        audioDataDomainMapper: Mapper<String, ResponseDto>
+    ): MediaRepository =
+        MediaRepositoryImpl(remoteDataSource, audioDataDomainMapper)
 }

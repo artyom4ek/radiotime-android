@@ -61,13 +61,13 @@ fun NavGraphBuilder.homeNavGraph(homeTab: HomeTab) {
     }
 }
 
-fun NavGraphBuilder.radioNavGraph(radioTab: RadioTab) {
+fun NavGraphBuilder.radioNavGraph(radioTab: RadioTab, onPlayClick: (String) -> Unit) {
     navigation(
         route = Graph.RADIO,
         startDestination = BottomBarTab.Radio.route
     ) {
         composable(BottomBarTab.Radio.route) {
-            RadioScreen(radioTab, onPlayClick = {})
+            RadioScreen(radioTab, onPlayClick = onPlayClick)
         }
     }
 }

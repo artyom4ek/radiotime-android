@@ -14,6 +14,7 @@ object Dependencies {
         const val okHttp3 = "4.11.0"
         const val timber = "5.0.1"
         const val coil = "2.3.0"
+        const val media3 = "1.0.2"
         const val jUnit = "4.13.2"
         const val jUnitExt = "1.1.5"
     }
@@ -62,6 +63,9 @@ object Dependencies {
 
     // Coil
     const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
+
+    // Media3
+    const val media3 = "androidx.media3:media3-exoplayer:${Versions.media3}"
 
     // Testing
     const val jUnit = "junit:junit:${Versions.jUnit}"

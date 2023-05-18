@@ -41,7 +41,11 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background
             ) {
-                MainScreen(uiState.value.mainState, navigator)
+                MainScreen(
+                    navigator,
+                    uiState.value.mainState,
+                    onPlayClick = { viewModel.setEvent(MainContract.Event.PlayAudio(it)) }
+                )
             }
         }
     }

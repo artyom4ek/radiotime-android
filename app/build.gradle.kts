@@ -92,6 +92,9 @@ dependencies {
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltAndroidCompiler)
 
+    // Media3
+    implementation(Dependencies.media3)
+
     // Timber
     implementation(Dependencies.timber)
 

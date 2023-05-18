@@ -11,7 +11,8 @@ import com.tunein.radiotime.domain.model.InitialData
 fun NavGraph(
     modifier: Modifier,
     navController: NavHostController,
-    data: InitialData
+    data: InitialData,
+    onPlayClick: (String) -> Unit
 ) {
     NavHost(
         modifier = modifier,
@@ -19,7 +20,7 @@ fun NavGraph(
         startDestination = Graph.HOME
     ) {
         homeNavGraph(data.homeTab)
-        radioNavGraph(data.radioTab)
+        radioNavGraph(data.radioTab, onPlayClick)
         podcastsNavGraph(data.podcastsTab)
     }
 }
