@@ -26,7 +26,7 @@ object Graph {
     const val PODCASTS = "podcasts_graph"
 }
 
-fun NavGraphBuilder.homeNavGraph(homeTab: HomeTab) {
+fun NavGraphBuilder.homeNavGraph(homeTab: HomeTab, onPlayClick: (AudioItem) -> Unit) {
     navigation(
         route = Graph.HOME,
         startDestination = BottomBarTab.Home.route
@@ -48,9 +48,9 @@ fun NavGraphBuilder.homeNavGraph(homeTab: HomeTab) {
             DetailsScreen(
                 uiState.value.detailsState,
                 onBackPress = { viewModel.navigateUp() },
-                onClickItem = { url, isAudio ->
-                    if (isAudio) {
-                        // Audio
+                onClickItem = { url, audioItem ->
+                    if (audioItem != null) {
+                        onPlayClick(audioItem)
                     } else {
                         viewModel.navigate(
                             DetailsDestination.createDetailsRoute(Graph.HOME, url.encodeUrl())
@@ -62,18 +62,24 @@ fun NavGraphBuilder.homeNavGraph(homeTab: HomeTab) {
     }
 }
 
-fun NavGraphBuilder.radioNavGraph(radioTab: RadioTab, onPlayClick: (AudioItem) -> Unit) {
+fun NavGraphBuilder.radioNavGraph(
+    radioTab: RadioTab,
+    onPlayClick: (AudioItem) -> Unit
+) {
     navigation(
         route = Graph.RADIO,
         startDestination = BottomBarTab.Radio.route
     ) {
         composable(BottomBarTab.Radio.route) {
-            RadioScreen(radioTab, onPlayClick = onPlayClick)
+            RadioScreen(
+                radioTab = radioTab,
+                onPlayClick = onPlayClick
+            )
         }
     }
 }
 
-fun NavGraphBuilder.podcastsNavGraph(podcastsTab: PodcastsTab) {
+fun NavGraphBuilder.podcastsNavGraph(podcastsTab: PodcastsTab, onPlayClick: (AudioItem) -> Unit) {
     navigation(
         route = Graph.PODCASTS,
         startDestination = BottomBarTab.Podcasts.route
@@ -95,9 +101,9 @@ fun NavGraphBuilder.podcastsNavGraph(podcastsTab: PodcastsTab) {
             DetailsScreen(
                 uiState.value.detailsState,
                 onBackPress = { viewModel.navigateUp() },
-                onClickItem = { url, isAudio ->
-                    if (isAudio) {
-                        // Audio
+                onClickItem = { url, audioItem ->
+                    if (audioItem != null) {
+                        onPlayClick(audioItem)
                     } else {
                         viewModel.navigate(
                             DetailsDestination.createDetailsRoute(Graph.PODCASTS, url.encodeUrl())

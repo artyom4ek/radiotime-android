@@ -30,8 +30,8 @@ import com.tunein.radiotime.domain.model.AudioItem
 
 @Composable
 fun AudioListItem(
-    categoryItem: AudioItem,
-    onPlayClick: (String, Boolean) -> Unit
+    audioItem: AudioItem,
+    onPlayClick: (String, AudioItem?) -> Unit
 ) {
     Row(
         modifier = Modifier.padding(end = 5.dp),
@@ -42,11 +42,11 @@ fun AudioListItem(
                 .size(56.dp)
                 .clip(RoundedCornerShape(10.dp)),
             model = ImageRequest.Builder(LocalContext.current)
-                .data(categoryItem.cover)
+                .data(audioItem.cover)
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.audio_placeholder),
-            contentDescription = categoryItem.title,
+            contentDescription = audioItem.title,
         )
 
         Column(
@@ -55,20 +55,20 @@ fun AudioListItem(
                 .padding(horizontal = 10.dp)
         ) {
             Text(
-                text = categoryItem.title,
+                text = audioItem.title,
                 color = Color.DarkGray,
                 fontSize = 14.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = categoryItem.subTitle!!,
+                text = audioItem.subTitle!!,
                 color = Color.DarkGray,
                 fontSize = 11.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            categoryItem.track?.let {
+            audioItem.track?.let {
                 Spacer(Modifier.size(2.dp))
                 Text(
                     text = stringResource(
@@ -86,7 +86,7 @@ fun AudioListItem(
             modifier = Modifier
                 .size(32.dp)
                 .clickable {
-                    onPlayClick(categoryItem.url, true)
+                    onPlayClick(audioItem.url, audioItem)
                 },
             painter = painterResource(id = R.drawable.ic_play_circle),
             contentDescription = stringResource(id = R.string.play),
