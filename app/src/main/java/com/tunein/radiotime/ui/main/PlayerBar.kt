@@ -27,7 +27,6 @@ fun PlayerBar(
     onPlayClick: (AudioItem) -> Unit,
     onCloseClick: () -> Unit
 ) {
-    if (audioItem == null) return
 
     val playPauseIcon = if (isPlaying) R.drawable.ic_play_arrow else R.drawable.ic_pause
 
@@ -49,7 +48,9 @@ fun PlayerBar(
                     contentDescription = stringResource(id = R.string.play),
                     modifier = Modifier
                         .size(24.dp)
-                        .clickable { onPlayClick(audioItem) }
+                        .clickable {
+                            if (audioItem != null) onPlayClick(audioItem)
+                        }
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Column(
@@ -58,13 +59,13 @@ fun PlayerBar(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = audioItem.title,
+                        text = audioItem?.title ?: "",
                         fontSize = 16.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                     Text(
-                        text = audioItem.track ?: "",
+                        text = audioItem?.track ?: "",
                         color = Color.Gray,
                         fontSize = 14.sp,
                         maxLines = 1,
