@@ -86,12 +86,12 @@ fun MainScreen(
                     )
                 }
             }
-            
+
             AnimatedVisibility(
                 modifier = Modifier
                     .padding(bottom = paddingValues.calculateBottomPadding())
                     .align(Alignment.BottomCenter),
-                visible = state.isPlayerBarVisible,
+                visible = state.audioItem != null,
                 enter = fadeIn() + expandVertically(),
                 exit = fadeOut() + shrinkVertically()
             ) {

@@ -23,7 +23,6 @@ class MainContract {
         val currentTrack: String? = null,
         val selectedTrack: String? = null,
         val isPlaying: Boolean = false,
-        val isPlayerBarVisible: Boolean = false,
         val audioItem: AudioItem? = null,
     ) : UiState
 
