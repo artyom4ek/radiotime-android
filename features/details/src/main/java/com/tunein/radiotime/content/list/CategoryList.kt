@@ -7,10 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.common.component.EmptyScreen
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.ListItem
 
 @Composable
-fun CategoryList(categoryItems: List<ListItem>, onClick: (String, Boolean) -> Unit) {
+fun CategoryList(categoryItems: List<ListItem>, onClick: (String, AudioItem?) -> Unit) {
     if (categoryItems.isEmpty()) {
         EmptyScreen()
         return

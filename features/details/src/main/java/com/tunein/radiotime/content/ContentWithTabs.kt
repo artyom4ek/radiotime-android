@@ -16,6 +16,7 @@ import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.content.audio.AudioList
 import com.tunein.radiotime.content.grid.CategoryGrid
 import com.tunein.radiotime.content.list.CategoryList
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.BaseTab
 import com.tunein.radiotime.domain.model.GridTab
@@ -25,7 +26,7 @@ import com.tunein.radiotime.domain.model.ListTab
 @Composable
 fun ContentWithTabs(
     tabs: List<BaseTab>,
-    onClick: (String, Boolean) -> Unit
+    onClick: (String, AudioItem?) -> Unit
 ) {
     if (tabs.isEmpty()) {
         EmptyScreen()

@@ -13,13 +13,14 @@ import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.component.ContentWithProgress
 import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.common.component.Toolbar
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.BaseTab
 
 @Composable
 fun DetailsScreen(
     state: DetailsContract.DetailsState,
     onBackPress: () -> Unit,
-    onClickItem: (String, Boolean) -> Unit
+    onClickItem: (String, AudioItem?) -> Unit
 ) {
     Column(modifier = Modifier.padding(vertical = 20.dp, horizontal = 15.dp)) {
         Toolbar(

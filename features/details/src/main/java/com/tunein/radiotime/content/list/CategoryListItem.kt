@@ -27,14 +27,15 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 import com.tunein.radiotime.common.R
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.ListItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryListItem(categoryItem: ListItem, onClick: (String, Boolean) -> Unit) {
+fun CategoryListItem(categoryItem: ListItem, onClick: (String, AudioItem?) -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        onClick = { onClick(categoryItem.url, false) }
+        onClick = { onClick(categoryItem.url, null) }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically

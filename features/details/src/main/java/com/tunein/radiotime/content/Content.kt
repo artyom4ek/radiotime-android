@@ -14,7 +14,7 @@ import com.tunein.radiotime.domain.model.CategoryType
 @Composable
 fun Content(
     items: List<CategoryType>,
-    onClick: (String, Boolean) -> Unit
+    onClick: (String, AudioItem?) -> Unit
 ) {
     if (items.isNotEmpty()) {
         when (items[0]) {

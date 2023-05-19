@@ -16,14 +16,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.GridItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryGridItem(categoryItem: GridItem, onClick: (String, Boolean) -> Unit) {
+fun CategoryGridItem(categoryItem: GridItem, onClick: (String, AudioItem?) -> Unit) {
     Card(
         modifier = Modifier.size(120.dp),
-        onClick = { onClick(categoryItem.url, false) }
+        onClick = { onClick(categoryItem.url, null) }
     ) {
         Column(
             modifier = Modifier

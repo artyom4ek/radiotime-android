@@ -20,8 +20,8 @@ fun NavGraph(
         navController = navController,
         startDestination = Graph.HOME
     ) {
-        homeNavGraph(data.homeTab)
+        homeNavGraph(data.homeTab, onPlayClick)
         radioNavGraph(data.radioTab, onPlayClick)
-        podcastsNavGraph(data.podcastsTab)
+        podcastsNavGraph(data.podcastsTab, onPlayClick)
     }
 }
