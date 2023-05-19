@@ -3,6 +3,7 @@ package com.tunein.radiotime.ui.main
 import com.tunein.radiotime.common.mvi.UiEffect
 import com.tunein.radiotime.common.mvi.UiEvent
 import com.tunein.radiotime.common.mvi.UiState
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.InitialData
 
 /**
@@ -12,14 +13,18 @@ class MainContract {
 
     sealed class Event : UiEvent {
         object OnInitMainData : Event()
-        class PlayAudio(val url: String) : Event()
+        class PlayAudio(val audioItem: AudioItem) : Event()
         object StopAudio : Event()
+        object ReleasePlayer : Event()
     }
 
     data class State(
         val mainState: MainState,
-        val currentSong: String? = null,
-        val selectedSong: String? = null
+        val currentTrack: String? = null,
+        val selectedTrack: String? = null,
+        val isPlaying: Boolean = false,
+        val isPlayerBarVisible: Boolean = false,
+        val audioItem: AudioItem? = null,
     ) : UiState
 
     sealed class MainState {

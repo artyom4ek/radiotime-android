@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.InitialData
 
 @Composable
@@ -12,7 +13,7 @@ fun NavGraph(
     modifier: Modifier,
     navController: NavHostController,
     data: InitialData,
-    onPlayClick: (String) -> Unit
+    onPlayClick: (AudioItem) -> Unit
 ) {
     NavHost(
         modifier = modifier,

@@ -9,6 +9,7 @@ import androidx.navigation.navigation
 import com.tunein.radiotime.common.extentions.encodeUrl
 import com.tunein.radiotime.content.DetailsScreen
 import com.tunein.radiotime.content.DetailsViewModel
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.domain.model.PodcastsTab
 import com.tunein.radiotime.domain.model.RadioTab
@@ -61,7 +62,7 @@ fun NavGraphBuilder.homeNavGraph(homeTab: HomeTab) {
     }
 }
 
-fun NavGraphBuilder.radioNavGraph(radioTab: RadioTab, onPlayClick: (String) -> Unit) {
+fun NavGraphBuilder.radioNavGraph(radioTab: RadioTab, onPlayClick: (AudioItem) -> Unit) {
     navigation(
         route = Graph.RADIO,
         startDestination = BottomBarTab.Radio.route
