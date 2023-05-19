@@ -1,14 +1,15 @@
 package com.tunein.radiotime.ui.main
 
-import javax.inject.Inject
-
 import androidx.lifecycle.viewModelScope
+
+import javax.inject.Inject
 
 import kotlinx.coroutines.launch
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 import com.tunein.radiotime.common.mvi.BaseViewModel
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.usecase.MainUseCase
 import com.tunein.radiotime.domain.usecase.MediaUseCase
 import com.tunein.radiotime.domain.usecase.PodcastsUseCase
@@ -31,8 +32,6 @@ class MainViewModel @Inject constructor(
     override fun createInitialState(): MainContract.State {
         return MainContract.State(
             mainState = MainContract.MainState.Loading,
-            currentSong = null,
-            selectedSong = null
         )
     }
 
@@ -43,11 +42,15 @@ class MainViewModel @Inject constructor(
             }
 
             is MainContract.Event.PlayAudio -> {
-                playAudio(event.url)
+                playAudio(event.audioItem)
             }
 
             MainContract.Event.StopAudio -> {
                 stopAudio()
+            }
+
+            MainContract.Event.ReleasePlayer -> {
+                releasePlayer()
             }
         }
     }
@@ -78,24 +81,44 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun playAudio(url: String) {
+    private fun playAudio(audioItem: AudioItem) {
         viewModelScope.launch {
-            uiState.value.currentSong?.let { playbackManager.stop() }
-
-            val audioUrl = mediaUseCase.getAudioData(url)
-            playbackManager.play(audioUrl)
-
-            setSong(url)
+            val currentTrack = uiState.value.currentTrack
+            val isPlaying = uiState.value.isPlaying
+            val isPlayerBarVisible = uiState.value.isPlayerBarVisible
+            if (currentTrack == audioItem.url) {
+                if (isPlaying) {
+                    playbackManager.play()
+                } else {
+                    playbackManager.pause()
+                }
+                setState { copy(isPlaying = !isPlaying) }
+            } else {
+                currentTrack?.let { playbackManager.stop() }
+                val audioUrl = mediaUseCase.getAudioData(audioItem.url)
+                playbackManager.play(audioUrl)
+                if (!isPlayerBarVisible) {
+                    setState { copy(isPlayerBarVisible = true) }
+                }
+                setState { copy(audioItem = audioItem) }
+                setTrack(audioItem.url)
+            }
         }
     }
 
     private fun stopAudio() {
         playbackManager.stop()
-        setSong(null)
+        setState { copy(isPlayerBarVisible = false) }
+        setState { copy(isPlaying = false) }
+        setTrack(null)
     }
 
-    private fun setSong(url: String?) {
-        setState { copy(currentSong = url) }
-        setState { copy(selectedSong = url) }
+    private fun setTrack(url: String?) {
+        setState { copy(currentTrack = url) }
+        setState { copy(selectedTrack = url) }
+    }
+
+    private fun releasePlayer() {
+        playbackManager.release()
     }
 }

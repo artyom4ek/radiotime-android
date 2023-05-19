@@ -18,7 +18,7 @@ class AudioItemDomainMapper @Inject constructor() : Mapper<AudioItem?, ItemDto> 
                 title = it.text ?: "",
                 subTitle = it.subtext ?: "",
                 url = it.URL ?: "",
-                track = it.current_track ?: o.playing ?: "",
+                track = it.current_track ?: o.playing ?: it.subtext ?: "",
                 cover = it.image
             )
         }

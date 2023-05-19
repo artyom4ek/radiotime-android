@@ -15,10 +15,11 @@ import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.component.EmptyScreen
+import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.RadioTab
 
 @Composable
-fun RadioScreen(radioTab: RadioTab, onPlayClick: (String) -> Unit) {
+fun RadioScreen(radioTab: RadioTab, onPlayClick: (AudioItem) -> Unit) {
 
     // Display an Empty Screen if the list is empty
     if (radioTab.stations.isEmpty()) {

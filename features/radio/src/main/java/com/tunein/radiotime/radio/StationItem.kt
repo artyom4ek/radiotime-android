@@ -30,7 +30,7 @@ import com.tunein.radiotime.domain.model.AudioItem
 @Composable
 fun StationItem(
     station: AudioItem,
-    onPlayClick: (String) -> Unit
+    onPlayClick: (AudioItem) -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically
@@ -72,7 +72,7 @@ fun StationItem(
             modifier = Modifier
                 .size(32.dp)
                 .clickable {
-                    onPlayClick(station.url)
+                    onPlayClick(station)
                 },
             painter = painterResource(id = R.drawable.ic_play_circle),
             contentDescription = stringResource(id = R.string.play),

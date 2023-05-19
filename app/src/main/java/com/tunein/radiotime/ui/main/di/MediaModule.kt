@@ -1,7 +1,5 @@
 package com.tunein.radiotime.ui.main.di
 
-import javax.inject.Singleton
-
 import android.content.Context
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
@@ -21,12 +19,10 @@ import com.tunein.radiotime.ui.main.media.PlaybackManager
 object MediaModule {
 
     @Provides
-    @Singleton
     fun provideExoPlayer(@ApplicationContext context: Context): ExoPlayer =
         ExoPlayer.Builder(context).build()
 
     @Provides
-    @Singleton
     fun provideExoPlayerPlaybackManager(player: ExoPlayer): PlaybackManager =
         ExoPlayerPlaybackManager(player)
 }

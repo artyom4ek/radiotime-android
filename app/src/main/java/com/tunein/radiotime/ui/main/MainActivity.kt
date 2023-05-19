@@ -43,8 +43,10 @@ class MainActivity : ComponentActivity() {
             ) {
                 MainScreen(
                     navigator,
-                    uiState.value.mainState,
-                    onPlayClick = { viewModel.setEvent(MainContract.Event.PlayAudio(it)) }
+                    uiState.value,
+                    onPlayClick = { viewModel.setEvent(MainContract.Event.PlayAudio(it)) },
+                    onClosePlayerBar = { viewModel.setEvent(MainContract.Event.StopAudio) },
+                    onReleasePlayer = { viewModel.setEvent(MainContract.Event.ReleasePlayer) }
                 )
             }
         }
