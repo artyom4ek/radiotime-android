@@ -9,10 +9,20 @@ import androidx.compose.ui.unit.dp
 import com.tunein.radiotime.domain.model.AudioItem
 
 @Composable
-fun StationList(stations: List<AudioItem>, onPlayClick: (AudioItem) -> Unit) {
+fun StationList(
+    stations: List<AudioItem>,
+    currentStation: String?,
+    isPlaying: Boolean,
+    onPlayClick: (AudioItem) -> Unit
+) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         items(stations) { station ->
-            StationItem(station = station, onPlayClick = onPlayClick)
+            StationItem(
+                station = station,
+                currentStation = currentStation,
+                isPlaying = isPlaying,
+                onPlayClick = onPlayClick
+            )
         }
     }
 }

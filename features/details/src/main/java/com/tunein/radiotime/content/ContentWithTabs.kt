@@ -26,7 +26,9 @@ import com.tunein.radiotime.domain.model.ListTab
 @Composable
 fun ContentWithTabs(
     tabs: List<BaseTab>,
-    onClick: (String, AudioItem?) -> Unit
+    currentAudioItem: String?,
+    isPlaying: Boolean,
+    onClick: (String, AudioItem?) -> Unit,
 ) {
     if (tabs.isEmpty()) {
         EmptyScreen()
@@ -71,7 +73,9 @@ fun ContentWithTabs(
 
                 is AudioTab -> {
                     AudioList(
-                        categoryItems = baseTab.items,
+                        audioItems = baseTab.items,
+                        currentAudioItem = currentAudioItem,
+                        isPlaying = isPlaying,
                         onPlayClick = onClick
                     )
                 }

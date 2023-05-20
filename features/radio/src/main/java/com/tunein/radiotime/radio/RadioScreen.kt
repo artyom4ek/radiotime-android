@@ -19,7 +19,12 @@ import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.RadioTab
 
 @Composable
-fun RadioScreen(radioTab: RadioTab, onPlayClick: (AudioItem) -> Unit) {
+fun RadioScreen(
+    radioTab: RadioTab,
+    currentStation: String?,
+    isPlaying: Boolean,
+    onPlayClick: (AudioItem) -> Unit,
+) {
 
     // Display an Empty Screen if the list is empty
     if (radioTab.stations.isEmpty()) {
@@ -41,6 +46,11 @@ fun RadioScreen(radioTab: RadioTab, onPlayClick: (AudioItem) -> Unit) {
             )
         }
         Spacer(modifier = Modifier.size(20.dp))
-        StationList(stations = radioTab.stations, onPlayClick = onPlayClick)
+        StationList(
+            stations = radioTab.stations,
+            currentStation = currentStation,
+            isPlaying = isPlaying,
+            onPlayClick = onPlayClick
+        )
     }
 }
