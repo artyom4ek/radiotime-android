@@ -10,15 +10,25 @@ import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.AudioItem
 
 @Composable
-fun AudioList(categoryItems: List<AudioItem>, onPlayClick: (String, AudioItem?) -> Unit) {
-    if (categoryItems.isEmpty()) {
+fun AudioList(
+    audioItems: List<AudioItem>,
+    currentAudioItem: String?,
+    isPlaying: Boolean,
+    onPlayClick: (String, AudioItem?) -> Unit,
+) {
+    if (audioItems.isEmpty()) {
         EmptyScreen()
         return
     }
 
     LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        items(categoryItems) { categoryItem ->
-            AudioListItem(audioItem = categoryItem, onPlayClick = onPlayClick)
+        items(audioItems) { audioItem ->
+            AudioListItem(
+                audioItem = audioItem,
+                currentAudioItem = currentAudioItem,
+                isPlaying = isPlaying,
+                onPlayClick = onPlayClick
+            )
         }
     }
 }

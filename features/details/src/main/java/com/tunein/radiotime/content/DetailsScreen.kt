@@ -16,9 +16,12 @@ import com.tunein.radiotime.common.component.Toolbar
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.BaseTab
 
+@Suppress("UNCHECKED_CAST")
 @Composable
 fun DetailsScreen(
     state: DetailsContract.DetailsState,
+    currentAudioItem: String?,
+    isPlaying: Boolean,
     onBackPress: () -> Unit,
     onClickItem: (String, AudioItem?) -> Unit
 ) {
@@ -43,12 +46,16 @@ fun DetailsScreen(
                 if (hasTabs) {
                     ContentWithTabs(
                         tabs = items as List<BaseTab>,
+                        currentAudioItem = currentAudioItem,
+                        isPlaying = isPlaying,
                         onClick = onClickItem
                     )
                 } else {
                     Spacer(modifier = Modifier.height(20.dp))
                     Content(
                         items = items,
+                        currentAudioItem = currentAudioItem,
+                        isPlaying = isPlaying,
                         onClick = onClickItem
                     )
                 }

@@ -33,8 +33,7 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun MainContent(navigator: Navigator) {
-        val viewModel: MainViewModel = hiltViewModel()
-        val uiState = viewModel.uiState.collectAsState()
+        val mainViewModel: MainViewModel = hiltViewModel()
 
         RadiotimeTheme {
             Surface(
@@ -42,11 +41,11 @@ class MainActivity : ComponentActivity() {
                 color = MaterialTheme.colorScheme.background
             ) {
                 MainScreen(
-                    navigator,
-                    uiState.value,
-                    onPlayClick = { viewModel.setEvent(MainContract.Event.PlayAudio(it)) },
-                    onClosePlayerBar = { viewModel.setEvent(MainContract.Event.StopAudio) },
-                    onReleasePlayer = { viewModel.setEvent(MainContract.Event.ReleasePlayer) }
+                    navigator = navigator,
+                    mainViewModel = mainViewModel,
+                    onPlayClick = { mainViewModel.setEvent(MainContract.Event.PlayAudio(it)) },
+                    onClosePlayerBar = { mainViewModel.setEvent(MainContract.Event.StopAudio) },
+                    onReleasePlayer = { mainViewModel.setEvent(MainContract.Event.ReleasePlayer) }
                 )
             }
         }

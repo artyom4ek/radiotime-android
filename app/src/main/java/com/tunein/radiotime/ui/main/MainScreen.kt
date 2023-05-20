@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
@@ -26,18 +27,61 @@ import com.tunein.radiotime.navigation.NavigatorEvent
 @Composable
 fun MainScreen(
     navigator: Navigator,
-    state: MainContract.State,
+    mainViewModel: MainViewModel,
     onPlayClick: (AudioItem) -> Unit,
     onClosePlayerBar: () -> Unit,
     onReleasePlayer: () -> Unit
 ) {
-
     val navController = rememberNavController()
+    val mainState = mainViewModel.uiState.collectAsState().value
     val bottomBarTabs = listOf(
         BottomBarTab.Home,
         BottomBarTab.Radio,
         BottomBarTab.Podcasts,
     )
+
+    Scaffold(
+        bottomBar = {
+            BottomBar(navController = navController, bottomBarTabs)
+        }
+    ) { paddingValues ->
+        Box(Modifier.fillMaxSize()) {
+            when (mainState.mainState) {
+                MainContract.MainState.Loading -> {
+                    ContentWithProgress()
+                }
+
+                is MainContract.MainState.Success -> {
+                    NavGraph(
+                        modifier = Modifier.padding(
+                            bottom = paddingValues.calculateBottomPadding()
+                        ),
+                        navController = navController,
+                        mainViewModel = mainViewModel,
+                        initialData = mainState.mainState.initialData,
+                        onPlayClick = onPlayClick,
+                    )
+                }
+            }
+
+            AnimatedVisibility(
+                modifier = Modifier
+                    .padding(bottom = paddingValues.calculateBottomPadding())
+                    .align(Alignment.BottomCenter),
+                visible = mainState.audioItem != null,
+                enter = fadeIn() + expandVertically(),
+                exit = fadeOut() + shrinkVertically()
+            ) {
+                PlayerBar(
+                    audioItem = mainState.audioItem,
+                    isPlaying = mainState.isPlaying,
+                    onPlayClick = onPlayClick,
+                    onCloseClick = onClosePlayerBar
+                )
+            }
+        }
+    }
+
 
     LaunchedEffect(navController) {
         navigator.destinations.collect {
@@ -61,47 +105,6 @@ fun MainScreen(
     DisposableEffect(Unit) {
         onDispose {
             onReleasePlayer()
-        }
-    }
-
-    Scaffold(
-        bottomBar = {
-            BottomBar(navController = navController, bottomBarTabs)
-        }
-    ) { paddingValues ->
-        Box(Modifier.fillMaxSize()) {
-            when (state.mainState) {
-                MainContract.MainState.Loading -> {
-                    ContentWithProgress()
-                }
-
-                is MainContract.MainState.Success -> {
-                    NavGraph(
-                        modifier = Modifier.padding(
-                            bottom = paddingValues.calculateBottomPadding()
-                        ),
-                        navController = navController,
-                        data = state.mainState.initialData,
-                        onPlayClick = onPlayClick,
-                    )
-                }
-            }
-
-            AnimatedVisibility(
-                modifier = Modifier
-                    .padding(bottom = paddingValues.calculateBottomPadding())
-                    .align(Alignment.BottomCenter),
-                visible = state.audioItem != null,
-                enter = fadeIn() + expandVertically(),
-                exit = fadeOut() + shrinkVertically()
-            ) {
-                PlayerBar(
-                    audioItem = state.audioItem,
-                    isPlaying = state.isPlaying,
-                    onPlayClick = onPlayClick,
-                    onCloseClick = onClosePlayerBar
-                )
-            }
         }
     }
 }

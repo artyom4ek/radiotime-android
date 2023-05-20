@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,8 +31,14 @@ import com.tunein.radiotime.domain.model.AudioItem
 @Composable
 fun StationItem(
     station: AudioItem,
+    currentStation: String?,
+    isPlaying: Boolean,
     onPlayClick: (AudioItem) -> Unit
 ) {
+    val isSelected = currentStation != null && currentStation == station.url && !isPlaying
+    val playPauseIcon = if (isSelected) R.drawable.ic_pause_circle else R.drawable.ic_play_circle
+    val iconTintColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
+
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -74,9 +81,9 @@ fun StationItem(
                 .clickable {
                     onPlayClick(station)
                 },
-            painter = painterResource(id = R.drawable.ic_play_circle),
+            painter = painterResource(id = playPauseIcon),
             contentDescription = stringResource(id = R.string.play),
-            tint = Color.Gray
+            tint = iconTintColor
         )
     }
 }
