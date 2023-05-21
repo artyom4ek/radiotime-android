@@ -1,14 +1,18 @@
 package com.tunein.radiotime.ui.main
 
+import timber.log.Timber
+
 import androidx.lifecycle.viewModelScope
 
 import javax.inject.Inject
 
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 import com.tunein.radiotime.common.mvi.BaseViewModel
+import com.tunein.radiotime.common.utils.Resource
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.usecase.MainUseCase
 import com.tunein.radiotime.domain.usecase.MediaUseCase
@@ -58,26 +62,46 @@ class MainViewModel @Inject constructor(
     private fun prepareInitialData() {
         viewModelScope.launch {
 
-            // Get initial data with tabs info
-            val initialData = mainUseCase.getInitialData()
+            mainUseCase.getInitialData()
+                .onStart { emit(Resource.Loading) }
+                .collect {
+                    when (it) {
+                        is Resource.Loading -> {
+                            setState { copy(mainState = MainContract.MainState.Loading) }
+                        }
 
-            // Populate the Radio tab with data
-            val radioTab = initialData.radioTab
-            radioTab.url?.let {
-                radioTab.stations.addAll(
-                    radioUseCase.getRadioStations(it)
-                )
-            }
+                        is Resource.Success -> {
+                            // Get initial data with tabs info
+                            val initialData = it.data
 
-            // Populate the Podcasts tab with data
-            val podcastsTab = initialData.podcastsTab
-            podcastsTab.url?.let {
-                podcastsTab.categories.addAll(
-                    podcastsUseCase.getPodcastCategories(it)
-                )
-            }
+                            // Populate the Radio tab with data
+                            val radioTab = initialData.radioTab
+                            radioTab.url?.let {
+                                radioTab.stations.addAll(
+                                    radioUseCase.getRadioStations(it)
+                                )
+                            }
 
-            setState { copy(mainState = MainContract.MainState.Success(initialData)) }
+                            // Populate the Podcasts tab with data
+                            val podcastsTab = initialData.podcastsTab
+                            podcastsTab.url?.let {
+                                podcastsTab.categories.addAll(
+                                    podcastsUseCase.getPodcastCategories(it)
+                                )
+                            }
+
+                            setState { copy(mainState = MainContract.MainState.Success(initialData)) }
+                        }
+
+                        is Resource.Error -> {
+                            setEffect { MainContract.Effect.ShowError(message = it.exception.message) }
+                        }
+
+                        else -> {
+                            Timber.d(it.toString())
+                        }
+                    }
+                }
         }
     }
 

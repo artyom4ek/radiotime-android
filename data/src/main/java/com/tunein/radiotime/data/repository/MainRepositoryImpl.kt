@@ -3,10 +3,13 @@ package com.tunein.radiotime.data.repository
 import javax.inject.Inject
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.Constants
+import com.tunein.radiotime.common.utils.Resource
 import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.data.mapper.RawDataMapper
 import com.tunein.radiotime.data.remote.RemoteDataSource
@@ -20,10 +23,17 @@ class MainRepositoryImpl @Inject constructor(
     private val rawDataToDetailsMapper: RawDataMapper,
 ) : MainRepository {
 
-    override suspend fun getInitialData(): InitialData = withContext(Dispatchers.IO) {
-        val response = remoteDataSource.fetchRawDataByUrl(Constants.BASE_URL)
-        return@withContext initialDataMapper.to(response)
-    }
+    override suspend fun getInitialData(): Flow<Resource<InitialData>> =
+        withContext(Dispatchers.IO) {
+            flow {
+                try {
+                    val response = remoteDataSource.fetchRawDataByUrl(Constants.BASE_URL)
+                    emit(Resource.Success(initialDataMapper.to(response)))
+                } catch (ex: Exception) {
+                    emit(Resource.Error(ex))
+                }
+            }
+        }
 
     override suspend fun getDetailsData(url: String): List<CategoryType> =
         withContext(Dispatchers.IO) {
