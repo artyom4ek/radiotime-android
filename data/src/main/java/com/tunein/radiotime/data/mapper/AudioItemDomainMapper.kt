@@ -3,7 +3,7 @@ package com.tunein.radiotime.data.mapper
 import javax.inject.Inject
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.response.ItemDto
+import com.tunein.radiotime.data.entity.ItemDto
 import com.tunein.radiotime.domain.model.AudioItem
 
 class AudioItemDomainMapper @Inject constructor() : Mapper<AudioItem?, ItemDto> {

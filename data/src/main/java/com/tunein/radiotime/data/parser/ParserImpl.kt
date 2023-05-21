@@ -6,7 +6,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.jsonObject
 
 import com.tunein.radiotime.common.utils.ContentType
-import com.tunein.radiotime.data.entity.response.ItemDto
+import com.tunein.radiotime.data.entity.ItemDto
 
 class ParserImpl @Inject constructor() : Parser {
 

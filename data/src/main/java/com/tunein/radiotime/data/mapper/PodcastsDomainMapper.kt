@@ -10,7 +10,7 @@ import kotlinx.serialization.json.jsonObject
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.ResponseKeys
-import com.tunein.radiotime.data.entity.response.BodyDto
+import com.tunein.radiotime.data.entity.BodyDto
 import com.tunein.radiotime.domain.model.GridItem
 import com.tunein.radiotime.domain.model.GridTab
 

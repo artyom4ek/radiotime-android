@@ -8,8 +8,8 @@ import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonObject
 
 import com.tunein.radiotime.common.utils.ContentType
-import com.tunein.radiotime.data.entity.response.BodyDto
-import com.tunein.radiotime.data.entity.response.ItemDto
+import com.tunein.radiotime.data.entity.BodyDto
+import com.tunein.radiotime.data.entity.ItemDto
 import com.tunein.radiotime.data.parser.BodyFields
 import com.tunein.radiotime.data.parser.Parser
 import com.tunein.radiotime.domain.model.BaseTab

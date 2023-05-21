@@ -30,7 +30,8 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":common"))
+    
     // Hilt
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltAndroidCompiler)

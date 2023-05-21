@@ -7,7 +7,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.decodeFromJsonElement
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.response.BodyDto
+import com.tunein.radiotime.data.entity.BodyDto
 import com.tunein.radiotime.domain.model.ListTab
 
 class ListTabDomainMapper @Inject constructor(
