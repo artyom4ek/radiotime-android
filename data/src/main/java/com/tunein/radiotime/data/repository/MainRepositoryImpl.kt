@@ -35,9 +35,21 @@ class MainRepositoryImpl @Inject constructor(
             }
         }
 
-    override suspend fun getDetailsData(url: String): List<CategoryType> =
+    override suspend fun getDetailsData(url: String): Flow<Resource<List<CategoryType>>> =
         withContext(Dispatchers.IO) {
-            val rawData = remoteDataSource.fetchRawDataByUrl(url).body
-            return@withContext rawDataToDetailsMapper.mapRawDataToDetails(rawData)
+            flow {
+                try {
+                    val rawData = remoteDataSource.fetchRawDataByUrl(url).body
+                    val detailsData = rawDataToDetailsMapper.mapRawDataToDetails(rawData)
+                    if (detailsData.isEmpty()) {
+                        emit(Resource.Empty)
+                    } else {
+                        emit(Resource.Success(rawDataToDetailsMapper.mapRawDataToDetails(rawData)))
+                    }
+                } catch (ex: Exception) {
+                    emit(Resource.Empty)
+                    emit(Resource.Error(ex))
+                }
+            }
         }
 }

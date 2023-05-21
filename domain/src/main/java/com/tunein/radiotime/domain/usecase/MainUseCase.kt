@@ -17,7 +17,7 @@ class MainUseCase @Inject constructor(
         return mainRepository.getInitialData()
     }
 
-    suspend fun getDetailsData(url: String): List<CategoryType> {
+    suspend fun getDetailsData(url: String): Flow<Resource<List<CategoryType>>> {
         return mainRepository.getDetailsData(url)
     }
 }
