@@ -1,4 +1,4 @@
-package com.tunein.radiotime.data.entity.response
+package com.tunein.radiotime.data.entity
 
 import kotlinx.serialization.Serializable
 

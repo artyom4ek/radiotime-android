@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 import com.tunein.radiotime.data.api.ApiService
-import com.tunein.radiotime.data.entity.response.ResponseDto
+import com.tunein.radiotime.data.entity.ResponseDto
 
 class RemoteDataSourceImpl @Inject constructor(
     private val apiService: ApiService

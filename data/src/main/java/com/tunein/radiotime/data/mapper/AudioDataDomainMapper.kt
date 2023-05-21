@@ -6,8 +6,8 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromJsonElement
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.response.AudioItemDto
-import com.tunein.radiotime.data.entity.response.ResponseDto
+import com.tunein.radiotime.data.entity.AudioItemDto
+import com.tunein.radiotime.data.entity.ResponseDto
 
 class AudioDataDomainMapper @Inject constructor(
     private val json: Json,

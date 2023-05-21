@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.response.ResponseDto
+import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.domain.repository.MediaRepository
 

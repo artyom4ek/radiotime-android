@@ -4,13 +4,13 @@ import retrofit2.http.GET
 import retrofit2.http.Url
 import retrofit2.http.Query
 
-import com.tunein.radiotime.data.entity.response.ResponseDto
+import com.tunein.radiotime.data.entity.ResponseDto
 
 /**
  * The main services that handles all endpoint processes
  */
 interface ApiService {
-    
+
     @GET
     suspend fun fetchRawDataByUrl(
         @Url url: String,

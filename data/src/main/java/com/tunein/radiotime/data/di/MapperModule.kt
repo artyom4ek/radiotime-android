@@ -8,8 +8,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.data.entity.response.ItemDto
-import com.tunein.radiotime.data.entity.response.ResponseDto
+import com.tunein.radiotime.data.entity.ItemDto
+import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.data.mapper.*
 import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.AudioItem

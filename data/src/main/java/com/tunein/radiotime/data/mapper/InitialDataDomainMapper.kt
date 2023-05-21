@@ -8,8 +8,8 @@ import kotlinx.serialization.json.Json
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.common.network.ResponseKeys
-import com.tunein.radiotime.data.entity.response.ItemDto
-import com.tunein.radiotime.data.entity.response.ResponseDto
+import com.tunein.radiotime.data.entity.ItemDto
+import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.domain.model.GridItem
 import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.domain.model.InitialData
