@@ -9,6 +9,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.text.style.TextOverflow
 
 import kotlinx.coroutines.launch
 
@@ -46,7 +47,13 @@ fun ContentWithTabs(
                 tabs.forEachIndexed { index, tab ->
                     Tab(
                         selected = index == pagerState.currentPage,
-                        text = { Text(text = tab.baseTitle) },
+                        text = {
+                            Text(
+                                text = tab.baseTitle,
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        },
                         onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
                     )
                 }

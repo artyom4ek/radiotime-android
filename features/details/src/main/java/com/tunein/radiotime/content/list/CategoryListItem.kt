@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,30 +35,33 @@ import com.tunein.radiotime.domain.model.ListItem
 @Composable
 fun CategoryListItem(categoryItem: ListItem, onClick: (String, AudioItem?) -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape = RoundedCornerShape(10.dp)),
         onClick = { onClick(categoryItem.url, null) }
     ) {
         Row(
+            modifier = Modifier.heightIn(min = 56.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            AsyncImage(
-                modifier = Modifier
-                    .size(56.dp)
-                    .clip(RoundedCornerShape(10.dp)),
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(categoryItem.cover)
-                    .crossfade(true)
-                    .build(),
-                placeholder = painterResource(R.drawable.audio_placeholder),
-                contentDescription = categoryItem.title,
-            )
+            categoryItem.cover?.let {
+                AsyncImage(
+                    modifier = Modifier
+                        .size(56.dp),
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(it)
+                        .crossfade(true)
+                        .build(),
+                    placeholder = painterResource(R.drawable.audio_placeholder),
+                    contentDescription = categoryItem.title,
+                )
+            }
             Column(
                 modifier = Modifier
                     .padding(horizontal = 10.dp)
             ) {
                 Text(
                     text = categoryItem.title,
-                    color = Color.DarkGray,
                     fontSize = 14.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -65,8 +69,7 @@ fun CategoryListItem(categoryItem: ListItem, onClick: (String, AudioItem?) -> Un
                 categoryItem.subTitle?.let {
                     Text(
                         text = it,
-                        color = Color.DarkGray,
-                        fontSize = 11.sp,
+                        fontSize = 13.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -79,7 +82,7 @@ fun CategoryListItem(categoryItem: ListItem, onClick: (String, AudioItem?) -> Un
                         ),
                         color = Color.Gray,
                         fontStyle = FontStyle.Italic,
-                        fontSize = 10.sp,
+                        fontSize = 12.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

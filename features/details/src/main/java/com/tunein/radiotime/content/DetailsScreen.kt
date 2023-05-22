@@ -3,13 +3,8 @@ package com.tunein.radiotime.content
 import timber.log.Timber
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.component.ContentWithProgress
@@ -29,7 +24,7 @@ fun DetailsScreen(
     onClickItem: (String, AudioItem?) -> Unit,
     onShowError: (String) -> Unit,
 ) {
-    Column(modifier = Modifier.padding(vertical = 20.dp, horizontal = 15.dp)) {
+    Column {
         Toolbar(
             stringResource(id = R.string.categories),
             onBackPress
@@ -55,7 +50,6 @@ fun DetailsScreen(
                         onClick = onClickItem
                     )
                 } else {
-                    Spacer(modifier = Modifier.height(20.dp))
                     Content(
                         items = items,
                         currentAudioItem = currentAudioItem,

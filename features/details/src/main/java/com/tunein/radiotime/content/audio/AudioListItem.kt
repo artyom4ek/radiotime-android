@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -41,20 +42,24 @@ fun AudioListItem(
     val iconTintColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
 
     Row(
-        modifier = Modifier.padding(end = 5.dp),
+        modifier = Modifier
+            .padding(end = 5.dp)
+            .heightIn(min = 56.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AsyncImage(
-            modifier = Modifier
-                .size(56.dp)
-                .clip(RoundedCornerShape(10.dp)),
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(audioItem.cover)
-                .crossfade(true)
-                .build(),
-            placeholder = painterResource(R.drawable.audio_placeholder),
-            contentDescription = audioItem.title,
-        )
+        audioItem.cover?.let {
+            AsyncImage(
+                modifier = Modifier
+                    .size(56.dp)
+                    .clip(RoundedCornerShape(10.dp)),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(it)
+                    .crossfade(true)
+                    .build(),
+                placeholder = painterResource(R.drawable.audio_placeholder),
+                contentDescription = audioItem.title,
+            )
+        }
 
         Column(
             modifier = Modifier
@@ -63,15 +68,13 @@ fun AudioListItem(
         ) {
             Text(
                 text = audioItem.title,
-                color = Color.DarkGray,
                 fontSize = 14.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
                 text = audioItem.subTitle!!,
-                color = Color.DarkGray,
-                fontSize = 11.sp,
+                fontSize = 13.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -83,7 +86,7 @@ fun AudioListItem(
                     ),
                     color = Color.Gray,
                     fontStyle = FontStyle.Italic,
-                    fontSize = 10.sp,
+                    fontSize = 12.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
