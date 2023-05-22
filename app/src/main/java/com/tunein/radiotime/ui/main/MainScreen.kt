@@ -18,8 +18,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
@@ -44,6 +47,7 @@ fun MainScreen(
     val navController = rememberNavController()
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
+    var isBottomBarEnabled by remember { mutableStateOf(false) }
     val uiState = mainViewModel.uiState.collectAsState().value
     val effect = mainViewModel.effect.collectAsState(null).value
     val bottomBarTabs = listOf(
@@ -57,7 +61,7 @@ fun MainScreen(
             SnackbarHost(snackbarHostState)
         },
         bottomBar = {
-            BottomBar(navController = navController, bottomBarTabs)
+            BottomBar(navController, bottomBarTabs, isBottomBarEnabled)
         }
     ) { paddingValues ->
         Box(Modifier.fillMaxSize()) {
@@ -67,6 +71,7 @@ fun MainScreen(
                 }
 
                 is MainContract.MainState.Success -> {
+                    isBottomBarEnabled = true
                     NavGraph(
                         modifier = Modifier.padding(
                             bottom = paddingValues.calculateBottomPadding()

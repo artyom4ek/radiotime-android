@@ -20,7 +20,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
+fun BottomBar(
+    navController: NavController,
+    tabs: List<BottomBarTab>,
+    isBottomBarEnabled: Boolean
+) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.background,
@@ -42,6 +46,7 @@ fun BottomBar(navController: NavController, tabs: List<BottomBarTab>) {
                 },
                 alwaysShowLabel = true,
                 selected = currentRoute == tab.route,
+                enabled = isBottomBarEnabled,
                 onClick = {
                     navController.navigate(tab.route) {
                         navController.graph.startDestinationRoute?.let { screenRoute ->
@@ -65,5 +70,9 @@ fun BottomBarPreview() {
         BottomBarTab.Radio,
         BottomBarTab.Podcasts,
     )
-    BottomBar(navController = rememberNavController(), tabs = tabs)
+    BottomBar(
+        navController = rememberNavController(),
+        tabs = tabs,
+        isBottomBarEnabled = true
+    )
 }
