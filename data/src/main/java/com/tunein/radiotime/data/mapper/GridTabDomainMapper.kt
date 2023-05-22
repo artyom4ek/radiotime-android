@@ -16,10 +16,6 @@ class GridTabDomainMapper @Inject constructor(
 
 ) : Mapper<GridTab, JsonElement> {
 
-    override fun from(i: GridTab?): JsonElement {
-        TODO("Not yet implemented")
-    }
-
     override fun to(o: JsonElement?): GridTab {
         if (o == null) throw Exception("Invalid JsonElement")
 
