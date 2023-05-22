@@ -28,7 +28,7 @@ fun EmptyScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(15.dp),
+            .padding(vertical = 20.dp, horizontal = 15.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(
