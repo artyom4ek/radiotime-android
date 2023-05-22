@@ -3,9 +3,7 @@ package com.tunein.radiotime.common.component
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -22,7 +20,10 @@ import com.tunein.radiotime.common.R
 
 @Composable
 fun Toolbar(title: String, onBackPress: () -> Unit) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        modifier = Modifier.padding(top = 20.dp, end = 15.dp, start = 15.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Icon(
             modifier = Modifier.clickable { onBackPress() },
             painter = painterResource(id = R.drawable.ic_arrow_back),

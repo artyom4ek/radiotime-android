@@ -16,7 +16,7 @@ class ListItemDomainMapper @Inject constructor() : Mapper<ListItem?, ItemDto> {
         o?.let {
             return ListItem(
                 title = it.text ?: "",
-                subTitle = it.text ?: "",
+                subTitle = it.subtext ?: "",
                 currentTrack = it.current_track,
                 url = it.URL ?: "",
                 cover = it.image,
