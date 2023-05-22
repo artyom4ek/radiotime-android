@@ -16,7 +16,7 @@ class GridItemDomainMapper @Inject constructor() : Mapper<GridItem?, ItemDto> {
         o?.let {
             return GridItem(
                 title = it.text ?: "",
-                url = it.URL ?: ""
+                url = it.url ?: ""
             )
         }
         return null
