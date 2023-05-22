@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.common.mapper.Mapper
-import com.tunein.radiotime.common.network.ResponseKeys
+import com.tunein.radiotime.data.parser.ResponseKeys
 import com.tunein.radiotime.data.entity.ItemDto
 import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.domain.model.GridItem

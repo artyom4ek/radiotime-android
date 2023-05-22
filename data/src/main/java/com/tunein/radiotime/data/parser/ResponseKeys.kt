@@ -1,4 +1,4 @@
-package com.tunein.radiotime.common.network
+package com.tunein.radiotime.data.parser
 
 /**
  * [ResponseKeys] stores the keys that are in the response schema from the server
@@ -11,8 +11,9 @@ enum class ResponseKeys(val key: String) {
     LANGUAGE("language"),
     LOCAL("local"),
     PODCAST("podcast"),
-    STATIONS("stations"),
-    SHOWS("shows"),
-    TOPICS("topics"),
-    RELATED("related")
+    LINK("link"),
+    TEXT("text"),
+    AUDIO("audio"),
+    STATION("station"),
+    SHOW("show"),
 }

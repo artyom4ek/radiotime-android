@@ -10,7 +10,7 @@ import kotlinx.serialization.json.jsonObject
 import com.tunein.radiotime.common.utils.ContentType
 import com.tunein.radiotime.data.entity.BodyDto
 import com.tunein.radiotime.data.entity.ItemDto
-import com.tunein.radiotime.data.parser.BodyFields
+import com.tunein.radiotime.data.parser.ResponseFields
 import com.tunein.radiotime.data.parser.Parser
 import com.tunein.radiotime.domain.model.BaseTab
 import com.tunein.radiotime.domain.model.CategoryItems
@@ -39,7 +39,7 @@ class RawDataMapperImpl @Inject constructor(
         if (bodyList == null) throw NullPointerException("List mustn't be null")
 
         val items = bodyList.filter {
-            BodyFields.CHILDREN.fieldName in it.jsonObject
+            ResponseFields.CHILDREN.fieldName in it.jsonObject
         }
 
         return items.mapNotNull { rootItem ->
