@@ -31,6 +31,7 @@ class MainViewModel @Inject constructor(
 
     init {
         setEvent(MainContract.Event.OnInitMainData)
+        setEvent(MainContract.Event.HandlePlaybackError)
     }
 
     override fun createInitialState(): MainContract.State {
@@ -43,6 +44,10 @@ class MainViewModel @Inject constructor(
         when (event) {
             is MainContract.Event.OnInitMainData -> {
                 prepareInitialData()
+            }
+
+            MainContract.Event.HandlePlaybackError -> {
+                handlePlaybackError()
             }
 
             is MainContract.Event.PlayAudio -> {
@@ -61,7 +66,6 @@ class MainViewModel @Inject constructor(
 
     private fun prepareInitialData() {
         viewModelScope.launch {
-
             mainUseCase.getInitialData()
                 .onStart { emit(Resource.Loading) }
                 .collect { resource ->
@@ -140,5 +144,13 @@ class MainViewModel @Inject constructor(
 
     private fun releasePlayer() {
         playbackManager.release()
+    }
+
+    private fun handlePlaybackError() {
+        playbackManager.handlePlaybackError {
+            setEffect {
+                MainContract.Effect.ShowError(message = it)
+            }
+        }
     }
 }

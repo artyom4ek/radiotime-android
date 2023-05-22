@@ -16,6 +16,7 @@ class MainContract {
         class PlayAudio(val audioItem: AudioItem) : Event()
         object StopAudio : Event()
         object ReleasePlayer : Event()
+        object HandlePlaybackError : Event()
     }
 
     data class State(
