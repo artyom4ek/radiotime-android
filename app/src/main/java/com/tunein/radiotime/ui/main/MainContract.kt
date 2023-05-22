@@ -21,10 +21,8 @@ class MainContract {
 
     data class State(
         val mainState: MainState,
-        val currentTrack: String? = null,
-        val selectedTrack: String? = null,
         val isPlaying: Boolean = false,
-        val audioItem: AudioItem? = null,
+        val currentAudioItem: AudioItem? = null,
     ) : UiState
 
     sealed class MainState {
