@@ -23,10 +23,6 @@ class InitialDataDomainMapper @Inject constructor(
     private val json: Json
 ) : Mapper<InitialData, ResponseDto> {
 
-    override fun from(i: InitialData?): ResponseDto {
-        TODO("Not yet implemented")
-    }
-
     override fun to(o: ResponseDto?): InitialData {
         if (o == null) throw Exception("Invalid response")
 

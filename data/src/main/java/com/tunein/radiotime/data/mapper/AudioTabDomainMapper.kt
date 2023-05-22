@@ -15,10 +15,6 @@ class AudioTabDomainMapper @Inject constructor(
     private val audioItemDomainMapper: AudioItemDomainMapper
 ) : Mapper<AudioTab, JsonElement> {
 
-    override fun from(i: AudioTab?): JsonElement {
-        TODO("Not yet implemented")
-    }
-
     override fun to(o: JsonElement?): AudioTab {
         if (o == null) throw Exception("Invalid JsonElement")
 

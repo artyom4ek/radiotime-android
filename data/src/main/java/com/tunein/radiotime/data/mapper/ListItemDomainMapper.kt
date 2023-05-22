@@ -8,10 +8,6 @@ import com.tunein.radiotime.domain.model.ListItem
 
 class ListItemDomainMapper @Inject constructor() : Mapper<ListItem?, ItemDto> {
 
-    override fun from(i: ListItem?): ItemDto {
-        TODO("Not yet implemented")
-    }
-
     override fun to(o: ItemDto?): ListItem? {
         o?.let {
             return ListItem(

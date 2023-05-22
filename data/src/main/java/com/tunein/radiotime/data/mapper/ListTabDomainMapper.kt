@@ -15,10 +15,6 @@ class ListTabDomainMapper @Inject constructor(
     private val listItemDomainMapper: ListItemDomainMapper
 ) : Mapper<ListTab, JsonElement> {
 
-    override fun from(i: ListTab?): JsonElement {
-        TODO("Not yet implemented")
-    }
-
     override fun to(o: JsonElement?): ListTab {
         if (o == null) throw Exception("Invalid JsonElement")
 
