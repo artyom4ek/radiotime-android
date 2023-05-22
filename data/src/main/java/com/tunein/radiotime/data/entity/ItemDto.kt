@@ -9,6 +9,8 @@ data class ItemDto(
     val url: String?,
     @SerialName("current_track")
     val currentTrack: String?,
+    @SerialName("guide_id")
+    val guideId: String?,
     val image: String?,
     val item: String?,
     val subtext: String?,

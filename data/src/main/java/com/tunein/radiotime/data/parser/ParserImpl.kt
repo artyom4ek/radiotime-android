@@ -28,13 +28,15 @@ class ParserImpl @Inject constructor() : Parser {
         } else if (
             itemDto.type == BodyFieldTypes.LINK.typeName
             && itemDto.item.isNullOrEmpty()
+            && !itemDto.guideId.isNullOrEmpty()
         ) {
             return ContentType.CategoryGrid
         } else if (
             itemDto.type == BodyFieldTypes.LINK.typeName
             && (itemDto.item == BodyFieldTypes.SHOW.typeName
                     || itemDto.item == BodyFieldTypes.STATION.typeName
-                    || itemDto.item == BodyFieldTypes.LOCAL.typeName)
+                    || itemDto.item == BodyFieldTypes.LOCAL.typeName
+                    || !itemDto.key.isNullOrEmpty())
         ) {
             return ContentType.CategoryList
         }
