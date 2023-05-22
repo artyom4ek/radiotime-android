@@ -15,6 +15,7 @@ object Dependencies {
         const val timber = "5.0.1"
         const val coil = "2.3.0"
         const val media3 = "1.0.2"
+        const val shimmer = "1.0.5"
         const val jUnit = "4.13.2"
         const val jUnitExt = "1.1.5"
     }
@@ -66,6 +67,9 @@ object Dependencies {
 
     // Media3
     const val media3 = "androidx.media3:media3-exoplayer:${Versions.media3}"
+
+    // Shimmer
+    const val composeShimmer = "com.valentinilk.shimmer:compose-shimmer:${Versions.shimmer}"
 
     // Testing
     const val jUnit = "junit:junit:${Versions.jUnit}"

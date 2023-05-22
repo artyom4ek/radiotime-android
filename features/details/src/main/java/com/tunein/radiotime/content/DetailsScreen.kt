@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 
 import com.tunein.radiotime.common.R
-import com.tunein.radiotime.common.component.ContentWithProgress
+import com.tunein.radiotime.common.component.LoadingScreen
 import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.common.component.Toolbar
 import com.tunein.radiotime.domain.model.AudioItem
@@ -32,7 +32,7 @@ fun DetailsScreen(
 
         when (state) {
             DetailsContract.DetailsState.Loading -> {
-                ContentWithProgress()
+                LoadingScreen()
             }
 
             DetailsContract.DetailsState.Empty -> {

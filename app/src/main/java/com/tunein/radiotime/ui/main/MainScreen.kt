@@ -27,7 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-import com.tunein.radiotime.common.component.ContentWithProgress
+import com.tunein.radiotime.common.component.LoadingScreen
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.navigation.Navigator
 import com.tunein.radiotime.navigation.NavigatorEvent
@@ -63,7 +63,7 @@ fun MainScreen(
         Box(Modifier.fillMaxSize()) {
             when (uiState.mainState) {
                 MainContract.MainState.Loading -> {
-                    ContentWithProgress()
+                    LoadingScreen()
                 }
 
                 is MainContract.MainState.Success -> {
