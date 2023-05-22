@@ -26,9 +26,9 @@ fun DetailsScreen(
 ) {
     Column {
         Toolbar(
-            stringResource(id = R.string.categories),
+            stringResource(id = R.string.category_details),
             onBackPress
-        ) // TODO: add Title from Header response
+        )
 
         when (state) {
             DetailsContract.DetailsState.Loading -> {

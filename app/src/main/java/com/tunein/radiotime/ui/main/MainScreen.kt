@@ -93,12 +93,12 @@ fun MainScreen(
                 modifier = Modifier
                     .padding(bottom = paddingValues.calculateBottomPadding())
                     .align(Alignment.BottomCenter),
-                visible = uiState.audioItem != null,
+                visible = uiState.currentAudioItem != null,
                 enter = fadeIn() + expandVertically(),
                 exit = fadeOut() + shrinkVertically()
             ) {
                 PlayerBar(
-                    audioItem = uiState.audioItem,
+                    audioItem = uiState.currentAudioItem,
                     isPlaying = uiState.isPlaying,
                     onPlayClick = onPlayClick,
                     onCloseClick = onClosePlayerBar

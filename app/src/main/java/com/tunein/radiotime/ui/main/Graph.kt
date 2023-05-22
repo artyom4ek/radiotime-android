@@ -49,7 +49,7 @@ fun NavGraphBuilder.homeNavGraph(
         }
         composable(DetailsDestination.route(Graph.HOME)) {
             val mainState = mainViewModel.uiState.collectAsState()
-            val currentAudioItem = mainState.value.currentTrack
+            val currentAudioItem = mainState.value.currentAudioItem?.url
             val isPlaying = mainState.value.isPlaying
 
             val detailsViewModel: DetailsViewModel = hiltViewModel()
@@ -87,7 +87,7 @@ fun NavGraphBuilder.radioNavGraph(
     ) {
         composable(BottomBarTab.Radio.route) {
             val mainState = mainViewModel.uiState.collectAsState()
-            val currentStation = mainState.value.currentTrack
+            val currentStation = mainState.value.currentAudioItem?.url
             val isPlaying = mainState.value.isPlaying
             RadioScreen(
                 radioTab = radioTab,
@@ -122,7 +122,7 @@ fun NavGraphBuilder.podcastsNavGraph(
         }
         composable(DetailsDestination.route(Graph.PODCASTS)) {
             val mainState = mainViewModel.uiState.collectAsState()
-            val currentAudioItem = mainState.value.currentTrack
+            val currentAudioItem = mainState.value.currentAudioItem
             val isPlaying = mainState.value.isPlaying
 
             val detailsViewModel: DetailsViewModel = hiltViewModel()
@@ -131,7 +131,7 @@ fun NavGraphBuilder.podcastsNavGraph(
             DetailsScreen(
                 state = uiState.value.detailsState,
                 effect = effect.value,
-                currentAudioItem = currentAudioItem,
+                currentAudioItem = currentAudioItem?.url,
                 isPlaying = isPlaying,
                 onBackPress = { detailsViewModel.navigateUp() },
                 onClickItem = { url, audioItem ->

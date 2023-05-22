@@ -111,9 +111,9 @@ class MainViewModel @Inject constructor(
 
     private fun playAudio(audioItem: AudioItem) {
         viewModelScope.launch {
-            val currentTrack = uiState.value.currentTrack
+            val currentAudioItem = uiState.value.currentAudioItem?.url
             val isPlaying = uiState.value.isPlaying
-            if (currentTrack == audioItem.url) {
+            if (currentAudioItem == audioItem.url) {
                 if (isPlaying) {
                     playbackManager.play()
                 } else {
@@ -121,11 +121,10 @@ class MainViewModel @Inject constructor(
                 }
                 setState { copy(isPlaying = !isPlaying) }
             } else {
-                currentTrack?.let { playbackManager.stop() }
+                currentAudioItem?.let { playbackManager.stop() }
                 val audioUrl = mediaUseCase.getAudioData(audioItem.url)
                 playbackManager.play(audioUrl)
-                setState { copy(audioItem = audioItem) }
-                setTrack(audioItem.url)
+                setState { copy(currentAudioItem = audioItem) }
             }
         }
     }
@@ -133,13 +132,7 @@ class MainViewModel @Inject constructor(
     private fun stopAudio() {
         playbackManager.stop()
         setState { copy(isPlaying = false) }
-        setState { copy(audioItem = null) }
-        setTrack(null)
-    }
-
-    private fun setTrack(url: String?) {
-        setState { copy(currentTrack = url) }
-        setState { copy(selectedTrack = url) }
+        setState { copy(currentAudioItem = null) }
     }
 
     private fun releasePlayer() {
