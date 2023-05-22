@@ -38,7 +38,7 @@ class PodcastsDomainMapper @Inject constructor(
             items = body.children?.map {
                 GridItem(
                     title = it.text ?: "",
-                    url = it.URL ?: "",
+                    url = it.url ?: "",
                 )
             } ?: emptyList()
         )

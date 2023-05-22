@@ -39,7 +39,7 @@ class InitialDataDomainMapper @Inject constructor(
                 ResponseKeys.MUSIC.key -> homeDiscover.add(
                     GridItem(
                         title = it.text ?: "",
-                        url = it.URL ?: "",
+                        url = it.url ?: "",
                         icon = R.drawable.ic_music
                     )
                 )
@@ -47,7 +47,7 @@ class InitialDataDomainMapper @Inject constructor(
                 ResponseKeys.TALK.key -> homeDiscover.add(
                     GridItem(
                         title = it.text ?: "",
-                        url = it.URL ?: "",
+                        url = it.url ?: "",
                         icon = R.drawable.ic_talk
                     )
                 )
@@ -55,7 +55,7 @@ class InitialDataDomainMapper @Inject constructor(
                 ResponseKeys.SPORTS.key -> homeDiscover.add(
                     GridItem(
                         title = it.text ?: "",
-                        url = it.URL ?: "",
+                        url = it.url ?: "",
                         icon = R.drawable.ic_sport
                     )
                 )
@@ -68,7 +68,7 @@ class InitialDataDomainMapper @Inject constructor(
                 ResponseKeys.LOCATION.key -> homeFilters.add(
                     GridItem(
                         title = it.text ?: "",
-                        url = it.URL ?: "",
+                        url = it.url ?: "",
                         icon = R.drawable.ic_location
                     )
                 )
@@ -76,7 +76,7 @@ class InitialDataDomainMapper @Inject constructor(
                 ResponseKeys.LANGUAGE.key -> homeFilters.add(
                     GridItem(
                         title = it.text ?: "",
-                        url = it.URL ?: "",
+                        url = it.url ?: "",
                         icon = R.drawable.ic_language
                     )
                 )
@@ -91,13 +91,13 @@ class InitialDataDomainMapper @Inject constructor(
         // Prepare initial data for Radio tab
         val radio = items.find { it.key == ResponseKeys.LOCAL.key }
         val radioTitle = radio?.text
-        val radioUrl = radio?.URL
+        val radioUrl = radio?.url
         val radioTab = RadioTab(radioTitle, radioUrl)
 
         // Prepare initial data for Podcasts tab
         val podcasts = items.find { it.key == ResponseKeys.PODCAST.key }
         val podcastTitle = podcasts?.text
-        val podcastsUrl = podcasts?.URL
+        val podcastsUrl = podcasts?.url
         val podcastsTab = PodcastsTab(podcastTitle, podcastsUrl)
 
         return InitialData(
