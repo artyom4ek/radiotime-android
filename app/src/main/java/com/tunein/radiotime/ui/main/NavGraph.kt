@@ -15,14 +15,15 @@ fun NavGraph(
     mainViewModel: MainViewModel,
     initialData: InitialData,
     onPlayClick: (AudioItem) -> Unit,
+    onShowError: (String) -> Unit
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
         startDestination = Graph.HOME
     ) {
-        homeNavGraph(mainViewModel, initialData.homeTab, onPlayClick)
+        homeNavGraph(mainViewModel, initialData.homeTab, onPlayClick, onShowError)
         radioNavGraph(mainViewModel, initialData.radioTab, onPlayClick)
-        podcastsNavGraph(mainViewModel, initialData.podcastsTab, onPlayClick)
+        podcastsNavGraph(mainViewModel, initialData.podcastsTab, onPlayClick, onShowError)
     }
 }

@@ -1,5 +1,7 @@
 package com.tunein.radiotime.ui.main
 
+import timber.log.Timber
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -10,13 +12,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 import com.tunein.radiotime.common.component.ContentWithProgress
 import com.tunein.radiotime.domain.model.AudioItem
@@ -33,7 +42,10 @@ fun MainScreen(
     onReleasePlayer: () -> Unit
 ) {
     val navController = rememberNavController()
-    val mainState = mainViewModel.uiState.collectAsState().value
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope: CoroutineScope = rememberCoroutineScope()
+    val uiState = mainViewModel.uiState.collectAsState().value
+    val effect = mainViewModel.effect.collectAsState(null).value
     val bottomBarTabs = listOf(
         BottomBarTab.Home,
         BottomBarTab.Radio,
@@ -41,12 +53,15 @@ fun MainScreen(
     )
 
     Scaffold(
+        snackbarHost = {
+            SnackbarHost(snackbarHostState)
+        },
         bottomBar = {
             BottomBar(navController = navController, bottomBarTabs)
         }
     ) { paddingValues ->
         Box(Modifier.fillMaxSize()) {
-            when (mainState.mainState) {
+            when (uiState.mainState) {
                 MainContract.MainState.Loading -> {
                     ContentWithProgress()
                 }
@@ -58,8 +73,13 @@ fun MainScreen(
                         ),
                         navController = navController,
                         mainViewModel = mainViewModel,
-                        initialData = mainState.mainState.initialData,
+                        initialData = uiState.mainState.initialData,
                         onPlayClick = onPlayClick,
+                        onShowError = {
+                            coroutineScope.launch {
+                                snackbarHostState.showSnackbar(it)
+                            }
+                        }
                     )
                 }
             }
@@ -68,13 +88,13 @@ fun MainScreen(
                 modifier = Modifier
                     .padding(bottom = paddingValues.calculateBottomPadding())
                     .align(Alignment.BottomCenter),
-                visible = mainState.audioItem != null,
+                visible = uiState.audioItem != null,
                 enter = fadeIn() + expandVertically(),
                 exit = fadeOut() + shrinkVertically()
             ) {
                 PlayerBar(
-                    audioItem = mainState.audioItem,
-                    isPlaying = mainState.isPlaying,
+                    audioItem = uiState.audioItem,
+                    isPlaying = uiState.isPlaying,
                     onPlayClick = onPlayClick,
                     onCloseClick = onClosePlayerBar
                 )
@@ -82,8 +102,17 @@ fun MainScreen(
         }
     }
 
+    LaunchedEffect(navController, snackbarHostState, effect) {
+        when (effect) {
+            is MainContract.Effect.ShowError -> {
+                snackbarHostState.showSnackbar(effect.message)
+            }
 
-    LaunchedEffect(navController) {
+            null -> {
+                Timber.d("Init Main screen effect")
+            }
+        }
+
         navigator.destinations.collect {
             when (val event = it) {
                 is NavigatorEvent.NavigateUp -> {

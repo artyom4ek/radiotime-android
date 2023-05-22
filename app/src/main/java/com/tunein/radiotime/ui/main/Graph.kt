@@ -29,7 +29,8 @@ object Graph {
 fun NavGraphBuilder.homeNavGraph(
     mainViewModel: MainViewModel,
     homeTab: HomeTab,
-    onPlayClick: (AudioItem) -> Unit
+    onPlayClick: (AudioItem) -> Unit,
+    onShowError: (String) -> Unit
 ) {
     navigation(
         route = Graph.HOME,
@@ -51,22 +52,25 @@ fun NavGraphBuilder.homeNavGraph(
             val currentAudioItem = mainState.value.currentTrack
             val isPlaying = mainState.value.isPlaying
 
-            val viewModel: DetailsViewModel = hiltViewModel()
-            val uiState = viewModel.uiState.collectAsState()
+            val detailsViewModel: DetailsViewModel = hiltViewModel()
+            val uiState = detailsViewModel.uiState.collectAsState()
+            val effect = detailsViewModel.effect.collectAsState(null)
             DetailsScreen(
                 state = uiState.value.detailsState,
+                effect = effect.value,
                 currentAudioItem = currentAudioItem,
                 isPlaying = isPlaying,
-                onBackPress = { viewModel.navigateUp() },
+                onBackPress = { detailsViewModel.navigateUp() },
                 onClickItem = { url, audioItem ->
                     if (audioItem != null) {
                         onPlayClick(audioItem)
                     } else {
-                        viewModel.navigate(
+                        detailsViewModel.navigate(
                             DetailsDestination.createDetailsRoute(Graph.HOME, url.encodeUrl())
                         )
                     }
-                }
+                },
+                onShowError = onShowError
             )
         }
     }
@@ -98,7 +102,8 @@ fun NavGraphBuilder.radioNavGraph(
 fun NavGraphBuilder.podcastsNavGraph(
     mainViewModel: MainViewModel,
     podcastsTab: PodcastsTab,
-    onPlayClick: (AudioItem) -> Unit
+    onPlayClick: (AudioItem) -> Unit,
+    onShowError: (String) -> Unit
 ) {
     navigation(
         route = Graph.PODCASTS,
@@ -120,22 +125,25 @@ fun NavGraphBuilder.podcastsNavGraph(
             val currentAudioItem = mainState.value.currentTrack
             val isPlaying = mainState.value.isPlaying
 
-            val viewModel: DetailsViewModel = hiltViewModel()
-            val uiState = viewModel.uiState.collectAsState()
+            val detailsViewModel: DetailsViewModel = hiltViewModel()
+            val uiState = detailsViewModel.uiState.collectAsState()
+            val effect = detailsViewModel.effect.collectAsState(null)
             DetailsScreen(
-                uiState.value.detailsState,
-                onBackPress = { viewModel.navigateUp() },
+                state = uiState.value.detailsState,
+                effect = effect.value,
+                currentAudioItem = currentAudioItem,
+                isPlaying = isPlaying,
+                onBackPress = { detailsViewModel.navigateUp() },
                 onClickItem = { url, audioItem ->
                     if (audioItem != null) {
                         onPlayClick(audioItem)
                     } else {
-                        viewModel.navigate(
+                        detailsViewModel.navigate(
                             DetailsDestination.createDetailsRoute(Graph.PODCASTS, url.encodeUrl())
                         )
                     }
                 },
-                currentAudioItem = currentAudioItem,
-                isPlaying = isPlaying
+                onShowError = onShowError
             )
         }
     }

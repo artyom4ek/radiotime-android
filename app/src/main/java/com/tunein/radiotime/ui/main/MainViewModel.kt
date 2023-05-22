@@ -64,15 +64,15 @@ class MainViewModel @Inject constructor(
 
             mainUseCase.getInitialData()
                 .onStart { emit(Resource.Loading) }
-                .collect {
-                    when (it) {
+                .collect { resource ->
+                    when (resource) {
                         is Resource.Loading -> {
                             setState { copy(mainState = MainContract.MainState.Loading) }
                         }
 
                         is Resource.Success -> {
                             // Get initial data with tabs info
-                            val initialData = it.data
+                            val initialData = resource.data
 
                             // Populate the Radio tab with data
                             val radioTab = initialData.radioTab
@@ -94,11 +94,11 @@ class MainViewModel @Inject constructor(
                         }
 
                         is Resource.Error -> {
-                            setEffect { MainContract.Effect.ShowError(message = it.exception.message) }
+                            setEffect { MainContract.Effect.ShowError(message = resource.message) }
                         }
 
                         else -> {
-                            Timber.d(it.toString())
+                            Timber.d(resource.toString())
                         }
                     }
                 }

@@ -83,7 +83,7 @@ class DetailsViewModel @Inject constructor(
 
                             is Resource.Error -> {
                                 setEffect {
-                                    DetailsContract.Effect.ShowError(message = it.exception.message)
+                                    DetailsContract.Effect.ShowError(message = it.message)
                                 }
                             }
                         }
