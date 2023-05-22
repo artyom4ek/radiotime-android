@@ -68,4 +68,7 @@ dependencies {
 
     // Coil
     implementation(Dependencies.coil)
+
+    // Timber
+    implementation(Dependencies.timber)
 }

@@ -1,5 +1,7 @@
 package com.tunein.radiotime.content
 
+import timber.log.Timber
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -20,10 +22,12 @@ import com.tunein.radiotime.domain.model.BaseTab
 @Composable
 fun DetailsScreen(
     state: DetailsContract.DetailsState,
+    effect: DetailsContract.Effect?,
     currentAudioItem: String?,
     isPlaying: Boolean,
     onBackPress: () -> Unit,
-    onClickItem: (String, AudioItem?) -> Unit
+    onClickItem: (String, AudioItem?) -> Unit,
+    onShowError: (String) -> Unit,
 ) {
     Column(modifier = Modifier.padding(vertical = 20.dp, horizontal = 15.dp)) {
         Toolbar(
@@ -60,6 +64,15 @@ fun DetailsScreen(
                     )
                 }
             }
+        }
+    }
+    when (effect) {
+        is DetailsContract.Effect.ShowError -> {
+            onShowError(effect.message)
+        }
+
+        null -> {
+            Timber.d("Init Details screen effect")
         }
     }
 }

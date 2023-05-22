@@ -30,7 +30,7 @@ class MainRepositoryImpl @Inject constructor(
                     val response = remoteDataSource.fetchRawDataByUrl(Constants.BASE_URL)
                     emit(Resource.Success(initialDataMapper.to(response)))
                 } catch (ex: Exception) {
-                    emit(Resource.Error(ex))
+                    emit(Resource.Error(ex.message ?: "Unknown error"))
                 }
             }
         }
@@ -48,7 +48,7 @@ class MainRepositoryImpl @Inject constructor(
                     }
                 } catch (ex: Exception) {
                     emit(Resource.Empty)
-                    emit(Resource.Error(ex))
+                    emit(Resource.Error(ex.message ?: "Unknown error"))
                 }
             }
         }

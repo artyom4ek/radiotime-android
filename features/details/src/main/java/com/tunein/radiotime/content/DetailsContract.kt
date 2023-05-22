@@ -25,6 +25,6 @@ class DetailsContract {
     }
 
     sealed class Effect : UiEffect {
-        data class ShowError(val message: String?) : Effect()
+        data class ShowError(val message: String) : Effect()
     }
 }
