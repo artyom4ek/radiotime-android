@@ -21,7 +21,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import kotlinx.serialization.ExperimentalSerializationApi
 
 import com.tunein.radiotime.BuildConfig
-import com.tunein.radiotime.common.network.Constants
+import com.tunein.radiotime.common.utils.Constants
 import com.tunein.radiotime.data.api.ApiService
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.remote.RemoteDataSourceImpl

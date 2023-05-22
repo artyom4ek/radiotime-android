@@ -1,4 +1,4 @@
-package com.tunein.radiotime.common.network
+package com.tunein.radiotime.common.utils
 
 class Constants {
 
