@@ -49,4 +49,7 @@ dependencies {
     implementation(Dependencies.composeUiGraphics)
     implementation(Dependencies.composeUiToolingPreview)
     implementation(Dependencies.composeMaterial3)
+
+    // Shimmer
+    implementation(Dependencies.composeShimmer)
 }
