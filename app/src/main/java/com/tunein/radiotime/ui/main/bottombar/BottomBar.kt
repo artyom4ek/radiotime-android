@@ -1,4 +1,4 @@
-package com.tunein.radiotime.ui.main
+package com.tunein.radiotime.ui.main.bottombar
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -22,9 +22,14 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun BottomBar(
     navController: NavController,
-    tabs: List<BottomBarTab>,
     isBottomBarEnabled: Boolean
 ) {
+    val tabs = listOf(
+        BottomBarTab.Home,
+        BottomBarTab.Radio,
+        BottomBarTab.Podcasts,
+    )
+
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.background,
@@ -65,14 +70,8 @@ fun BottomBar(
 @Preview
 @Composable
 fun BottomBarPreview() {
-    val tabs = listOf(
-        BottomBarTab.Home,
-        BottomBarTab.Radio,
-        BottomBarTab.Podcasts,
-    )
     BottomBar(
         navController = rememberNavController(),
-        tabs = tabs,
         isBottomBarEnabled = true
     )
 }

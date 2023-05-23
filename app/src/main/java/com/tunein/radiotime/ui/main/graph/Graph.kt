@@ -1,4 +1,4 @@
-package com.tunein.radiotime.ui.main
+package com.tunein.radiotime.ui.main.graph
 
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -19,6 +19,8 @@ import com.tunein.radiotime.navigation.destinations.DetailsDestination
 import com.tunein.radiotime.podcasts.PodcastsScreen
 import com.tunein.radiotime.podcasts.PodcastsViewModel
 import com.tunein.radiotime.radio.RadioScreen
+import com.tunein.radiotime.ui.main.MainViewModel
+import com.tunein.radiotime.ui.main.bottombar.BottomBarTab
 
 object Graph {
     const val HOME = "home_graph"

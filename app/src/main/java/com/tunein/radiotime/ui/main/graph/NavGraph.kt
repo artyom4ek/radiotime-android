@@ -1,4 +1,4 @@
-package com.tunein.radiotime.ui.main
+package com.tunein.radiotime.ui.main.graph
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.InitialData
+import com.tunein.radiotime.ui.main.MainViewModel
 
 @Composable
 fun NavGraph(
