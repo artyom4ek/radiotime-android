@@ -5,6 +5,5 @@ package com.tunein.radiotime.domain.model
  */
 data class ListTab(
     val title: String,
-    val key: String?,
     val items: List<ListItem> = emptyList(),
-) : BaseTab(baseTitle = title, baseKey = key)
+) : BaseTab(baseTitle = title)

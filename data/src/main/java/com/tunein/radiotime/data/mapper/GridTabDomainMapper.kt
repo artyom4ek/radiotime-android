@@ -22,7 +22,6 @@ class GridTabDomainMapper @Inject constructor(
         val bodyDto = json.decodeFromJsonElement<BodyDto>(o)
         return GridTab(
             title = bodyDto.text ?: "",
-            key = bodyDto.key,
             items = bodyDto.children?.mapNotNull {
                 gridItemDomainMapper.to(it)
             } ?: emptyList()
