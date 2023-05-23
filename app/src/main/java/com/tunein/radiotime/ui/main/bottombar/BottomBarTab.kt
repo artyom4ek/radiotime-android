@@ -1,7 +1,8 @@
-package com.tunein.radiotime.ui.main
+package com.tunein.radiotime.ui.main.bottombar
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+
 import com.tunein.radiotime.R
 
 sealed class BottomBarTab(

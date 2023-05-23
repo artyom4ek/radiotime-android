@@ -34,6 +34,8 @@ import com.tunein.radiotime.common.component.LoadingScreen
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.navigation.Navigator
 import com.tunein.radiotime.navigation.NavigatorEvent
+import com.tunein.radiotime.ui.main.bottombar.BottomBar
+import com.tunein.radiotime.ui.main.graph.NavGraph
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,21 +49,16 @@ fun MainScreen(
     val navController = rememberNavController()
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
-    var isBottomBarEnabled by remember { mutableStateOf(false) }
     val uiState = mainViewModel.uiState.collectAsState().value
     val effect = mainViewModel.effect.collectAsState(null).value
-    val bottomBarTabs = listOf(
-        BottomBarTab.Home,
-        BottomBarTab.Radio,
-        BottomBarTab.Podcasts,
-    )
+    var isBottomBarEnabled by remember { mutableStateOf(false) }
 
     Scaffold(
         snackbarHost = {
             SnackbarHost(snackbarHostState)
         },
         bottomBar = {
-            BottomBar(navController, bottomBarTabs, isBottomBarEnabled)
+            BottomBar(navController, isBottomBarEnabled)
         }
     ) { paddingValues ->
         Box(Modifier.fillMaxSize()) {
