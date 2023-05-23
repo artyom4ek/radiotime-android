@@ -9,16 +9,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.common.component.EmptyScreen
+import com.tunein.radiotime.content.list.CategoryListItem
 import com.tunein.radiotime.domain.model.AudioItem
+import com.tunein.radiotime.domain.model.CategoryItems
+import com.tunein.radiotime.domain.model.ListItem
 
 @Composable
 fun AudioList(
-    audioItems: List<AudioItem>,
+    items: List<CategoryItems>,
     currentAudioItem: String?,
     isPlaying: Boolean,
     onPlayClick: (String, AudioItem?) -> Unit,
 ) {
-    if (audioItems.isEmpty()) {
+    if (items.isEmpty()) {
         EmptyScreen()
         return
     }
@@ -27,13 +30,17 @@ fun AudioList(
         modifier = Modifier.padding(vertical = 20.dp, horizontal = 15.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        items(audioItems) { audioItem ->
-            AudioListItem(
-                audioItem = audioItem,
-                currentAudioItem = currentAudioItem,
-                isPlaying = isPlaying,
-                onPlayClick = onPlayClick
-            )
+        items(items) { item ->
+            if (item is AudioItem) {
+                AudioListItem(
+                    audioItem = item,
+                    currentAudioItem = currentAudioItem,
+                    isPlaying = isPlaying,
+                    onPlayClick = onPlayClick
+                )
+            } else if (item is ListItem) {
+                CategoryListItem(categoryItem = item, onClick = onPlayClick)
+            }
         }
     }
 }

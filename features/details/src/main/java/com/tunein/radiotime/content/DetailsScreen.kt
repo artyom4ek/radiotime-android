@@ -12,6 +12,7 @@ import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.common.component.Toolbar
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.BaseTab
+import com.tunein.radiotime.domain.model.CategoryItems
 
 @Suppress("UNCHECKED_CAST")
 @Composable
@@ -51,7 +52,7 @@ fun DetailsScreen(
                     )
                 } else {
                     Content(
-                        items = items,
+                        items = items as List<CategoryItems>,
                         currentAudioItem = currentAudioItem,
                         isPlaying = isPlaying,
                         onClick = onClickItem

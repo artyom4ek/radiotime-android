@@ -7,14 +7,14 @@ import com.tunein.radiotime.content.audio.AudioList
 import com.tunein.radiotime.content.grid.CategoryGrid
 import com.tunein.radiotime.content.list.CategoryList
 import com.tunein.radiotime.domain.model.AudioItem
+import com.tunein.radiotime.domain.model.CategoryItems
 import com.tunein.radiotime.domain.model.GridItem
 import com.tunein.radiotime.domain.model.ListItem
-import com.tunein.radiotime.domain.model.CategoryType
 
 @Suppress("UNCHECKED_CAST")
 @Composable
 fun Content(
-    items: List<CategoryType>,
+    items: List<CategoryItems>,
     currentAudioItem: String?,
     isPlaying: Boolean,
     onClick: (String, AudioItem?) -> Unit,
@@ -37,7 +37,7 @@ fun Content(
 
             is AudioItem -> {
                 AudioList(
-                    audioItems = items as List<AudioItem>,
+                    items = items as List<AudioItem>,
                     onPlayClick = onClick,
                     currentAudioItem = currentAudioItem,
                     isPlaying = isPlaying
