@@ -22,12 +22,22 @@ import com.tunein.radiotime.radio.RadioScreen
 import com.tunein.radiotime.ui.main.MainViewModel
 import com.tunein.radiotime.ui.main.bottombar.BottomBarTab
 
+/**
+ * [Graph] contains name of routes for nested graphs.
+ */
 object Graph {
     const val HOME = "home_graph"
     const val RADIO = "radio_graph"
     const val PODCASTS = "podcasts_graph"
 }
 
+/**
+ * Defines the nested navigation graph for the Home tab.
+ * @param mainViewModel The MainViewModel instance used for managing the Playback state.
+ * @param homeTab Contains initial data for Home Tab.
+ * @param onPlayClick Callback function triggered when a play button is clicked.
+ * @param onShowError Callback function triggered when an error needs to be shown.
+ */
 fun NavGraphBuilder.homeNavGraph(
     mainViewModel: MainViewModel,
     homeTab: HomeTab,
@@ -39,6 +49,7 @@ fun NavGraphBuilder.homeNavGraph(
         startDestination = BottomBarTab.Home.route
     ) {
         composable(BottomBarTab.Home.route) {
+            // Used to use navigation.
             val viewModel: HomeViewModel = hiltViewModel()
             HomeScreen(
                 homeTab = homeTab,
@@ -50,6 +61,10 @@ fun NavGraphBuilder.homeNavGraph(
             )
         }
         composable(DetailsDestination.route(Graph.HOME)) {
+            /*
+             * In this context, the MainViewModel is used to get the currently playing audio item
+             * when updating the data.
+             */
             val mainState = mainViewModel.uiState.collectAsState()
             val currentAudioItem = mainState.value.currentAudioItem?.url
             val isPlaying = mainState.value.isPlaying
@@ -78,6 +93,12 @@ fun NavGraphBuilder.homeNavGraph(
     }
 }
 
+/**
+ * Defines the nested navigation graph for the Radio tab.
+ * @param mainViewModel The MainViewModel instance used for managing the Playback state.
+ * @param radioTab Contains initial data for Radio Tab.
+ * @param onPlayClick Callback function triggered when a play button is clicked.
+ */
 fun NavGraphBuilder.radioNavGraph(
     mainViewModel: MainViewModel,
     radioTab: RadioTab,
@@ -88,6 +109,10 @@ fun NavGraphBuilder.radioNavGraph(
         startDestination = BottomBarTab.Radio.route
     ) {
         composable(BottomBarTab.Radio.route) {
+            /*
+             * In this context, the MainViewModel is used to get the currently playing audio item
+             * when updating the data.
+             */
             val mainState = mainViewModel.uiState.collectAsState()
             val currentStation = mainState.value.currentAudioItem?.url
             val isPlaying = mainState.value.isPlaying
@@ -101,6 +126,13 @@ fun NavGraphBuilder.radioNavGraph(
     }
 }
 
+/**
+ * Defines the nested navigation graph for the Podcasts tab.
+ * @param mainViewModel The MainViewModel instance used for managing the Playback state.
+ * @param podcastsTab Contains initial data for Podcasts Tab.
+ * @param onPlayClick Callback function triggered when a play button is clicked.
+ * @param onShowError Callback function triggered when an error needs to be shown.
+ **/
 fun NavGraphBuilder.podcastsNavGraph(
     mainViewModel: MainViewModel,
     podcastsTab: PodcastsTab,
@@ -123,6 +155,10 @@ fun NavGraphBuilder.podcastsNavGraph(
             })
         }
         composable(DetailsDestination.route(Graph.PODCASTS)) {
+            /*
+             * In this context, the MainViewModel is used to get the currently playing audio item
+             * when updating the data.
+             */
             val mainState = mainViewModel.uiState.collectAsState()
             val currentAudioItem = mainState.value.currentAudioItem
             val isPlaying = mainState.value.isPlaying

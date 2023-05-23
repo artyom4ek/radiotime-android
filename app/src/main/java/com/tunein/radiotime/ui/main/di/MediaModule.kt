@@ -13,6 +13,9 @@ import dagger.hilt.components.SingletonComponent
 import com.tunein.radiotime.ui.main.media.ExoPlayerPlaybackManager
 import com.tunein.radiotime.ui.main.media.PlaybackManager
 
+/**
+ * [MediaModule] provides dependencies related to media playback.
+ */
 @UnstableApi
 @Module
 @InstallIn(SingletonComponent::class)

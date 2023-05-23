@@ -17,6 +17,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.tunein.radiotime.common.theme.RadiotimeTheme
 import com.tunein.radiotime.navigation.Navigator
 
+/**
+ * [MainActivity] is the entry point for the Android application.
+ * The activity is responsible for initializing the main content.
+ * @property navigator The navigator used for navigating between screens.
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 

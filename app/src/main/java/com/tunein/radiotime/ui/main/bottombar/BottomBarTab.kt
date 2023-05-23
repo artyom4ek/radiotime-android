@@ -5,6 +5,9 @@ import androidx.annotation.StringRes
 
 import com.tunein.radiotime.R
 
+/**
+ * [BottomBarTab] represents a tab in the bottom navigation bar.
+ */
 sealed class BottomBarTab(
     val route: String,
     @DrawableRes val icon: Int,

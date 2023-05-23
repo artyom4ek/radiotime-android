@@ -37,6 +37,14 @@ import com.tunein.radiotime.navigation.NavigatorEvent
 import com.tunein.radiotime.ui.main.bottombar.BottomBar
 import com.tunein.radiotime.ui.main.graph.NavGraph
 
+/**
+ * [MainScreen] is a composable function that represents the main user interface of the app.
+ * @param navigator The navigator used for navigating between screens.
+ * @param mainViewModel The ViewModel instance used for managing the main screen state and logic.
+ * @param onPlayClick Callback function triggered when the user clicks on the play button for an audio item.
+ * @param onClosePlayerBar Callback function triggered when the user closes the player bar.
+ * @param onReleasePlayer Callback function triggered when the player needs to be released.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
@@ -51,6 +59,8 @@ fun MainScreen(
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
     val uiState = mainViewModel.uiState.collectAsState().value
     val effect = mainViewModel.effect.collectAsState(null).value
+
+    // Disable clicking BottomBar items while initial data is loading.
     var isBottomBarEnabled by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -86,6 +96,7 @@ fun MainScreen(
                 }
             }
 
+            // Show the PlayerBar with animation when the state of the parameters changes.
             AnimatedVisibility(
                 modifier = Modifier
                     .padding(bottom = paddingValues.calculateBottomPadding())
@@ -104,7 +115,9 @@ fun MainScreen(
         }
     }
 
+    // LaunchedEffect is used to perform side effects when certain dependencies or values change.
     LaunchedEffect(navController, snackbarHostState, effect) {
+        // Display the effects that are described in Main Contract
         when (effect) {
             is MainContract.Effect.ShowError -> {
                 snackbarHostState.showSnackbar(effect.message)
@@ -115,6 +128,10 @@ fun MainScreen(
             }
         }
 
+        /*
+         * Global navigation interceptor.
+         * Linked to the Navigation module where the main logic is described.
+         */
         navigator.destinations.collect {
             when (val event = it) {
                 is NavigatorEvent.NavigateUp -> {
@@ -133,6 +150,7 @@ fun MainScreen(
         }
     }
 
+    // Release the player when the composable is disposed.
     DisposableEffect(Unit) {
         onDispose {
             onReleasePlayer()
