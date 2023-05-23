@@ -3,6 +3,7 @@ package com.tunein.radiotime.data.di
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
 import dagger.Module
@@ -17,8 +18,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-
-import kotlinx.serialization.ExperimentalSerializationApi
 
 import com.tunein.radiotime.BuildConfig
 import com.tunein.radiotime.common.utils.Constants

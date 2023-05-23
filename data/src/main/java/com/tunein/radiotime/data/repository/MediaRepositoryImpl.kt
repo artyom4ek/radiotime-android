@@ -2,9 +2,6 @@ package com.tunein.radiotime.data.repository
 
 import javax.inject.Inject
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.data.remote.RemoteDataSource
@@ -15,8 +12,8 @@ class MediaRepositoryImpl @Inject constructor(
     private val audioDataDomainMapper: Mapper<String, ResponseDto>
 ) : MediaRepository {
 
-    override suspend fun getAudioData(url: String): String = withContext(Dispatchers.IO) {
+    override suspend fun getAudioData(url: String): String {
         val response = remoteDataSource.fetchRawDataByUrl(url)
-        return@withContext audioDataDomainMapper.to(response)
+        return audioDataDomainMapper.to(response)
     }
 }

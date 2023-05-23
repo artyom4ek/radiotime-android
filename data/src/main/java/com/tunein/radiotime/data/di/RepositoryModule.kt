@@ -35,7 +35,7 @@ object RepositoryModule {
     fun provideMainRepository(
         remoteDataSource: RemoteDataSource,
         initialDataMapper: Mapper<InitialData, ResponseDto>,
-        rawDataMapper: RawDataMapper,
+        rawDataMapper: RawDataMapper
     ): MainRepository =
         MainRepositoryImpl(
             remoteDataSource,

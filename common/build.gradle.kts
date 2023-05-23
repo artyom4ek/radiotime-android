@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -49,6 +50,11 @@ dependencies {
     implementation(Dependencies.composeUiGraphics)
     implementation(Dependencies.composeUiToolingPreview)
     implementation(Dependencies.composeMaterial3)
+
+    // Hilt
+    implementation(Dependencies.hiltNavigationCompose)
+    implementation(Dependencies.hiltAndroid)
+    kapt(Dependencies.hiltAndroidCompiler)
 
     // Shimmer
     implementation(Dependencies.composeShimmer)
