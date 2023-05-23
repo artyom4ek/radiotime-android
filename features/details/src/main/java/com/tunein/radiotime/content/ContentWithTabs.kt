@@ -80,7 +80,7 @@ fun ContentWithTabs(
 
                 is AudioTab -> {
                     AudioList(
-                        audioItems = baseTab.items,
+                        items = baseTab.items,
                         currentAudioItem = currentAudioItem,
                         isPlaying = isPlaying,
                         onPlayClick = onClick
