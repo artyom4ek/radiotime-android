@@ -8,6 +8,5 @@ import androidx.annotation.DrawableRes
 data class GridTab(
     val items: List<GridItem> = emptyList(),
     val title: String,
-    val key: String? = null,
     @DrawableRes val icon: Int? = null
-) : BaseTab(baseTitle = title, baseKey = key)
+) : BaseTab(baseTitle = title)

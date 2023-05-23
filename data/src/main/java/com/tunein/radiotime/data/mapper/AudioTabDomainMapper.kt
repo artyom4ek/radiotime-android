@@ -21,7 +21,6 @@ class AudioTabDomainMapper @Inject constructor(
         val bodyDto = json.decodeFromJsonElement<BodyDto>(o)
         return AudioTab(
             title = bodyDto.text ?: "",
-            key = bodyDto.key,
             items = bodyDto.children?.mapNotNull {
                 audioItemDomainMapper.to(it)
             } ?: emptyList()

@@ -21,7 +21,6 @@ class ListTabDomainMapper @Inject constructor(
         val bodyDto = json.decodeFromJsonElement<BodyDto>(o)
         return ListTab(
             title = bodyDto.text ?: "",
-            key = bodyDto.key,
             items = bodyDto.children?.mapNotNull {
                 listItemDomainMapper.to(it)
             } ?: emptyList()
