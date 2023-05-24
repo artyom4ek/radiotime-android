@@ -21,6 +21,9 @@ import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.PodcastsTab
 import com.tunein.radiotime.podcasts.tabs.PodcastsTabScreen
 
+/**
+ * [PodcastsScreen] displays the podcasts data with tabs.
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PodcastsScreen(podcastsTab: PodcastsTab, onClick: (String) -> Unit) {
