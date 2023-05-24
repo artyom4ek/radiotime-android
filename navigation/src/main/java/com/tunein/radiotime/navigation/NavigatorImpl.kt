@@ -8,6 +8,9 @@ import androidx.navigation.NavOptionsBuilder
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
+/**
+ * [NavigatorImpl] Implementation of handling navigation events logic.
+ */
 @Singleton
 internal class NavigatorImpl @Inject constructor() : Navigator {
 
