@@ -11,6 +11,9 @@ import com.tunein.radiotime.domain.model.CategoryItems
 import com.tunein.radiotime.domain.model.GridItem
 import com.tunein.radiotime.domain.model.ListItem
 
+/**
+ * [Content] screen to display specific data.
+ */
 @Suppress("UNCHECKED_CAST")
 @Composable
 fun Content(
@@ -20,6 +23,7 @@ fun Content(
     onClick: (String, AudioItem?) -> Unit,
 ) {
     if (items.isNotEmpty()) {
+        // Depending on the type of data, display a specific screen.
         when (items[0]) {
             is GridItem -> {
                 CategoryGrid(

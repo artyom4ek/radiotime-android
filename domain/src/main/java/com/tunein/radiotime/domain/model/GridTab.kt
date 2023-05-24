@@ -3,7 +3,7 @@ package com.tunein.radiotime.domain.model
 import androidx.annotation.DrawableRes
 
 /**
- * [GridTab] describes a Grid Tab model
+ * [GridTab] describes sections of the Grid tab screen.
  */
 data class GridTab(
     val items: List<GridItem> = emptyList(),

@@ -25,12 +25,15 @@ import com.tunein.radiotime.data.api.ApiService
 import com.tunein.radiotime.data.remote.RemoteDataSource
 import com.tunein.radiotime.data.remote.RemoteDataSourceImpl
 
+/**
+ * [NetworkModule] holds Mappers for Data layer.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     /**
-     * Provides [Json] instance
+     * Provides [Json] instance.
      */
     @OptIn(ExperimentalSerializationApi::class)
     @Provides
@@ -40,7 +43,7 @@ object NetworkModule {
     }
 
     /**
-     * Provides [HttpLoggingInterceptor] instance
+     * Provides [HttpLoggingInterceptor] instance.
      */
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
@@ -55,7 +58,7 @@ object NetworkModule {
     }
 
     /**
-     * Provides [OkHttpClient] instance
+     * Provides [OkHttpClient] instance.
      */
     @Provides
     fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
@@ -69,7 +72,7 @@ object NetworkModule {
     }
 
     /**
-     * Provides [Retrofit] instance
+     * Provides [Retrofit] instance.
      */
     @Provides
     fun provideRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit {
@@ -82,7 +85,7 @@ object NetworkModule {
     }
 
     /**
-     * Provides [ApiService] instance
+     * Provides [ApiService] instance.
      */
     @Provides
     @Singleton
@@ -91,7 +94,7 @@ object NetworkModule {
     }
 
     /**
-     * Provides [RemoteDataSource] instance
+     * Provides [RemoteDataSource] instance.
      */
     @Provides
     @Singleton

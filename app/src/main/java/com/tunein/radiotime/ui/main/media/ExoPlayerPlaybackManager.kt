@@ -8,6 +8,10 @@ import androidx.media3.exoplayer.ExoPlayer
 
 import javax.inject.Inject
 
+/**
+ * [ExoPlayerPlaybackManager] is a class that implements the PlaybackManager interface using Media3 library.
+ * @param player The ExoPlayer instance used for audio playback.
+ */
 class ExoPlayerPlaybackManager @Inject constructor(
     private val player: ExoPlayer
 ) : PlaybackManager {

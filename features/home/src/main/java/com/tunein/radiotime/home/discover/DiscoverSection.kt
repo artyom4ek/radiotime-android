@@ -15,6 +15,10 @@ import androidx.compose.ui.unit.sp
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [DiscoverSection] displays the discover section in the UI.
+ * Allowing users to select a specific category.
+ */
 @Composable
 fun DiscoverSection(categories: List<GridItem>?, onClick: (String) -> Unit) {
     if (categories == null) {

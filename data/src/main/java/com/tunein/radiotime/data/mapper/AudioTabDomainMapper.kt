@@ -10,6 +10,9 @@ import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.BodyDto
 import com.tunein.radiotime.domain.model.AudioTab
 
+/**
+ * [AudioTabDomainMapper] responsible for mapping a [JsonElement] to a [AudioTab].
+ */
 class AudioTabDomainMapper @Inject constructor(
     private val json: Json,
     private val audioItemDomainMapper: AudioItemDomainMapper

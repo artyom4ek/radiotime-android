@@ -14,6 +14,9 @@ import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.BaseTab
 import com.tunein.radiotime.domain.model.CategoryItems
 
+/**
+ * [DetailsScreen] for displaying four category types: with tabs, audio list, lists, grids.
+ */
 @Suppress("UNCHECKED_CAST")
 @Composable
 fun DetailsScreen(

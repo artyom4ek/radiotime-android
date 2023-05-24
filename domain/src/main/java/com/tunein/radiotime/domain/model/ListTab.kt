@@ -1,7 +1,7 @@
 package com.tunein.radiotime.domain.model
 
 /**
- * [ListTab] describes a List Tab model
+ * [ListTab] describes sections of the List tab screen.
  */
 data class ListTab(
     val title: String,

@@ -1,7 +1,7 @@
 package com.tunein.radiotime.data.parser
 
 /**
- * [ResponseKeys] stores the keys that are in the response schema from the server
+ * [ResponseKeys] holds the keys that are in the response schema from the server.
  */
 enum class ResponseKeys(val key: String) {
     MUSIC("music"),

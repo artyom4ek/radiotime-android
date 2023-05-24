@@ -20,6 +20,9 @@ import androidx.compose.ui.unit.sp
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.AudioItem
 
+/**
+ * [PlayerBar] class responsible for displaying and managing the media player's playback panel.
+ */
 @Composable
 fun PlayerBar(
     audioItem: AudioItem?,
@@ -27,7 +30,6 @@ fun PlayerBar(
     onPlayClick: (AudioItem) -> Unit,
     onCloseClick: () -> Unit
 ) {
-
     val playPauseIcon = if (isPlaying) R.drawable.ic_play_arrow else R.drawable.ic_pause
 
     Card(shape = RoundedCornerShape(0)) {

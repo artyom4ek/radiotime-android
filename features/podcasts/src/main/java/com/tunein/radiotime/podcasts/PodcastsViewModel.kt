@@ -8,6 +8,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 
 import com.tunein.radiotime.navigation.Navigator
 
+/**
+ * [PodcastsViewModel] class for the Podcasts screen.
+ *
+ * @param navigator The Navigator interface implementation used for navigation between screens.
+ */
 @HiltViewModel
 class PodcastsViewModel @Inject constructor(
     private val navigator: Navigator

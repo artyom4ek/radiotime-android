@@ -1,7 +1,7 @@
 package com.tunein.radiotime.common.mapper
 
 /**
- * Mapper interface
+ * Mapper interface.
  */
 interface Mapper<I, O> {
 

@@ -11,6 +11,9 @@ import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [PodcastsTabScreen] displays podcast categories.
+ */
 @Composable
 fun PodcastsTabScreen(items: List<GridItem>, onClick: (String) -> Unit) {
     LazyVerticalGrid(

@@ -20,7 +20,7 @@ import com.tunein.radiotime.domain.model.GridTab
 import com.tunein.radiotime.domain.model.ListTab
 
 /**
- * Module that holds Mappers
+ * [MapperModule] holds Mappers for Data layer.
  */
 @Module
 @InstallIn(SingletonComponent::class)

@@ -6,6 +6,9 @@ import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.ItemDto
 import com.tunein.radiotime.domain.model.AudioItem
 
+/**
+ * [AudioItemDomainMapper] responsible for mapping a [ItemDto] to a [AudioItem].
+ */
 class AudioItemDomainMapper @Inject constructor() : Mapper<AudioItem?, ItemDto> {
 
     override fun to(o: ItemDto?): AudioItem? {

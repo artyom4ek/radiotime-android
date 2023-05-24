@@ -1,7 +1,7 @@
 package com.tunein.radiotime.domain.model
 
 /**
- * [ListItem] describes a List Item model
+ * [ListItem] describes a List Item model.
  */
 data class ListItem(
     val title: String,

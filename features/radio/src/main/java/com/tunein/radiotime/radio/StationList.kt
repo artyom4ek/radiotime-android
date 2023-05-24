@@ -8,6 +8,9 @@ import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.domain.model.AudioItem
 
+/**
+ * [StationList] displays the list of local stations.
+ */
 @Composable
 fun StationList(
     stations: List<AudioItem>,

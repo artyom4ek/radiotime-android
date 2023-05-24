@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import com.tunein.radiotime.common.qualifiers.IoDispatcher
 
 /**
- * Module that holds Dispatchers
+ * [DispatcherModule] holds Dispatchers.
  */
 @Module
 @InstallIn(SingletonComponent::class)

@@ -6,7 +6,7 @@ import com.tunein.radiotime.common.mvi.UiState
 import com.tunein.radiotime.domain.model.CategoryType
 
 /**
- * Contract of Details Screen
+ * Contract of Details Screen.
  */
 class DetailsContract {
 

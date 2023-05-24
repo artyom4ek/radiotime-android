@@ -16,6 +16,9 @@ import com.tunein.radiotime.domain.model.BaseTab
 import com.tunein.radiotime.domain.model.CategoryItems
 import com.tunein.radiotime.domain.model.CategoryType
 
+/**
+ * [RawDataMapperImpl] converting raw data to [CategoryType] list.
+ */
 class RawDataMapperImpl @Inject constructor(
     private val json: Json,
     private val parser: Parser,
@@ -28,6 +31,7 @@ class RawDataMapperImpl @Inject constructor(
 ) : RawDataMapper {
 
     override fun mapRawDataToDetails(items: List<JsonElement>?): List<CategoryType> {
+        // Determine what type of raw data is in the input.
         return if (parser.checkIfChildrenExists(items)) {
             mapRawBody(items)
         } else {
@@ -35,6 +39,7 @@ class RawDataMapperImpl @Inject constructor(
         }
     }
 
+    // The method converts the raw data into a list of Tabs with child elements.
     private fun mapRawBody(bodyList: List<JsonElement>?): List<BaseTab> {
         if (bodyList == null) throw NullPointerException("List mustn't be null")
 
@@ -59,6 +64,7 @@ class RawDataMapperImpl @Inject constructor(
         }
     }
 
+    // The method converts the raw data into a list of CategoryItems.
     private fun mapRawItems(itemList: List<JsonElement>?): List<CategoryItems> {
         if (itemList == null) throw NullPointerException("List mustn't be null")
 

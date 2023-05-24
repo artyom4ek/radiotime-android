@@ -20,6 +20,11 @@ import com.tunein.radiotime.domain.usecase.PodcastsUseCase
 import com.tunein.radiotime.domain.usecase.RadioUseCase
 import com.tunein.radiotime.ui.main.media.PlaybackManager
 
+/**
+ * [MainViewModel] for the main screen.
+ * Responsible for managing the state of the main screen and interacting with the appropriate
+ * use cases and components.
+ */
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val playbackManager: PlaybackManager,
@@ -64,6 +69,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    // The initial data is used to prepopulate the tab screens.
     private fun prepareInitialData() {
         viewModelScope.launch {
             mainUseCase.getInitialData()
@@ -75,10 +81,10 @@ class MainViewModel @Inject constructor(
                         }
 
                         is Resource.Success -> {
-                            // Get initial data with tabs info
+                            // Get initial data with tabs info.
                             val initialData = resource.data
 
-                            // Populate the Radio tab with data
+                            // Populate the Radio tab with data.
                             val radioTab = initialData.radioTab
                             radioTab.url?.let {
                                 radioTab.stations.addAll(
@@ -86,7 +92,7 @@ class MainViewModel @Inject constructor(
                                 )
                             }
 
-                            // Populate the Podcasts tab with data
+                            // Populate the Podcasts tab with data.
                             val podcastsTab = initialData.podcastsTab
                             podcastsTab.url?.let {
                                 podcastsTab.categories.addAll(
@@ -109,6 +115,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    // The method implements the logic for starting an Audio item.
     private fun playAudio(audioItem: AudioItem) {
         viewModelScope.launch {
             val currentAudioItem = uiState.value.currentAudioItem?.url
@@ -121,6 +128,7 @@ class MainViewModel @Inject constructor(
                 }
                 setState { copy(isPlaying = !isPlaying) }
             } else {
+                // If the Audio Item is in playback, then you need to stop it and start a new one.
                 currentAudioItem?.let { playbackManager.stop() }
                 val audioUrl = mediaUseCase.getAudioData(audioItem.url)
                 playbackManager.play(audioUrl)
@@ -135,6 +143,7 @@ class MainViewModel @Inject constructor(
         setState { copy(currentAudioItem = null) }
     }
 
+    // The method should be called after the lifecycle states have changed.
     private fun releasePlayer() {
         playbackManager.release()
     }

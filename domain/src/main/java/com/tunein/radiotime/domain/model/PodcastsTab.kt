@@ -1,7 +1,7 @@
 package com.tunein.radiotime.domain.model
 
 /**
- * [PodcastsTab] store data for Podcasts screen
+ * [PodcastsTab] describes sections of the Podcasts tab screen.
  */
 data class PodcastsTab(
     val title: String?,

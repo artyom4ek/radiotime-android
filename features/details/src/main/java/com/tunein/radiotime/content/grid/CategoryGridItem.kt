@@ -19,6 +19,9 @@ import androidx.compose.ui.unit.sp
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [CategoryGridItem] to display the grid item.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryGridItem(categoryItem: GridItem, onClick: (String, AudioItem?) -> Unit) {

@@ -18,6 +18,9 @@ import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [PodcastsTabScreenItem] displays podcast item.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PodcastsTabScreenItem(item: GridItem, onClick: (String) -> Unit) {

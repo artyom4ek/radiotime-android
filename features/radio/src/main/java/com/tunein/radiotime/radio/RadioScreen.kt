@@ -18,6 +18,9 @@ import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.RadioTab
 
+/**
+ * [RadioScreen] displays screen with local radio station list.
+ */
 @Composable
 fun RadioScreen(
     radioTab: RadioTab,
@@ -26,7 +29,6 @@ fun RadioScreen(
     onPlayClick: (AudioItem) -> Unit,
 ) {
 
-    // Display an Empty Screen if the list is empty
     if (radioTab.stations.isEmpty()) {
         EmptyScreen()
         return

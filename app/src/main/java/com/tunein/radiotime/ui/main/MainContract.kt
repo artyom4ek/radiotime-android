@@ -7,7 +7,7 @@ import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.InitialData
 
 /**
- * Contract of Main Screen
+ * [MainContract] contract of Main Screen.
  */
 class MainContract {
 

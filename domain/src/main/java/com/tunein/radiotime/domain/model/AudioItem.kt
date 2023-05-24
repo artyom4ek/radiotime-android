@@ -1,7 +1,7 @@
 package com.tunein.radiotime.domain.model
 
 /**
- * [AudioItem] describes an audio item model
+ * [AudioItem] describes an Audio item model.
  */
 data class AudioItem(
     val title: String,

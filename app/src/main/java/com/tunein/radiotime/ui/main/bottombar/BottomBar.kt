@@ -19,6 +19,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
+/**
+ * [BottomBar] represents the bottom navigation bar.
+ * @param isBottomBarEnabled Determines if the bottom bar is enabled or disabled.
+ */
 @Composable
 fun BottomBar(
     navController: NavController,
@@ -60,6 +64,11 @@ fun BottomBar(
                             }
                         }
                         launchSingleTop = true
+                        /*
+                         * FIXME: By default, this flag should be set to True.
+                         * But this causes navigation problems and crashes.
+                         * Additional investigation of the problem is needed.
+                         */
                         restoreState = false
                     }
                 })

@@ -6,6 +6,9 @@ import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.ItemDto
 import com.tunein.radiotime.domain.model.ListItem
 
+/**
+ * [ListItemDomainMapper] responsible for mapping a [ItemDto] to a [ListItem].
+ */
 class ListItemDomainMapper @Inject constructor() : Mapper<ListItem?, ItemDto> {
 
     override fun to(o: ItemDto?): ListItem? {

@@ -18,6 +18,9 @@ import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
 
+/**
+ * [Toolbar] displays a panel with a title and back button.
+ */
 @Composable
 fun Toolbar(title: String, onBackPress: () -> Unit) {
     Row(

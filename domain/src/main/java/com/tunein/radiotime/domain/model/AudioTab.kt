@@ -3,7 +3,7 @@ package com.tunein.radiotime.domain.model
 import androidx.annotation.DrawableRes
 
 /**
- * [AudioTab] describes an Audio Tab model
+ * [AudioTab] describes sections of the Audio tab screen.
  */
 data class AudioTab(
     val title: String,

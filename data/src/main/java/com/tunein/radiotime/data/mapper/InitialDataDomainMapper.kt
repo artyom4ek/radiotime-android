@@ -17,7 +17,7 @@ import com.tunein.radiotime.domain.model.PodcastsTab
 import com.tunein.radiotime.domain.model.RadioTab
 
 /**
- * Mapper class for convert [ResponseDto] to [InitialData]
+ * Mapper class for convert [ResponseDto] to [InitialData].
  */
 class InitialDataDomainMapper @Inject constructor(
     private val json: Json
