@@ -12,6 +12,9 @@ import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.ListItem
 
+/**
+ * [CategoryList] to display the list.
+ */
 @Composable
 fun CategoryList(categoryItems: List<ListItem>, onClick: (String, AudioItem?) -> Unit) {
     if (categoryItems.isEmpty()) {

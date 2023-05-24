@@ -31,6 +31,9 @@ import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.ListItem
 
+/**
+ * [CategoryListItem] to display the list item.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryListItem(categoryItem: ListItem, onClick: (String, AudioItem?) -> Unit) {

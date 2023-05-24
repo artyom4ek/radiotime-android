@@ -13,6 +13,9 @@ import com.tunein.radiotime.common.component.EmptyScreen
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [CategoryGrid] to display the grid.
+ */
 @Composable
 fun CategoryGrid(categoryItems: List<GridItem>, onClick: (String, AudioItem?) -> Unit) {
     if (categoryItems.isEmpty()) {

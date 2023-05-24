@@ -23,6 +23,9 @@ import com.tunein.radiotime.domain.model.BaseTab
 import com.tunein.radiotime.domain.model.GridTab
 import com.tunein.radiotime.domain.model.ListTab
 
+/**
+ * [ContentWithTabs] screen to display tabbed data.
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ContentWithTabs(
@@ -63,6 +66,7 @@ fun ContentWithTabs(
             pageCount = tabs.size,
             state = pagerState
         ) {
+            // Depending on the type of data, display a specific screen.
             when (val baseTab = tabs[pagerState.currentPage]) {
                 is GridTab -> {
                     CategoryGrid(

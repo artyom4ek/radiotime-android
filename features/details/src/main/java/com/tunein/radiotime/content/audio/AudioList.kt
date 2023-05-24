@@ -14,6 +14,9 @@ import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.CategoryItems
 import com.tunein.radiotime.domain.model.ListItem
 
+/**
+ * [AudioList] to display the audio list.
+ */
 @Composable
 fun AudioList(
     items: List<CategoryItems>,

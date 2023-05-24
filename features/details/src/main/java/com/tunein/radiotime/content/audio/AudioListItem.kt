@@ -28,8 +28,12 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 import com.tunein.radiotime.common.R
+import com.tunein.radiotime.content.grid.CategoryGridItem
 import com.tunein.radiotime.domain.model.AudioItem
 
+/**
+ * [AudioListItem] to display the audio list item.
+ */
 @Composable
 fun AudioListItem(
     audioItem: AudioItem,

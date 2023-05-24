@@ -17,6 +17,13 @@ import com.tunein.radiotime.domain.usecase.MainUseCase
 import com.tunein.radiotime.navigation.Navigator
 import com.tunein.radiotime.navigation.destinations.DetailsDestination
 
+/**
+ * ViewModel class for the Details screen.
+ *
+ * @param savedStateHandle The saved state handle to retrieve and store state information.
+ * @param navigator The navigator to handle navigation actions.
+ * @param mainUseCase The main use case to retrieve details data.
+ */
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
@@ -25,7 +32,7 @@ class DetailsViewModel @Inject constructor(
 ) : BaseViewModel<DetailsContract.Event, DetailsContract.State, DetailsContract.Effect>(),
     Navigator by navigator {
 
-    // Get Url param from previous screen
+    // Get Url param from previous screen.
     private val urlParam
         get() = savedStateHandle.get<String>(DetailsDestination.DETAILS_URL_PARAM)
 
