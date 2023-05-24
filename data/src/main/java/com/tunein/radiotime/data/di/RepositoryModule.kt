@@ -14,12 +14,14 @@ import com.tunein.radiotime.data.entity.ResponseDto
 import com.tunein.radiotime.data.mapper.PodcastsDomainMapper
 import com.tunein.radiotime.data.mapper.RawDataMapper
 import com.tunein.radiotime.data.remote.RemoteDataSource
+import com.tunein.radiotime.data.repository.DetailsRepositoryImpl
 import com.tunein.radiotime.data.repository.MainRepositoryImpl
 import com.tunein.radiotime.data.repository.MediaRepositoryImpl
 import com.tunein.radiotime.data.repository.PodcastsRepositoryImpl
 import com.tunein.radiotime.data.repository.RadioRepositoryImpl
 import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.model.InitialData
+import com.tunein.radiotime.domain.repository.DetailsRepository
 import com.tunein.radiotime.domain.repository.MainRepository
 import com.tunein.radiotime.domain.repository.MediaRepository
 import com.tunein.radiotime.domain.repository.PodcastsRepository
@@ -32,6 +34,17 @@ import com.tunein.radiotime.domain.repository.RadioRepository
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
+    @Provides
+    @Singleton
+    fun provideDetailsRepository(
+        remoteDataSource: RemoteDataSource,
+        rawDataMapper: RawDataMapper
+    ): DetailsRepository =
+        DetailsRepositoryImpl(
+            remoteDataSource,
+            rawDataMapper
+        )
+
     /**
      * Provides [MainRepository] instance.
      */
@@ -39,13 +52,11 @@ object RepositoryModule {
     @Singleton
     fun provideMainRepository(
         remoteDataSource: RemoteDataSource,
-        initialDataMapper: Mapper<InitialData, ResponseDto>,
-        rawDataMapper: RawDataMapper
+        initialDataMapper: Mapper<InitialData, ResponseDto>
     ): MainRepository =
         MainRepositoryImpl(
             remoteDataSource,
-            initialDataMapper,
-            rawDataMapper
+            initialDataMapper
         )
 
     /**
