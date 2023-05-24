@@ -25,12 +25,15 @@ import com.tunein.radiotime.domain.repository.MediaRepository
 import com.tunein.radiotime.domain.repository.PodcastsRepository
 import com.tunein.radiotime.domain.repository.RadioRepository
 
+/**
+ * [RepositoryModule] holds Repositories for Data layer.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
     /**
-     * Provides [MainRepository] instance
+     * Provides [MainRepository] instance.
      */
     @Provides
     @Singleton
@@ -46,7 +49,7 @@ object RepositoryModule {
         )
 
     /**
-     * Provides [RadioRepository] instance
+     * Provides [RadioRepository] instance.
      */
     @Provides
     @Singleton
@@ -57,7 +60,7 @@ object RepositoryModule {
         RadioRepositoryImpl(remoteDataSource, audioTabMapper)
 
     /**
-     * Provides [PodcastsRepository] instance
+     * Provides [PodcastsRepository] instance.
      */
     @Provides
     @Singleton
@@ -68,7 +71,7 @@ object RepositoryModule {
         PodcastsRepositoryImpl(remoteDataSource, podcastsDomainMapper)
 
     /**
-     * Provides [MediaRepository] instance
+     * Provides [MediaRepository] instance.
      */
     @Provides
     @Singleton

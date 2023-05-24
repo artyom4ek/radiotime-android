@@ -15,12 +15,16 @@ import com.tunein.radiotime.domain.model.CategoryType
 import com.tunein.radiotime.domain.model.InitialData
 import com.tunein.radiotime.domain.repository.MainRepository
 
+/**
+ * [MainRepositoryImpl] implements the logic for providing initial data.
+ */
 class MainRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val initialDataMapper: Mapper<InitialData, ResponseDto>,
     private val rawDataToDetailsMapper: RawDataMapper,
 ) : MainRepository {
 
+    // Get initial data to initialize screens.
     override suspend fun getInitialData(): Flow<Resource<InitialData>> = flow {
         try {
             val response = remoteDataSource.fetchRawDataByUrl(Constants.BASE_URL)
@@ -30,6 +34,7 @@ class MainRepositoryImpl @Inject constructor(
         }
     }
 
+    // Get data for the Details screen.
     override suspend fun getDetailsData(url: String): Flow<Resource<List<CategoryType>>> = flow {
         try {
             val rawData = remoteDataSource.fetchRawDataByUrl(url).body

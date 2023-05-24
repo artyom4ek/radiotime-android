@@ -8,8 +8,13 @@ import kotlinx.serialization.json.decodeFromJsonElement
 
 import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.BodyDto
+import com.tunein.radiotime.data.entity.ItemDto
+import com.tunein.radiotime.domain.model.ListItem
 import com.tunein.radiotime.domain.model.ListTab
 
+/**
+ * [ListTabDomainMapper] responsible for mapping a [JsonElement] to a [ListTab].
+ */
 class ListTabDomainMapper @Inject constructor(
     private val json: Json,
     private val listItemDomainMapper: ListItemDomainMapper

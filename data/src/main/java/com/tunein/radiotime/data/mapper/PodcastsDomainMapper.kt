@@ -13,7 +13,11 @@ import com.tunein.radiotime.data.parser.ResponseKeys
 import com.tunein.radiotime.data.entity.BodyDto
 import com.tunein.radiotime.domain.model.GridItem
 import com.tunein.radiotime.domain.model.GridTab
+import com.tunein.radiotime.domain.model.ListTab
 
+/**
+ * [PodcastsDomainMapper] responsible for mapping a [JsonElement] to a [GridTab].
+ */
 class PodcastsDomainMapper @Inject constructor(
     private val json: Json
 ) : Mapper<GridTab, JsonElement> {

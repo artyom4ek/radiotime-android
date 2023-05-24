@@ -8,14 +8,21 @@ import kotlinx.serialization.json.jsonObject
 import com.tunein.radiotime.common.utils.ContentType
 import com.tunein.radiotime.data.entity.ItemDto
 
+/**
+ * [ParserImpl] contains the raw data parsing logic.
+ */
 class ParserImpl @Inject constructor() : Parser {
 
     override fun checkIfChildrenExists(bodyList: List<JsonElement>?): Boolean {
         if (bodyList == null) throw NullPointerException("List mustn't be null")
 
+        // Checks for the presence of child elements for the entire list.
         return bodyList.any { ResponseFields.CHILDREN.fieldName in it.jsonObject }
     }
 
+    /* The method determines the content type according to a certain pattern,
+     * which is determined by parameters and keys.
+     */
     override fun itemAnalysis(itemDto: ItemDto): ContentType {
         if (
             itemDto.type == ResponseKeys.TEXT.key

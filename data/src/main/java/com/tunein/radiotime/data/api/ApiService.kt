@@ -7,7 +7,7 @@ import retrofit2.http.Query
 import com.tunein.radiotime.data.entity.ResponseDto
 
 /**
- * The main services that handles all endpoint processes
+ * The main services that handles all endpoint processes.
  */
 interface ApiService {
 

@@ -3,6 +3,9 @@ package com.tunein.radiotime.data.entity
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * [ItemDto] holds data from several similar models.
+ */
 @Serializable
 data class ItemDto(
     @SerialName("URL")

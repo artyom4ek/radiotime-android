@@ -9,6 +9,9 @@ import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.AudioItemDto
 import com.tunein.radiotime.data.entity.ResponseDto
 
+/**
+ * [AudioDataDomainMapper] responsible for mapping a [ResponseDto] to a [String] representing an audio URL.
+ */
 class AudioDataDomainMapper @Inject constructor(
     private val json: Json,
 ) : Mapper<String, ResponseDto> {

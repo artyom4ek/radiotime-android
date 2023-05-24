@@ -10,6 +10,9 @@ import com.tunein.radiotime.common.mapper.Mapper
 import com.tunein.radiotime.data.entity.BodyDto
 import com.tunein.radiotime.domain.model.GridTab
 
+/**
+ * [GridTabDomainMapper] responsible for mapping a [JsonElement] to a [GridTab].
+ */
 class GridTabDomainMapper @Inject constructor(
     private val json: Json,
     private val gridItemDomainMapper: GridItemDomainMapper

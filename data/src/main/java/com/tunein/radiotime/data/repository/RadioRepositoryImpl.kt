@@ -10,11 +10,15 @@ import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.model.AudioTab
 import com.tunein.radiotime.domain.repository.RadioRepository
 
+/**
+ * [RadioRepositoryImpl] implements the logic for providing data for Radio screen.
+ */
 class RadioRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val audioTabDomainMapper: Mapper<AudioTab, JsonElement>
 ) : RadioRepository {
 
+    // Get a list of local radio stations.
     override suspend fun getRadioStations(url: String): List<AudioItem> {
         val data = remoteDataSource.fetchRawDataByUrl(url).body
         val radioTabs = audioTabDomainMapper.toList(data)
