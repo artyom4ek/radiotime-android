@@ -1,0 +1,17 @@
+<resources>
+    <string name="categories">Categories</string>
+    <string name="category_details">Category details</string>
+    <string name="discover">Discover</string>
+    <string name="find_your_mood">Find your mood</string>
+    <string name="filters">Filters</string>
+    <string name="feel_the_world">Feel the world</string>
+    <string name="right_arrow">Right arrow</string>
+    <string name="back_arrow">Back arrow</string>
+    <string name="items_count">%1$d items</string>
+    <string name="current_track">Current track: %1$s</string>
+    <string name="play">Play</string>
+    <string name="close">Close</string>
+    <string name="local_stations">Local Stations</string>
+    <string name="no_items_to_display">No items to display</string>
+    <string name="unable_to_load_data">Unable to load data. Please try again later.</string>
+</resources>
