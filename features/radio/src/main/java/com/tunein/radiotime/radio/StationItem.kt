@@ -28,6 +28,9 @@ import coil.request.ImageRequest
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.AudioItem
 
+/**
+ * [StationItem] displays station list item.
+ */
 @Composable
 fun StationItem(
     station: AudioItem,
