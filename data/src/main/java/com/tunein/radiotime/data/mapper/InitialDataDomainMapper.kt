@@ -28,7 +28,7 @@ class InitialDataDomainMapper @Inject constructor(
 
         val items = o.body?.map { json.decodeFromJsonElement<ItemDto>(it) } ?: emptyList()
 
-        // Prepare initial data for Home tab
+        // Prepare initial data for Home tab.
         val homeDiscover = mutableListOf<GridItem>()
         items.forEach {
             when (it.key) {
@@ -84,13 +84,13 @@ class InitialDataDomainMapper @Inject constructor(
             filter = homeFilters
         )
 
-        // Prepare initial data for Radio tab
+        // Prepare initial data for Radio tab.
         val radio = items.find { it.key == ResponseKeys.LOCAL.key }
         val radioTitle = radio?.text
         val radioUrl = radio?.url
         val radioTab = RadioTab(radioTitle, radioUrl)
 
-        // Prepare initial data for Podcasts tab
+        // Prepare initial data for Podcasts tab.
         val podcasts = items.find { it.key == ResponseKeys.PODCAST.key }
         val podcastTitle = podcasts?.text
         val podcastsUrl = podcasts?.url

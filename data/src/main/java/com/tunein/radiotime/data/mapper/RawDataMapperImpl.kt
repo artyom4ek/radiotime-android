@@ -44,7 +44,7 @@ class RawDataMapperImpl @Inject constructor(
         if (bodyList == null) throw NullPointerException("List mustn't be null")
 
         val items = bodyList.filter {
-            ResponseFields.CHILDREN.fieldName in it.jsonObject
+            ResponseFields.CHILDREN.name in it.jsonObject
         }
 
         return items.mapNotNull { rootItem ->
