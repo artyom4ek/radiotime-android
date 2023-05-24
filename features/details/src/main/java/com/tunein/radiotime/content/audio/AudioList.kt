@@ -35,12 +35,22 @@ fun AudioList(
     ) {
         items(items) { item ->
             if (item is AudioItem) {
-                AudioListItem(
-                    audioItem = item,
-                    currentAudioItem = currentAudioItem,
-                    isPlaying = isPlaying,
-                    onPlayClick = onPlayClick
-                )
+                /*
+                 * TODO: The audio item incorrectly displays the last item with the "nextStations" key.
+                 * A check has been added to skip this element. Need to add a handler for this behavior.
+                 */
+                if (
+                    !item.subTitle.isNullOrEmpty()
+                    && !item.cover.isNullOrEmpty()
+                    && !item.track.isNullOrEmpty()
+                ) {
+                    AudioListItem(
+                        audioItem = item,
+                        currentAudioItem = currentAudioItem,
+                        isPlaying = isPlaying,
+                        onPlayClick = onPlayClick
+                    )
+                }
             } else if (item is ListItem) {
                 CategoryListItem(categoryItem = item, onClick = onPlayClick)
             }
