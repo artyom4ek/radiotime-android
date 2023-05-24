@@ -9,6 +9,12 @@ import com.tunein.radiotime.common.qualifiers.IoDispatcher
 import com.tunein.radiotime.domain.model.AudioItem
 import com.tunein.radiotime.domain.repository.RadioRepository
 
+/**
+ * [RadioUseCase] provides methods for retrieving podcasts data.
+ *
+ * @param ioDispatcher The CoroutineDispatcher for performing IO operations.
+ * @param radioRepository The repository interface for accessing radio repository data.
+ */
 class RadioUseCase @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     private val radioRepository: RadioRepository

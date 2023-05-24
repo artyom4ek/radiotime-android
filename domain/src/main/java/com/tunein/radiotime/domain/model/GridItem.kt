@@ -3,7 +3,7 @@ package com.tunein.radiotime.domain.model
 import androidx.annotation.DrawableRes
 
 /**
- * [GridItem] describes a Category Grid item model
+ * [GridItem] describes a Grid item model.
  */
 data class GridItem(
     val title: String,
