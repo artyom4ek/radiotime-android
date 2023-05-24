@@ -12,6 +12,9 @@ import com.tunein.radiotime.domain.model.HomeTab
 import com.tunein.radiotime.home.discover.DiscoverSection
 import com.tunein.radiotime.home.filters.FiltersSection
 
+/**
+ * [HomeScreen] to display Home Tab screen.
+ */
 @Composable
 fun HomeScreen(homeTab: HomeTab?, onClick: (String) -> Unit) {
     Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 20.dp)) {

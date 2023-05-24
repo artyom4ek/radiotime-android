@@ -24,6 +24,9 @@ import androidx.compose.ui.unit.sp
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [FiltersListItem] displays filters list item.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FiltersListItem(item: GridItem, onClick: (String) -> Unit) {

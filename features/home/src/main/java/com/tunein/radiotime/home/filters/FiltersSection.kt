@@ -15,6 +15,10 @@ import androidx.compose.ui.unit.sp
 import com.tunein.radiotime.common.R
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [FiltersSection] displays the filters section in the UI.
+ * Allowing users to select filters for a specific category.
+ */
 @Composable
 fun FiltersSection(filters: List<GridItem>?, onClick: (String) -> Unit) {
     if (filters == null) {

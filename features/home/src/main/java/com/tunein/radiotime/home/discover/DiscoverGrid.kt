@@ -9,6 +9,9 @@ import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [DiscoverGrid] displays the grid of categories.
+ */
 @Composable
 fun DiscoverGrid(categories: List<GridItem>, onClick: (String) -> Unit) {
     LazyVerticalGrid(

@@ -9,13 +9,16 @@ import androidx.compose.ui.unit.dp
 
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [FiltersList] displays the list of filters.
+ */
 @Composable
 fun FiltersList(items: List<GridItem>, onClick: (String) -> Unit) {
     LazyColumn {
         itemsIndexed(items) { index, item ->
             FiltersListItem(item, onClick)
 
-            // Add dividers without last element
+            // Add dividers without last element.
             if (items.size > 1 && index < items.size - 1) {
                 Divider(
                     color = Color.LightGray,

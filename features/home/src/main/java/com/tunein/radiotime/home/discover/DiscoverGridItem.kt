@@ -20,6 +20,9 @@ import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.domain.model.GridItem
 
+/**
+ * [DiscoverGridItem] displays discover grid item.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DiscoverGridItem(categoryItem: GridItem, onClick: (String) -> Unit) {
