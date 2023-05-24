@@ -1,8 +1,8 @@
 package com.tunein.radiotime.data.parser
 
 /**
- * [ResponseFields] holds the fields of raw objects.
+ * [ResponseFields] holds the name of fields for raw objects.
  */
-enum class ResponseFields(val fieldName: String) {
-    CHILDREN("children")
+sealed class ResponseFields(val name: String) {
+    object CHILDREN : ResponseFields("children")
 }

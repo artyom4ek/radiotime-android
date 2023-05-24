@@ -17,7 +17,7 @@ class ParserImpl @Inject constructor() : Parser {
         if (bodyList == null) throw NullPointerException("List mustn't be null")
 
         // Checks for the presence of child elements for the entire list.
-        return bodyList.any { ResponseFields.CHILDREN.fieldName in it.jsonObject }
+        return bodyList.any { ResponseFields.CHILDREN.name in it.jsonObject }
     }
 
     /* The method determines the content type according to a certain pattern,
