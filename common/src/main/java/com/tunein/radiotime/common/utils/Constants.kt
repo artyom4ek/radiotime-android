@@ -1,5 +1,8 @@
 package com.tunein.radiotime.common.utils
 
+/**
+ * [Constants] class defines project constants.
+ */
 class Constants {
 
     companion object {

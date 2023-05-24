@@ -23,6 +23,9 @@ import androidx.compose.ui.unit.sp
 
 import com.tunein.radiotime.common.R
 
+/**
+ * [EmptyScreen] displays an empty screen UI when there are no items to display.
+ */
 @Composable
 fun EmptyScreen() {
     Box(

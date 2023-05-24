@@ -1,7 +1,7 @@
 package com.tunein.radiotime.common.utils
 
 /**
- * A generic class that holds a value with its loading status
+ * [Resource] a generic class that holds a value with its loading status.
  **/
 sealed class Resource<out T> {
     object Loading : Resource<Nothing>()

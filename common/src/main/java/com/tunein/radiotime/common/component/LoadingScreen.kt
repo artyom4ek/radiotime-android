@@ -23,6 +23,9 @@ import com.valentinilk.shimmer.shimmer
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
 
+/**
+ * [LoadingScreen] displays a loading screen UI with shimmer effect.
+ */
 @Composable
 fun LoadingScreen() {
     val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
