@@ -18,6 +18,8 @@ object Dependencies {
         const val shimmer = "1.0.5"
         const val jUnit = "4.13.2"
         const val jUnitExt = "1.1.5"
+        const val testRunner = "1.5.2"
+        const val mockito = "5.3.1"
     }
 
     // Core
@@ -74,4 +76,7 @@ object Dependencies {
     // Testing
     const val jUnit = "junit:junit:${Versions.jUnit}"
     const val jUnitExt = "androidx.test.ext:junit:${Versions.jUnitExt}"
+    const val testRunner = "androidx.test:runner:${Versions.testRunner}"
+    const val mockitoCore = "org.mockito:mockito-core:${Versions.mockito}"
+    const val mockitoAndroid = "org.mockito:mockito-android:${Versions.mockito}"
 }

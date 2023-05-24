@@ -11,6 +11,7 @@ android {
 
     defaultConfig {
         minSdk = Config.minSdk
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -53,4 +54,11 @@ dependencies {
 
     // Timber
     implementation(Dependencies.timber)
+
+    // Testing
+    testImplementation(Dependencies.jUnit)
+    testImplementation(Dependencies.mockitoCore)
+    androidTestImplementation(Dependencies.jUnitExt)
+    androidTestImplementation(Dependencies.testRunner)
+    androidTestImplementation(Dependencies.mockitoAndroid)
 }
