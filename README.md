@@ -16,31 +16,29 @@ world.
 
 ## Screenshots
 
-### Dark Theme
-
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/6159ca76-d600-4880-8397-2c41536bfcda" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/51591bd7-84c5-4027-b37d-7eb3f5f2e69d" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/de800446-b1ca-4b6d-adff-4cb6dcb690c4" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/adcc3447-d046-4c18-ae80-d824bf9653d5" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/f8a81045-10e2-4e64-8c4f-ce279b8f1824" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/17dded82-ea1a-4245-a349-d7b0e79cb1c9" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/d082abb7-aba2-44f6-960a-8017d6e25318" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/19416b7a-278d-4352-808a-6fe8882cb99b" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/dcc9f096-0417-484d-8b87-090a020ce964" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/027a61d2-d6be-4496-9132-1efc116066b7" alt="" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/6159ca76-d600-4880-8397-2c41536bfcda" alt="Home Tab" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/51591bd7-84c5-4027-b37d-7eb3f5f2e69d" alt="Radio Tab" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/de800446-b1ca-4b6d-adff-4cb6dcb690c4" alt="Podcasts Tab" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/adcc3447-d046-4c18-ae80-d824bf9653d5" alt="Category Grid" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/f8a81045-10e2-4e64-8c4f-ce279b8f1824" alt="Category List" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/17dded82-ea1a-4245-a349-d7b0e79cb1c9" alt="Audio List" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/d082abb7-aba2-44f6-960a-8017d6e25318" alt="Playing Audio" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/19416b7a-278d-4352-808a-6fe8882cb99b" alt="Home tab with Player Bar" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/dcc9f096-0417-484d-8b87-090a020ce964" alt="Display Error" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/027a61d2-d6be-4496-9132-1efc116066b7" alt="Empty screen" width="20%" height="20%">
 
 ### Light Theme
 
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/9d819d1c-8fcc-4ba0-8ac9-a784e4e15408" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/9792639a-d856-4d38-8443-6e341faa650f" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/c7d067ff-e4d5-4e81-a624-bd8a1cb7338f" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/a49097a9-20de-4140-ae95-99c6ce181648" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/d9d94ea4-a951-473e-b2cb-2d9c9d766f33" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/d1acec93-1021-43e8-ab87-835a27ddb1b5" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/07a161ea-e817-43c4-a0ab-8dc521db4735" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/7957ef86-1283-4461-93eb-c4a9f8b5532b" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/01f3e6d5-c5e9-40a1-a11c-87630434dace" alt="" width="20%" height="20%">
-<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/2aa4d628-11a2-49ef-be52-e513823656d5" alt="" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/9d819d1c-8fcc-4ba0-8ac9-a784e4e15408" alt="Home Tab" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/9792639a-d856-4d38-8443-6e341faa650f" alt="Radio Tab" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/c7d067ff-e4d5-4e81-a624-bd8a1cb7338f" alt="Podcasts Tab" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/a49097a9-20de-4140-ae95-99c6ce181648" alt="Category Grid" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/d9d94ea4-a951-473e-b2cb-2d9c9d766f33" alt="Category List" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/d1acec93-1021-43e8-ab87-835a27ddb1b5" alt="Audio List" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/07a161ea-e817-43c4-a0ab-8dc521db4735" alt="Playing Audio" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/7957ef86-1283-4461-93eb-c4a9f8b5532b" alt="Home tab with Player Bar" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/01f3e6d5-c5e9-40a1-a11c-87630434dace" alt="Display Error" width="20%" height="20%">
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/2aa4d628-11a2-49ef-be52-e513823656d5" alt="Empty Screen" width="20%" height="20%">
 
 ## Project description
 
