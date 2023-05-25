@@ -30,7 +30,7 @@ The initial link contains 7 elements:
 
 After analyzing each link, I grouped them into separate screens:
 
-- `Home` (contains other categories, which can be either radio stations or podcasts)
+- `Home` (contains categories that can be both radio stations and podcasts)
 - `Radio` (contains local radio stations)
 - `Podcasts` (contains a list of podcast categories)
 
@@ -52,10 +52,10 @@ processed.
 
 After a deep analysis of the links, I identified 4 categories (Content Type):
 
-- `grid` (we can assume that this is a category that consists only of the name and type of link)
-- `list` (we can assume that this is also a category, but it has the items "show", "station" and
-  others)
-- `audio list` (contains audio elements)
+- `grid` (it can be assumed that this is a category consisting only of the name and link type)
+- `list` (it can be assumed that this is also a category, but it contains the items "show", "
+  station" and others)
+- `audio list` (contains only audio elements)
 - `empty list` (contains no elements)
 
 Also the response (object) can contain `children`. Each such object can be considered as a `Tab`
@@ -66,8 +66,17 @@ into specific objects with specific fields.
 Thus, we have a universal parser and only one screen (`DetailsScreen`), which can display content
 with different data.
 
+## Development process
+
+* Standard `Git Flow` with branches:
+    * `main` - represents the stable and deployable version of the codebase
+    * `develop`- serves as a staging area for ongoing development work
+    * `features` - used for implementing specific features or functionality in separate branches
+
 ## Tech Stack
 
+* IDE
+    * Android Studio Flamingo 2022.2.1 Patch 2
 * UI
     * [Jetpack Compose](https://developer.android.com/jetpack/compose) declarative UI framework
     * [Material Design 3](https://developer.android.com/jetpack/compose/designsystems/material3)
@@ -133,19 +142,34 @@ with different data.
 | [features-radio](/features/radio/)          | Java/Kotlin Library  | UI components for the Radio screen.|
 | [navigation](/navigation/)         | Java/Kotlin Library      | Project navigation logic. |
 
+## Tests
+
+### Unit tests
+
+1. [ParserTest.kt](data/src/androidTest/kotlin/com/tunein/radiotime/data/parser/ParserTest.kt)
+
+## Tested on
+
+1. Physical device: Xiaomi Redmi Note 6 Pro (Android 9, API level 29)
+2. Virtual device: Android smartphone emulators (Android 13, API level 33)
+
 ## TODOs
 
 * Improve data parsing logic (see `TODO` annotation)
 * Add screen state when changing tabs (see `FIXME` annotation)
+* Add Splash screen
 * Move MainActivity and logic to Main feature
+* Improve shimmer color for light theme
 * Improve Theme and move duplicate components into a common module
+* Customize design for tablets
 * Show screen with player and audio data when clicking on audio element and player bar
-* Add Shared ViewModel for Media
+* Add Shared ViewModel for Media logic
 * Add custom errors to Domain module
 * Add dynamic title to Details Screen toolbar
+* Add more Unit tests for classes with core logic
+* Add UI tests
 * Add PullRefresh for each screen
 * Add a foreground service to play audio in the background
 * Add an audio loading indicator
 * Add favorite podcast/station list tab
-* Add tests for classes with core logic
 * etc.
