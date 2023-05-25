@@ -183,6 +183,7 @@ with different data.
 
 * Improve data parsing logic (see `TODO` annotation)
 * Add screen state when changing tabs (see `FIXME` annotation)
+* Fix "Source Error" error when playing some audio formats
 * Add Splash screen
 * Move MainActivity and logic to Main feature
 * Improve shimmer color for light theme
