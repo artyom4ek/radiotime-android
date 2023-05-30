@@ -153,6 +153,10 @@ with different data.
     * jUnit4
     * Mockito
 
+## Architectural Design
+
+<img src="https://github.com/artyom4ek/radiotime-android/assets/10499697/206f5b13-2213-499a-9ecd-4254d4a9c215" alt="Architectural Design" width="60%" height="60%">
+
 ## Module Design
 
 | Module name        | Type                 | Description                                  |
