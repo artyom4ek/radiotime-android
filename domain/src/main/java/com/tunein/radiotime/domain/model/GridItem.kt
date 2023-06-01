@@ -9,4 +9,4 @@ data class GridItem(
     val title: String,
     val url: String,
     @DrawableRes val icon: Int? = null
-) : CategoryItems
+) : BaseItem(baseTitle = title, baseUrl = url)
