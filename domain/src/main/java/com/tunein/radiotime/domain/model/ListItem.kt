@@ -9,4 +9,4 @@ data class ListItem(
     val subTitle: String? = null,
     val currentTrack: String? = null,
     val cover: String? = null,
-) : CategoryItems
+) : BaseItem(baseTitle = title, baseUrl = url)

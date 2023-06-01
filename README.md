@@ -126,7 +126,7 @@ with different data.
         * [Hilt](https://dagger.dev/hilt/) - Standard library to incorporate Dagger dependency
           injection into an Android application
         * [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack)
-            - DI for injecting `ViewModel`
+          - DI for injecting `ViewModel`
 
     * Networking
         * [Retrofit 2](https://square.github.io/retrofit/)

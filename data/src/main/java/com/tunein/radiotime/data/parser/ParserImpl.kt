@@ -35,15 +35,13 @@ class ParserImpl @Inject constructor() : Parser {
         } else if (
             itemDto.type == ResponseKeys.LINK.key
             && itemDto.item.isNullOrEmpty()
-            && !itemDto.guideId.isNullOrEmpty()
         ) {
             return ContentType.CategoryGrid
         } else if (
             itemDto.type == ResponseKeys.LINK.key
             && (itemDto.item == ResponseKeys.SHOW.key
                     || itemDto.item == ResponseKeys.STATION.key
-                    || itemDto.item == ResponseKeys.LOCAL.key
-                    || !itemDto.key.isNullOrEmpty())
+                    || itemDto.item == ResponseKeys.LOCAL.key)
         ) {
             return ContentType.CategoryList
         }

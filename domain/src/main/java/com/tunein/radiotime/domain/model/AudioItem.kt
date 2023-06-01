@@ -9,4 +9,4 @@ data class AudioItem(
     val url: String,
     val track: String? = null,
     val cover: String? = null,
-) : CategoryItems
+) : BaseItem(baseTitle = title, baseUrl = url)

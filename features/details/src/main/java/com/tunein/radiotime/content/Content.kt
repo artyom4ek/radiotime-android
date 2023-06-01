@@ -1,5 +1,6 @@
 package com.tunein.radiotime.content
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 
 import com.tunein.radiotime.common.component.EmptyScreen
@@ -14,6 +15,7 @@ import com.tunein.radiotime.domain.model.ListItem
 /**
  * [Content] screen to display specific data.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Suppress("UNCHECKED_CAST")
 @Composable
 fun Content(
@@ -34,7 +36,7 @@ fun Content(
 
             is ListItem -> {
                 CategoryList(
-                    categoryItems = items as List<ListItem>,
+                    categoryItems = items,
                     onClick = onClick
                 )
             }
