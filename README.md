@@ -125,8 +125,7 @@ with different data.
     * [Dependency Injection](https://developer.android.com/training/dependency-injection)
         * [Hilt](https://dagger.dev/hilt/) - Standard library to incorporate Dagger dependency
           injection into an Android application
-        * [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack)
-          - DI for injecting `ViewModel`
+        * [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack) - DI for injecting `ViewModel`
 
     * Networking
         * [Retrofit 2](https://square.github.io/retrofit/)
@@ -187,6 +186,7 @@ with different data.
 
 * Improve data parsing logic (see `TODO` annotation)
 * Add screen state when changing tabs (see `FIXME` annotation)
+* Add Convention Plugins
 * Fix "Source Error" error when playing some audio formats
 * Add Splash screen
 * Move MainActivity and logic to Main feature
